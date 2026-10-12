@@ -388,3 +388,15 @@ footer{margin-top:64px;border-top:1px solid var(--line);background:var(--bg-2)}
 .hotc-p .st{align-self:center}
 .hotnote{background:#f26a2814;color:#ffc7a8;border:1px solid #f26a2855}
 .hotnote svg{flex:none;margin-top:2px}
+
+/* upcoming stores + legal pages */
+.soon-l{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px}
+.st-soon{opacity:.45;filter:grayscale(.6)}
+.soon-box{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px dashed var(--line-2);border-radius:10px;font-size:12.5px;color:var(--muted)}
+.soon-box div{display:flex;flex-wrap:wrap;gap:6px}
+.legal-page{max-width:72ch;margin:24px 0 0;display:flex;flex-direction:column;gap:14px;line-height:1.7;color:#d7d9ee}
+.legal-page h1{font-size:clamp(24px,3.4vw,36px);font-weight:800;color:var(--fg);margin-bottom:6px}
+.legal-page p{margin:0}
+.legal-page .sel{user-select:all;color:var(--gold);font-weight:700}
+.legal-page .big{font-size:18px}
+.legal-upd{font-size:12.5px;color:var(--dim)}

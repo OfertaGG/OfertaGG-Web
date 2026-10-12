@@ -68,6 +68,10 @@ function best(g){
   return {o:b,p:b.p,was:b.was,off:off>0?off:0,deal:deals.length>0,count:new Set(c.map(o=>o.s)).size};
 }
 GAMES.forEach(g=>{g.b=best(g)});
+const CONTACT_EMAIL="ofertagg.oficial@gmail.com";
+const LIVE_STORES=Object.keys(STORES).filter(k=>GAMES.some(g=>g.o.some(o=>o.s===k)));
+const SOON_STORES=Object.keys(STORES).filter(k=>!LIVE_STORES.includes(k));
+const soonRow=()=>SOON_STORES.length?`<span class="soon-l">Próximamente</span>${SOON_STORES.map(k=>`<span class="st-soon">${store(k)}</span>`).join("")}`:"";
 /* "Nueva oferta": a deal that appeared in the last few days. On popular games it goes straight to the top of the home page. */
 const NUEVA=(D.nueva_dias||7)*DAY;
 /* Only a real, live discount counts: it must have an end date, be cheaper than the normal price by at least 5%, and be recent. */
@@ -146,10 +150,10 @@ function viewHome(){
       <div class="hero-copy"><span class="eyebrow">${g.hot?`<span style="color:var(--gold)">Nueva oferta · ${leftTxt(g.nw.end).toLowerCase()}</span>`:g.soon?"Próximamente":g.relD&&(now-g.relD)/DAY<300?"Lanzamiento reciente":"Destacado de la semana"} · ${esc(g.g.slice(0,2).join(" · "))}</span>
         <h1>${esc(g.n)}</h1><p>${esc(g.sd)}</p>
         <div class="hero-price">${g.b&&!g.b.free?`<span class="big num">${eur(g.b.p)}</span>${g.b.off?`<span class="off">-${g.b.off}%</span>`:""}<span style="color:var(--muted);font-size:13px">en</span>${store(g.b.o.s,1)}`:""}</div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-gold" href="#juego-${g.id}">Comparar ${g.b?g.b.count:""} tiendas</a><button class="btn btn-line" data-wish="${g.id}">${S.wish.has(g.id)?"En tu lista":"Añadir a mi lista"}</button></div></div></div>`).join("")}
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-gold" href="#juego-${g.id}">${g.b&&g.b.count>1?`Comparar ${g.b.count} tiendas`:"Ver el juego"}</a><button class="btn btn-line" data-wish="${g.id}">${S.wish.has(g.id)?"En tu lista":"Añadir a mi lista"}</button></div></div></div>`).join("")}
     <div class="hero-dots">${feat.map((g,i)=>`<button class="${i?"":"on"}" data-dot="${i}" aria-label="${esc(g.n)}"><img src="${img(g.id,"h")}" alt=""></button>`).join("")}</div>
   </section>
-  <div class="strip"><span class="eyebrow">Comparamos precios en</span>${Object.keys(STORES).map(k=>store(k,1)).join("")}
+  <div class="strip"><span class="eyebrow">Comparamos precios en</span>${LIVE_STORES.map(k=>store(k,1)).join("")}${soonRow()}
     <span style="margin-left:auto;font-size:12.5px;color:var(--muted)">Ofertas comprobadas el ${fmtDL(UPD)} · Revisión completa cada lunes (próxima: ${fmtD(NEXT)})</span></div>
 
   ${hotG.length?`<section class="shelf"><div class="shelf-h"><div><div class="tier"><span class="live"></span>Recién rebajados</div><h2>Nuevas ofertas en juegos populares</h2><p>Bajadas de precio que acaban de aparecer. Las publicamos en cuanto las detectamos.</p></div><a class="more" href="#ofertas">Todas las ofertas →</a></div>
@@ -157,10 +161,10 @@ function viewHome(){
       <div class="hotc-p"><span class="now num">${eur(o.p)}</span><span class="was num">${eur(o.was)}</span>${store(o.s)}</div><span class="clock">${ICON.clock}${leftTxt(o.end)}</span></div></a>`}).join("")}</div></section>`:""}
   ${shelf({title:"Los más populares",sub:hotG.length?"Lo que más se juega ahora mismo, con el precio más bajo entre nuestras tiendas.":"Ahora mismo no hay ofertas nuevas en estos juegos. Te mostramos el precio más bajo que tiene cada uno entre nuestras tiendas.",items:t3.slice(0,10),more:"#juegos",tier:3})}
 
-  <section class="shelf"><div class="shelf-h"><div><h2>Ofertas que terminan pronto</h2><p>Descuentos con fecha de fin. Cuando una oferta caduca, desaparece sola de la web.</p></div><a class="more" href="#ofertas">Ver todas →</a></div>
+  ${deals.length?`<section class="shelf"><div class="shelf-h"><div><h2>Ofertas que terminan pronto</h2><p>Descuentos con fecha de fin. Cuando una oferta caduca, desaparece sola de la web.</p></div><a class="more" href="#ofertas">Ver todas →</a></div>
     <div class="deals">${deals.map(({g,o,off})=>`<a class="deal" href="#juego-${g.id}"><img loading="lazy" src="${img(g.id,"h")}" alt=""><div style="min-width:0"><div class="deal-n">${esc(g.n)}</div>
       <div class="deal-m">${store(o.s)}<span>${o.rg}</span><span class="clock">${ICON.clock}${leftTxt(o.end)}</span></div></div>
-      <div class="price"><span class="off">-${off}%</span><span class="now num">${eur(o.p)}</span><span class="was num">${eur(o.was)}</span></div></a>`).join("")}</div></section>
+      <div class="price"><span class="off">-${off}%</span><span class="now num">${eur(o.p)}</span><span class="was num">${eur(o.was)}</span></div></a>`).join("")}</div></section>`:""}
 
   ${shelf({title:"Nuevos lanzamientos",sub:"Los juegos que han salido en los últimos meses.",items:newRel.slice(0,10),more:"#novedades",row:1})}
   ${shelf({title:"Próximamente · reservas",sub:"Reserva al mejor precio antes del lanzamiento.",items:soon,more:"#proximamente"})}
@@ -180,7 +184,7 @@ function viewHome(){
     <div><span class="n">3</span><h3>Compra en la tienda</h3><p>Eliges la oferta y te llevamos a la tienda. El pago y la clave los gestiona la tienda.</p></div></div>
     <p class="disclose">OfertaGG no vende juegos. Algunos enlaces son de afiliado: si compras a través de ellos, la tienda puede pagarnos una comisión sin coste extra para ti.</p></section>
 
-  <section class="shelf"><div class="alerts"><div><h2>Que las ofertas te encuentren a ti</h2><p>Entra con tu cuenta de Google y te avisamos por correo cada semana con las nuevas ofertas, o cuando un juego de tu lista baje de precio.</p>
+  <section class="shelf"><div class="alerts"><div><h2>Que las ofertas te encuentren a ti</h2><p>${D.demo?"Entra con tu cuenta de Google y te avisamos":"Muy pronto podrás entrar con tu cuenta de Google y te avisaremos"} por correo cada semana con las nuevas ofertas, o cuando un juego de tu lista baje de precio.</p>
     <div style="margin-top:18px">${S.user?`<button class="btn btn-gold" data-act="account">Gestionar mis avisos</button>`:`<button class="btn btn-gold" data-act="login"><span class="g-ico">G</span>Entrar con Google</button>`}</div></div>
     <ul><li>${ICON.check}Resumen semanal de ofertas nuevas</li><li>${ICON.check}Aviso cuando un juego de tu lista baja de precio</li><li>${ICON.check}Avisos de lanzamientos y reservas</li><li>${ICON.check}Puedes darte de baja cuando quieras</li></ul></div></section>
 
@@ -331,7 +335,7 @@ function renderBuy(){
   const minOf=f=>{const c=live.filter(f).map(o=>o.p);return c.length?Math.min(...c):null};
   el.innerHTML=`${g.nw?`<div class="reg-note hotnote">${ICON.clock}<span><b>Nueva oferta</b> en ${STORES[g.nw.s].n}: ${eur(g.nw.p)} · ${leftTxt(g.nw.end).toLowerCase()}</span></div>`:""}<div><span class="eyebrow">${b&&b.deal?"Mejor oferta ahora":"Precio base · sin ofertas activas"}</span>
     <div class="buy-best" style="margin-top:6px">${b?`<span class="now num">${eur(b.p)}</span>${b.off&&b.deal?`<span class="off">-${b.off}%</span>`:""}${store(b.o.s,1)}`:"Sin precio"}</div>
-    ${b?`<div style="font-size:12px;color:var(--dim);margin-top:6px">Edición Standard · ${b.o.rg} · comparando ${b.count} tiendas</div>`:""}</div>
+    ${b?`<div style="font-size:12px;color:var(--dim);margin-top:6px">Edición Standard · ${b.o.rg} · ${b.count>1?`comparando ${b.count} tiendas`:"precio oficial"}</div>`:""}</div>
     ${eds.length>1?`<div><div class="lbl-row" style="margin-bottom:6px"><span>Edición</span></div><div class="seg">${eds.map(e=>{const m=minOf(o=>o.ed===e&&REGION_OK[o.rg]);return `<button data-ed="${e}" class="${e===sel.ed?"on":""}">${e}<small>${m!=null?"desde "+eur(m):"—"}</small></button>`}).join("")}</div></div>`:""}
     <div><div class="lbl-row" style="margin-bottom:6px"><span>Región de la clave</span></div><div class="seg">${regs.map(r=>{const m=minOf(o=>o.ed===sel.ed&&o.rg===r);return `<button data-rg="${r}" class="${r===sel.rg?"on":""}">${r==="Resto del mundo"?"Otras":r}<small>${eur(m)}</small></button>`}).join("")}</div></div>
     ${REGION_OK[sel.rg]?`<div class="reg-note ok">${ICON.check}<span>Las claves ${sel.rg} se activan en España.</span></div>`:`<div class="reg-note bad">${ICON.warn}<span>Las claves de "Resto del mundo" <b>no se activan en España</b> ni en Europa. Cómpralas solo si vives fuera de Europa.</span></div>`}
@@ -339,6 +343,7 @@ function renderBuy(){
       return `<label class="offer${sel.pick===k?" on":""}"><input type="radio" name="pick" value="${k}" ${sel.pick===k?"checked":""}><span class="radio"></span>
       <span class="offer-m">${store(o.s)}<span class="offer-sub"><span>${o.official?"Tienda oficial":"Clave Steam"} · ${o.rg}</span>${o.end?`<span class="clock">${ICON.clock}${leftTxt(o.end)} · ${fmtD(o.end)}</span>`:o.official&&off>0?`<span class="clock">Oferta de Steam</span>`:`<span>Precio normal</span>`}</span></span>
       <span class="price">${i===0?`<span class="best-badge">Más barato</span>`:isNew(o)?`<span class="best-badge" style="color:var(--gold)">Nueva</span>`:""}<span class="now num">${eur(o.p)}</span>${off>0?`<span class="was num">${eur(o.was)}</span>`:""}</span></label>`}).join("")||`<div class="empty">No hay ofertas para esta edición y región.</div>`}</div>
+    ${SOON_STORES.length?`<div class="soon-box"><span>Muy pronto también compararemos:</span><div>${SOON_STORES.map(k=>`<span class="st-soon">${store(k)}</span>`).join("")}</div></div>`:""}
     ${(()=>{const o=sel.pick!=null?g.o[sel.pick]:null;return o?`<a class="btn btn-gold go" href="${o.url||STEAM(g.id)}" target="_blank" rel="noopener sponsored">Ir a comprar en ${STORES[o.s].n} · ${eur(o.p)} ${ICON.ext}</a>`:`<button class="btn btn-gold go" disabled>Elige una tienda para continuar</button>`})()}
     <p class="buy-foot" style="margin:0">Te llevamos a la tienda que elijas; la compra se hace allí. ${D.demo?'<b style="color:var(--gold)">Demo:</b> por ahora todos los enlaces abren la página del juego en Steam.':""}</p>
     ${wishBtns(g)}`;
@@ -369,11 +374,18 @@ function modal(html,onBind){
   bg.onclick=e=>{if(e.target===bg)close()};bg.querySelector(".x").onclick=close;document.addEventListener("keydown",k);document.body.append(bg);onBind&&onBind(bg,close);
 }
 function login(after){
+  if(!D.demo){soonLogin();return}
   modal(`<div class="logo"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></div>
     <h2>Entra para recibir avisos</h2><p>Guarda tu lista de deseos y recibe por correo las nuevas ofertas cada semana.</p>
     <button class="gbtn" id="gLogin"><span class="g-ico">G</span>Continuar con Google</button>
     <p style="font-size:12px;color:var(--dim)">Demo: el botón simula el inicio de sesión. En la web real se conecta con Google y solo usamos tu nombre y tu correo.</p>`,
   (m,close)=>{m.querySelector("#gLogin").onclick=()=>{S.user={name:"Jugador",email:"tucorreo@gmail.com"};LS.set("user",S.user);close();renderUser();toast("Sesión iniciada con Google");after&&after();if(location.hash===""||location.hash==="#")viewHome()}});
+}
+function soonLogin(){
+  modal(`<div class="logo"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></div>
+    <h2>Avisos por correo: muy pronto</h2><p>Estamos preparando el acceso con tu cuenta de Google para enviarte las nuevas ofertas y avisarte cuando bajen de precio los juegos de tu lista.</p>
+    <p>Mientras tanto, tu lista de deseos se guarda en este navegador. Pulsa el corazón de cualquier juego para guardarlo.</p>
+    <a class="btn btn-line" href="#deseos" data-close>Ver mi lista de deseos (${S.wish.size})</a>`,(m,close)=>{m.querySelector("[data-close]").onclick=close});
 }
 function account(){
   modal(`<div style="display:flex;gap:12px;align-items:center"><span class="avatar">${S.user.name[0]}</span><div><b>${esc(S.user.name)}</b><div style="color:var(--muted);font-size:13px">${esc(S.user.email)}</div></div></div>
@@ -397,6 +409,29 @@ function alertModal(){
 }
 function renderUser(){
   $("#userSlot").innerHTML=S.user?`<button class="avatar" data-act="account" aria-label="Mi cuenta">${S.user.name[0]}</button>`:`<button class="btn btn-gold" data-act="login"><span class="g-ico">G</span><span class="hdr-login-t">Entrar</span></button>`;
+}
+const LEGAL={
+ "aviso-afiliados":["Aviso de afiliación",`<p>OfertaGG es un comparador de precios de videojuegos. <b>No vendemos juegos</b> ni gestionamos pagos ni claves: cuando pulsas "Ir a comprar", te llevamos a la tienda que has elegido y la compra se hace allí, bajo sus condiciones.</p>
+<p>Algunos de los enlaces de esta web son <b>enlaces de afiliado</b>. Si compras a través de ellos, la tienda puede pagarnos una pequeña comisión. <b>Para ti el precio es exactamente el mismo.</b> Estas comisiones nos ayudan a mantener la web gratuita.</p>
+<p>Las comisiones no influyen en el orden de los precios: siempre mostramos primero la oferta más barata, sea de la tienda que sea.</p>
+<p>Los precios se actualizan de forma automática varias veces por semana y pueden cambiar en la tienda en cualquier momento. El precio válido es siempre el que aparece en la tienda al hacer la compra.</p>`],
+ "privacidad":["Política de privacidad",`<p><b>Responsable:</b> OfertaGG. Contacto: <span class="sel">${CONTACT_EMAIL}</span>.</p>
+<p><b>Qué datos tratamos.</b> Ahora mismo OfertaGG no tiene registro de usuarios ni formularios, así que no recogemos tu nombre ni tu correo. Tu lista de deseos y tus preferencias se guardan solo en tu navegador (almacenamiento local) y no nos llegan.</p>
+<p><b>Datos técnicos.</b> Nuestro proveedor de alojamiento, Netlify, registra de forma automática datos técnicos de las visitas (como la dirección IP y el navegador) para servir la web y protegerla. Las fuentes tipográficas se cargan desde Google Fonts, que también recibe la dirección IP de quien visita la web.</p>
+<p><b>Enlaces a tiendas.</b> Cuando pulsas un enlace a una tienda, sales de OfertaGG. A partir de ahí se aplica la política de privacidad de esa tienda.</p>
+<p><b>Tus derechos.</b> Puedes pedirnos acceso, rectificación o supresión de tus datos escribiendo a <span class="sel">${CONTACT_EMAIL}</span>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+<p>Cuando activemos el acceso con Google y los avisos por correo, actualizaremos esta política antes de empezar a usarlos.</p>`],
+ "cookies":["Política de cookies",`<p>OfertaGG <b>no usa cookies de publicidad ni de seguimiento</b>.</p>
+<p>Solo usamos el almacenamiento local de tu navegador para recordar tu lista de deseos y tus preferencias. Es información que se queda en tu dispositivo y puedes borrarla cuando quieras desde los ajustes de tu navegador.</p>
+<p>Las tiendas a las que enlazamos pueden usar sus propias cookies cuando entras en su web, incluidas las que identifican que llegas desde un enlace de afiliado. Consulta la política de cookies de cada tienda.</p>`],
+ "contacto":["Contacto",`<p>¿Has visto un precio mal, quieres proponer un juego o eres una tienda y quieres colaborar con nosotros?</p>
+<p>Escríbenos a: <span class="sel big">${CONTACT_EMAIL}</span></p>
+<p>Respondemos normalmente en uno o dos días.</p>`]
+};
+function viewLegal(k){
+  const [t,body]=LEGAL[k];
+  app.innerHTML=`<div class="wrap"><nav class="crumbs"><a href="#">Inicio</a><span>/</span><span>${t}</span></nav>
+    <article class="legal-page"><h1>${t}</h1>${body}<p class="legal-upd">Última actualización: ${fmtDL(today)}</p></article></div>`;
 }
 function viewWish(){
   const list=[...S.wish].map(id=>BYID[id]).filter(Boolean);
@@ -472,6 +507,7 @@ function route(){
   else if(h==="ofertas"||h==="novedades"||h==="proximamente"||h==="gratis") viewCatalog(h);
   else if(h.startsWith("buscar-")) {sIn.value=h.slice(7);viewCatalog("search",null,h.slice(7))}
   else if(h==="deseos") viewWish();
+  else if(LEGAL[h]) viewLegal(h);
   else viewHome();
   window.scrollTo(0,0);
 }
