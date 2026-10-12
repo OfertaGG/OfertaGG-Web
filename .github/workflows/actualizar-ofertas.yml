@@ -1,0 +1,52 @@
+name: Actualizar ofertas
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "completo o diario"
+        default: "completo"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-ofertas
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+
+      - name: Elegir modo
+        id: modo
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ github.event.inputs.modo }}";
+          elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ]; then M="completo";
+          else M="diario"; fi
+          echo "modo=$M" >> "$GITHUB_OUTPUT"; echo "Modo: $M"
+
+      - name: Precios de ejemplo (demo)
+        if: steps.modo.outputs.modo == 'completo' && hashFiles('feeds/demo.json') != ''
+        run: python scripts/demo_feeds.py --novedades
+
+      - name: Actualizar juegos y ofertas
+        run: |
+          if [ "${{ steps.modo.outputs.modo }}" = "diario" ]; then python scripts/update.py --diario; else python scripts/update.py; fi
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "OfertaGG bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A site config feeds
+          git diff --cached --quiet && echo "Sin cambios" || (git commit -m "Ofertas actualizadas ($(date -u +%F), ${{ steps.modo.outputs.modo }})" && git push)
