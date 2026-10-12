@@ -1,0 +1,48 @@
+<title>OfertaGG</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<meta name="description" content="Comparador de precios de videojuegos para PC">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>/*CSS*/</style>
+<div class="demo" id="demoBar"><b>Versión de demostración.</b> Las portadas, descripciones y precios de Steam son reales; los precios de las demás tiendas son de ejemplo y todos los botones de compra llevan a Steam.</div>
+<header class="hdr"><div class="wrap">
+  <div class="hdr-row">
+    <a class="logo" href="#" aria-label="OfertaGG, inicio"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em><small>Comparador de juegos</small></span></a>
+    <div class="search" role="search">
+      <label class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Busca entre juegos, géneros o compañías" autocomplete="off" aria-label="Buscar juegos" aria-controls="sugg"><span class="kbd">/</span></label>
+      <div class="sugg" id="sugg" role="listbox" hidden></div>
+    </div>
+    <div class="hdr-actions">
+      <a class="icon-btn" href="#deseos" aria-label="Lista de deseos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg><span class="count" id="wishCount" hidden>0</span></a>
+      <span id="userSlot"></span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Secciones">
+    <button id="megaBtn" aria-expanded="false" aria-controls="mega">Géneros ▾</button>
+    <a href="#" data-nav="">Inicio</a>
+    <a href="#juegos" data-nav="juegos">Todos los juegos</a>
+    <a href="#ofertas" data-nav="ofertas" class="hotlink">Ofertas</a>
+    <a href="#novedades" data-nav="novedades">Novedades</a>
+    <a href="#proximamente" data-nav="proximamente">Próximamente</a>
+    <a href="#gratis" data-nav="gratis">Gratis</a>
+    <span class="sep"></span>
+    <a href="#juegos-futbol" data-nav="juegos-futbol">Fútbol</a>
+    <a href="#juegos-rpg" data-nav="juegos-rpg">RPG</a>
+    <a href="#juegos-aventura" data-nav="juegos-aventura">Aventura</a>
+    <a href="#juegos-terror" data-nav="juegos-terror">Terror</a>
+    <span class="upd"><i></i><span id="updTxt"></span></span>
+  </nav>
+</div>
+<div class="mega" id="mega" hidden><div class="wrap mega-in">
+  <div class="mega-side"><a href="#ofertas">Ofertas de la semana</a><a href="#novedades">Nuevos lanzamientos</a><a href="#proximamente">Próximamente</a><a href="#gratis">Gratis para jugar</a><a href="#juegos">Todo el catálogo</a></div>
+  <div class="mega-grid" id="megaGrid"></div></div></div>
+</header>
+<main id="app"></main>
+<footer><div class="wrap foot">
+  <div><a class="logo" href="#"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></a><p style="margin-top:12px">Comparamos los precios de las tiendas de juegos para PC y te llevamos a la oferta que elijas. No vendemos juegos.</p></div>
+  <div><h4>Explorar</h4><a href="#ofertas">Ofertas</a><a href="#novedades">Novedades</a><a href="#proximamente">Próximamente</a><a href="#gratis">Gratis</a></div>
+  <div><h4>Géneros</h4><a href="#juegos-accion">Acción</a><a href="#juegos-rpg">RPG</a><a href="#juegos-futbol">Fútbol</a><a href="#juegos-estrategia">Estrategia</a></div>
+  <div><h4>OfertaGG</h4><a href="#deseos">Lista de deseos</a><a href="#">Aviso de afiliación</a><a href="#">Privacidad y cookies</a><a href="#">Contacto</a></div>
+</div><div class="wrap legal">© 2026 OfertaGG · Imágenes y descripciones de los juegos © de sus respectivos propietarios, obtenidas de Steam. Algunos enlaces son de afiliado.</div></footer>
+<script>/*APP*/</script>
