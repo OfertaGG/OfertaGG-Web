@@ -29,7 +29,7 @@ NOW = datetime.datetime.now(datetime.timezone.utc)
 TODAY = NOW.date()
 DIARIO = "--diario" in sys.argv
 NUEVA_DIAS = 7          # una oferta es "nueva" durante sus primeros 7 días
-STORES = {"steam", "eneba", "instant", "kinguin", "loaded", "gamivo", "fanatical"}
+STORES = {"steam", "eneba", "instant", "kinguin", "loaded", "gamivo", "fanatical", "g2a"}
 REGIONS = {"Global", "Europa", "Resto del mundo"}
 GENRE_MAP = {"Rol": "RPG", "Simuladores": "Simulación", "Multijugador masivo": "Multijugador", "Free to Play": "Gratis"}
 MESES = dict(ENE=1, FEB=2, MAR=3, ABR=4, MAY=5, JUN=6, JUL=7, AGO=8, SEP=9, OCT=10, NOV=11, DIC=12)
@@ -203,9 +203,15 @@ def main():
     for appid in cfg["juegos"]:
         prev = old_games.get(appid)
         if DIARIO and prev and not popular(prev):
-            g = dict(prev)                       # juego no popular: en modo diario solo se limpian las caducadas
-            g["o"] = [o for o in prev["o"] if alive(o)]
-            stats["quitadas"] += len(prev["o"]) - len(g["o"])
+            g = dict(prev)                       # juego no popular: en modo diario no se pide nada a Steam,
+            prev_by_key = {key(o): o for o in prev["o"]}   # pero sí se refrescan los precios de los afiliados
+            fresh = [dict(o) for o in feeds if o["appid"] == appid and alive(o)]
+            for o in fresh:
+                o.pop("appid", None)
+                p = prev_by_key.get(key(o))
+                o["since"] = o.get("since") or (p.get("since") if p else TODAY.isoformat())
+            g["o"] = [o for o in prev["o"] if o.get("official") and alive(o)] + fresh
+            stats["quitadas"] += len(set(prev_by_key) - {key(o) for o in g["o"]})
             games.append(g)
             continue
         d = steam(appid, cache)
