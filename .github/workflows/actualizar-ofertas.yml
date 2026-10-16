@@ -1,10 +1,15 @@
+# Robot de OfertaGG: se ejecuta solo en GitHub, gratis.
+#  - Cada día a las 7:00 (hora de España): quita ofertas caducadas y publica al momento
+#    las ofertas nuevas de los juegos populares.
+#  - Cada lunes a las 6:00: revisión completa de todo el catálogo.
+# Después guarda los cambios en GitHub y Netlify publica la web nueva automáticamente.
 name: Actualizar ofertas
 
 on:
   schedule:
-    - cron: "0 5 * * *"
-    - cron: "0 4 * * 1"
-  workflow_dispatch:
+    - cron: "0 5 * * *"   # diario (UTC)
+    - cron: "0 4 * * 1"   # lunes, completo (UTC)
+  workflow_dispatch:       # botón "Run workflow" para lanzarlo a mano
     inputs:
       modo:
         description: "completo o diario"
@@ -36,9 +41,18 @@ jobs:
           else M="diario"; fi
           echo "modo=$M" >> "$GITHUB_OUTPUT"; echo "Modo: $M"
 
+      # Solo mientras no haya feeds reales: renueva los precios de ejemplo cada lunes
       - name: Precios de ejemplo (demo)
         if: steps.modo.outputs.modo == 'completo' && hashFiles('feeds/demo.json') != ''
         run: python scripts/demo_feeds.py --novedades
+
+      # Feeds reales de los afiliados (si uno falla, la web se actualiza igual con los demás)
+      - name: Feed de Kinguin
+        continue-on-error: true
+        run: python scripts/feeds/kinguin.py
+        env:
+          KINGUIN_FEED_URL: ${{ secrets.KINGUIN_FEED_URL }}
+          KINGUIN_REF: ${{ secrets.KINGUIN_REF }}
 
       - name: Actualizar juegos y ofertas
         run: |
@@ -48,5 +62,6 @@ jobs:
         run: |
           git config user.name "OfertaGG bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -A site config feeds
+          git add -A site config
+          git add -A feeds 2>/dev/null || true   # feeds/ puede estar vacía
           git diff --cached --quiet && echo "Sin cambios" || (git commit -m "Ofertas actualizadas ($(date -u +%F), ${{ steps.modo.outputs.modo }})" && git push)
