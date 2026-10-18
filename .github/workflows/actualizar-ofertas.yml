@@ -7,7 +7,6 @@ name: Actualizar ofertas
 
 on:
   schedule:
-    - cron: "0 5 * * *"   # diario (UTC)
     - cron: "0 4 * * 1"   # lunes, completo (UTC)
   workflow_dispatch:       # botón "Run workflow" para lanzarlo a mano
     inputs:
