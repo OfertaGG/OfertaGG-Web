@@ -2,6 +2,9 @@
 [build]
   publish = "site"
   command = ""
+  # Solo publica cuando cambia la web (carpeta site/). Así los cambios en scripts,
+  # config o el robot no gastan créditos de Netlify.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- site/ netlify.toml"
 
 [[headers]]
   for = "/data.json"

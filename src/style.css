@@ -400,3 +400,7 @@ footer{margin-top:64px;border-top:1px solid var(--line);background:var(--bg-2)}
 .legal-page .sel{user-select:all;color:var(--gold);font-weight:700}
 .legal-page .big{font-size:18px}
 .legal-upd{font-size:12.5px;color:var(--dim)}
+/* plataformas */
+.pfs{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px}
+.pfb{font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:2px 6px;border-radius:5px;border:1px solid currentColor;line-height:1.3}
+.pf-pc{color:#66c0f4}.pf-xbox{color:#6fcf4f}.pf-ps{color:#5b9bff}.pf-switch{color:#ff6b6b}

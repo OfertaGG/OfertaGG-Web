@@ -31,6 +31,7 @@ DIARIO = "--diario" in sys.argv
 NUEVA_DIAS = 7          # una oferta es "nueva" durante sus primeros 7 días
 STORES = {"steam", "eneba", "instant", "kinguin", "loaded", "gamivo", "fanatical", "g2a"}
 REGIONS = {"Global", "Europa", "Resto del mundo"}
+PLATFORMS = {"pc", "xbox", "ps", "switch"}   # PC (Steam), Xbox, PlayStation, Nintendo Switch
 GENRE_MAP = {"Rol": "RPG", "Simuladores": "Simulación", "Multijugador masivo": "Multijugador", "Free to Play": "Gratis"}
 MESES = dict(ENE=1, FEB=2, MAR=3, ABR=4, MAY=5, JUN=6, JUL=7, AGO=8, SEP=9, OCT=10, NOV=11, DIC=12)
 UA = {"User-Agent": "OfertaGG-bot/1.0"}
@@ -159,7 +160,7 @@ def build_game(appid, d, cfg, old):
 # ---------- ofertas de afiliados ----------
 def read_feeds():
     """Cada tienda deja un archivo feeds/<tienda>.json con una lista de ofertas:
-    {"appid":1091500,"store":"eneba","edition":"Standard","region":"Global",
+    {"appid":1091500,"store":"eneba","platform":"pc","version":"PC","edition":"Standard","region":"Global",
      "price":35.25,"was":59.99,"ends":"2026-10-20","url":"https://...enlace de afiliado..."}
     "ends" vacío o null = precio normal (no es oferta)."""
     offers = []
@@ -173,7 +174,11 @@ def read_feeds():
             if r.get("store") not in STORES or r.get("region") not in REGIONS:
                 continue
             try:
-                offers.append(dict(appid=int(r["appid"]), s=r["store"], ed=r.get("edition") or "Standard",
+                pf = r.get("platform") or "pc"
+                if pf not in PLATFORMS:
+                    continue
+                offers.append(dict(appid=int(r["appid"]), s=r["store"], pf=pf, pv=r.get("version") or "PC",
+                                   ed=r.get("edition") or "Standard",
                                    rg=r["region"], p=round(float(r["price"]), 2), was=round(float(r.get("was") or r["price"]), 2),
                                    exp=r.get("ends") or None, url=r.get("url") or None, since=r.get("since") or None))
             except Exception:
@@ -186,7 +191,7 @@ def alive(o):
 
 
 def key(o):
-    return (o["s"], o["ed"], o["rg"], o.get("exp") or "")
+    return (o["s"], o.get("pf", "pc"), o.get("pv", "PC"), o["ed"], o["rg"], o.get("exp") or "")
 
 
 def main():
@@ -226,7 +231,7 @@ def main():
         offers = []
         if not g["free"]:
             st = g["steam"]
-            offers.append(dict(s="steam", ed="Standard", rg="Global", p=st["p"] if not g["soon"] else st["was"],
+            offers.append(dict(s="steam", pf="pc", pv="PC", ed="Standard", rg="Global", p=st["p"] if not g["soon"] else st["was"],
                                was=st["was"], exp=None, official=True, url=None))
         # 2) ofertas de los afiliados para este juego (vivas)
         offers += [dict(o) for o in feeds if o["appid"] == appid and alive(o)]

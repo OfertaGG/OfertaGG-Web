@@ -422,6 +422,10 @@ footer{margin-top:64px;border-top:1px solid var(--line);background:var(--bg-2)}
 .legal-page .sel{user-select:all;color:var(--gold);font-weight:700}
 .legal-page .big{font-size:18px}
 .legal-upd{font-size:12.5px;color:var(--dim)}
+/* plataformas */
+.pfs{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px}
+.pfb{font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:2px 6px;border-radius:5px;border:1px solid currentColor;line-height:1.3}
+.pf-pc{color:#66c0f4}.pf-xbox{color:#6fcf4f}.pf-ps{color:#5b9bff}.pf-switch{color:#ff6b6b}
 </style>
 </head>
 <body>
@@ -448,10 +452,10 @@ footer{margin-top:64px;border-top:1px solid var(--line);background:var(--bg-2)}
     <a href="#proximamente" data-nav="proximamente">Próximamente</a>
     <a href="#gratis" data-nav="gratis">Gratis</a>
     <span class="sep"></span>
-    <a href="#juegos-futbol" data-nav="juegos-futbol">Fútbol</a>
-    <a href="#juegos-rpg" data-nav="juegos-rpg">RPG</a>
-    <a href="#juegos-aventura" data-nav="juegos-aventura">Aventura</a>
-    <a href="#juegos-terror" data-nav="juegos-terror">Terror</a>
+    <a href="#pc" data-nav="pc">PC</a>
+    <a href="#xbox" data-nav="xbox">Xbox</a>
+    <a href="#playstation" data-nav="playstation">PlayStation</a>
+    <a href="#switch" data-nav="switch">Switch</a>
     <span class="upd"><i></i><span id="updTxt"></span></span>
   </nav>
 </div>
@@ -482,6 +486,10 @@ const STORES={
 };
 const REGIONS=["Global","Europa","Resto del mundo"];
 const REGION_OK={"Global":true,"Europa":true,"Resto del mundo":false};
+/* Platforms: every key is for one platform. PC = Steam key. */
+const PLATS={pc:{n:"PC",key:"Clave de Steam",slug:"pc"},xbox:{n:"Xbox",key:"Clave de Xbox",slug:"xbox"},ps:{n:"PlayStation",key:"Código de PlayStation",slug:"playstation"},switch:{n:"Switch",key:"Código de Nintendo eShop",slug:"switch"}};
+const PF_ORDER=["pc","xbox","ps","switch"];
+const PF_BY_SLUG=Object.fromEntries(PF_ORDER.map(k=>[PLATS[k].slug,k]));
 const GENRE_ORDER=["Acción","Aventura","RPG","Mundo abierto","Shooter","Soulslike","Terror","Fútbol","Deportes","Carreras","Estrategia","Simulación","Indie","Cooperativo","Multijugador","Casual","Gratis"];
 const GENRE_IMG={"Acción":2807960,"Aventura":1174180,"RPG":1086940,"Mundo abierto":1091500,"Shooter":553850,"Soulslike":1245620,"Terror":3764200,"Fútbol":3405690,"Deportes":2878980,"Carreras":1551360,"Estrategia":3551340,"Simulación":413150,"Indie":367520,"Cooperativo":1426210,"Multijugador":2767030,"Casual":1868140,"Gratis":1665460};
 /* Real site: dates come from the affiliate feeds as-is. Demo feeds only: shift dates so the demo stays "live". */
@@ -491,7 +499,7 @@ const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.
 const SHIFT=D.demo?Math.max(0,Math.round((today-DATA_DAY)/864e5)):0;
 const DAY=864e5;
 function shiftISO(iso){if(!iso)return null;const d=new Date(iso+"T23:59:59");return new Date(d.getTime()+SHIFT*DAY)}
-GAMES.forEach(g=>{g.o.forEach(o=>{o.end=shiftISO(o.exp);o.sinceD=o.since?new Date(new Date(o.since+"T00:00:00").getTime()+SHIFT*DAY):null});g.relD=g.rel?new Date(g.rel+"T00:00:00"):null;g.sh=Math.min(g.sh,4)});
+GAMES.forEach(g=>{g.o.forEach(o=>{o.pf=o.pf||"pc";o.pv=o.pv||"PC";o.end=shiftISO(o.exp);o.sinceD=o.since?new Date(new Date(o.since+"T00:00:00").getTime()+SHIFT*DAY):null});g.relD=g.rel?new Date(g.rel+"T00:00:00"):null;g.sh=Math.min(g.sh,4)});
 const BYID=Object.fromEntries(GAMES.map(g=>[g.id,g]));
 
 /* ---------- helpers ---------- */
@@ -527,15 +535,17 @@ const alive=o=>!o.end||o.end>=now;
 function liveOffers(g){return g.o.filter(alive)}
 function isDeal(o){return (o.end&&alive(o))||(o.official&&o.p<o.was)}
 /* Card price: cheapest live offer, Standard edition, region that activates in Spain. */
-function best(g){
-  if(g.free) return {free:true};
-  const c=liveOffers(g).filter(o=>o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);
+function bestFor(g,pf){
+  if(g.free&&pf==="pc") return {free:true};
+  const c=liveOffers(g).filter(o=>o.pf===pf&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);
   if(!c.length) return null;
   const b=c[0]; const deals=c.filter(isDeal);
   const off=Math.round((1-b.p/b.was)*100);
   return {o:b,p:b.p,was:b.was,off:off>0?off:0,deal:deals.length>0,count:new Set(c.map(o=>o.s)).size};
 }
-GAMES.forEach(g=>{g.b=best(g)});
+const best=g=>bestFor(g,"pc");
+GAMES.forEach(g=>{g.b=best(g);g.pfs=PF_ORDER.filter(k=>liveOffers(g).some(o=>o.pf===k))});
+const pfCount=k=>GAMES.filter(g=>g.pfs.includes(k)).length;
 const CONTACT_EMAIL="ofertagg.oficial@gmail.com";
 const LIVE_STORES=Object.keys(STORES).filter(k=>GAMES.some(g=>g.o.some(o=>o.s===k)));
 const SOON_STORES=Object.keys(STORES).filter(k=>!LIVE_STORES.includes(k));
@@ -544,7 +554,7 @@ const soonRow=()=>SOON_STORES.length?`<span class="soon-l">Próximamente</span>$
 const NUEVA=(D.nueva_dias||7)*DAY;
 /* Only a real, live discount counts: it must have an end date, be cheaper than the normal price by at least 5%, and be recent. */
 const isNew=o=>o.end&&alive(o)&&o.p<=o.was*0.95&&o.sinceD&&(now-o.sinceD)<NUEVA&&o.sinceD.getFullYear()>2001;
-GAMES.forEach(g=>{const n=liveOffers(g).filter(o=>isNew(o)&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);g.nw=n[0]||null;g.hot=!!(g.pop&&g.nw)});
+GAMES.forEach(g=>{const n=liveOffers(g).filter(o=>o.pf==="pc"&&isNew(o)&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);g.nw=n[0]||null;g.hot=!!(g.pop&&g.nw)});
 const POP_HI=250000, POP_MID=60000;
 const tierOf=g=>g.rec>=POP_HI?3:(g.rec>=POP_MID||g.pop)?2:1;
 
@@ -556,8 +566,8 @@ function updWish(){const c=$("#wishCount");c.textContent=S.wish.size;c.hidden=!S
 function toast(t){const el=document.createElement("div");el.className="toast";el.setAttribute("role","status");el.textContent=t;document.body.append(el);setTimeout(()=>el.remove(),2600)}
 
 /* ---------- components ---------- */
-function priceBlock(g,compact){
-  const b=g.b;
+function priceBlock(g,compact,bo){
+  const b=bo===undefined?g.b:bo;
   if(!b) return `<span class="base-tag">Sin stock</span>`;
   if(b.free) return `<div class="price"><span class="now">Gratis</span></div>`;
   return `<div class="price">${b.off&&b.deal?`<span class="off">-${b.off}%</span>`:""}<span class="now num">${eur(b.p)}</span>${b.off&&b.deal&&!compact?`<span class="was num">${eur(b.was)}</span>`:""}</div>`;
@@ -570,16 +580,18 @@ function flags(g){
   if(g.free) f.push(`<span class="pill pill-free">Gratis</span>`);
   return f.length?`<div class="flag">${f.join("")}</div>`:"";
 }
-function card(g){
-  const b=g.b; const on=S.wish.has(g.id);
+function pfBadges(g){return g.pfs.length>1||g.pfs[0]!=="pc"?`<div class="pfs">${g.pfs.map(k=>`<span class="pfb pf-${k}">${PLATS[k].n}</span>`).join("")}</div>`:""}
+function card(g){return cardB(g,g.b)}
+function cardB(g,b){
+  const on=S.wish.has(g.id);
   let lbl="";
   if(b&&!b.free) lbl=b.deal?`<div class="lbl">Mejor precio</div>${store(b.o.s)}`:`<div class="lbl">Precio base</div>${store(b.o.s)}`;
   if(b&&b.free) lbl=`<div class="lbl">Disponible en</div>${store("steam")}`;
   return `<a class="card" href="#juego-${g.id}" aria-label="${esc(g.n)}">
     <div class="card-img"><img loading="lazy" src="${img(g.id,"h")}" alt="">${flags(g)}
       <button class="heart${on?" on":""}" data-wish="${g.id}" aria-label="${on?"Quitar de":"Añadir a"} la lista de deseos">${on?ICON.heart:ICON.heartO}</button></div>
-    <div class="card-b"><div class="card-t">${esc(g.n)}</div>
-      <div class="card-p"><div>${lbl}</div>${priceBlock(g,true)}</div></div></a>`;
+    <div class="card-b"><div class="card-t">${esc(g.n)}</div>${pfBadges(g)}
+      <div class="card-p"><div>${lbl}</div>${priceBlock(g,true,b)}</div></div></a>`;
 }
 function tierMark(t){return `<b>${[1,2,3].map(i=>`<i class="${i<=t?"":"off"}"></i>`).join("")}</b>`}
 function shelf({title,sub,items,more,tier,row,big}){
@@ -675,15 +687,18 @@ function startHero(n){
 }
 
 /* catalog */
-const F={q:"",genres:new Set(),stores:new Set(),max:80,region:"es",deals:false,feats:new Set(),sort:"pop",mode:"all"};
-function viewCatalog(mode,genreSlug,q){
-  F.mode=mode; F.genres=new Set(); F.q=q||"";
+const F={q:"",genres:new Set(),stores:new Set(),max:80,region:"es",deals:false,feats:new Set(),sort:"pop",mode:"all",pf:"all"};
+function viewCatalog(mode,genreSlug,q,pf){
+  F.mode=mode; F.genres=new Set(); F.q=q||""; F.pf=pf||"all";
   if(genreSlug&&GENRE_BY_SLUG[genreSlug]) F.genres.add(GENRE_BY_SLUG[genreSlug]);
   F.deals=mode==="ofertas"; F.sort=mode==="novedades"?"new":mode==="proximamente"?"soon":mode==="ofertas"?"off":"pop";
-  const title={all:F.genres.size?[...F.genres][0]:"Todos los juegos",ofertas:"Ofertas de la semana",novedades:"Nuevos lanzamientos",proximamente:"Próximamente",gratis:"Juegos gratis",search:`Resultados para "${F.q}"`}[mode];
+  const title={all:F.genres.size?[...F.genres][0]:F.pf!=="all"?`Juegos de ${PLATS[F.pf].n}`:"Todos los juegos",ofertas:"Ofertas de la semana",novedades:"Nuevos lanzamientos",proximamente:"Próximamente",gratis:"Juegos gratis",search:`Resultados para "${F.q}"`}[mode];
   const feats=["Un jugador","Multijugador en línea","Cooperativo en línea","JcJ en línea"];
   app.innerHTML=`<div class="wrap"><nav class="crumbs"><a href="#">Inicio</a><span>/</span><span>${esc(title)}</span></nav>
   <div class="cat"><aside class="filters" aria-label="Filtros">
+    <details class="fgrp" open><summary>Plataforma</summary><div class="fopts">
+      <label class="chk"><input type="radio" name="fpf" value="all" ${F.pf==="all"?"checked":""}>Todas</label>
+      ${PF_ORDER.map(k=>`<label class="chk"><input type="radio" name="fpf" value="${k}" ${F.pf===k?"checked":""}>${PLATS[k].n}<small>${pfCount(k)}</small></label>`).join("")}</div></details>
     <details class="fgrp" open><summary>Género</summary><div class="fopts">${GENRE_ORDER.map(gn=>`<label class="chk"><input type="checkbox" id="fg-${slug(gn)}" data-f="genres" value="${gn}" ${F.genres.has(gn)?"checked":""}>${gn}<small>${genreCount(gn)}</small></label>`).join("")}</div></details>
     <details class="fgrp" open><summary>Precio máximo</summary><div class="fopts"><input class="range" type="range" id="fmax" min="5" max="80" step="5" value="${F.max}"><div class="lbl-row"><span>5 €</span><b class="num" id="fmaxv">${F.max>=80?"Sin límite":"Hasta "+F.max+" €"}</b></div></div></details>
     <details class="fgrp" open><summary>Tienda</summary><div class="fopts">${Object.keys(STORES).map(k=>`<label class="chk"><input type="checkbox" id="fs-${k}" data-f="stores" value="${k}">${store(k)}</label>`).join("")}</div></details>
@@ -701,13 +716,16 @@ function viewCatalog(mode,genreSlug,q){
   app.querySelectorAll("[data-f]").forEach(i=>i.onchange=()=>{F[i.dataset.f][i.checked?"add":"delete"](i.value);renderCat()});
   $("#fmax").oninput=e=>{F.max=+e.target.value;$("#fmaxv").textContent=F.max>=80?"Sin límite":"Hasta "+F.max+" €";renderCat()};
   app.querySelectorAll("[name=freg]").forEach(r=>r.onchange=()=>{F.region=r.value;renderCat()});
+  app.querySelectorAll("[name=fpf]").forEach(r=>r.onchange=()=>{F.pf=r.value;renderCat()});
   $("#fdeals").onchange=e=>{F.deals=e.target.checked;renderCat()};
   $("#fsort").onchange=e=>{F.sort=e.target.value;renderCat()};
   renderCat();
 }
 function catPrice(g){
   if(g.free) return {p:0,off:0,deal:false};
-  let c=liveOffers(g).filter(o=>o.ed==="Standard"&&(F.region==="all"||REGION_OK[o.rg]));
+  const pf=F.pf==="all"?"pc":F.pf;
+  if(g.free&&pf!=="pc") return null;
+  let c=liveOffers(g).filter(o=>o.pf===pf&&o.ed==="Standard"&&(F.region==="all"||REGION_OK[o.rg]));
   if(F.stores.size) c=c.filter(o=>F.stores.has(o.s));
   if(!c.length) return null;
   c.sort((a,b)=>a.p-b.p);
@@ -719,7 +737,7 @@ function renderCat(){
     if(F.mode==="novedades"&&(g.soon||!g.relD||(now-g.relD)/DAY>420)) return false;
     if(F.mode==="proximamente"&&!g.soon) return false;
     if(F.mode==="gratis"&&!g.free) return false;
-    if(qn&&!norm(g.n+" "+g.dev.join(" ")+" "+g.pub.join(" ")+" "+g.g.join(" ")).includes(qn)) return false;
+    if(qn&&!norm(g.n+" "+g.dev.join(" ")+" "+g.pub.join(" ")+" "+g.g.join(" ")+" "+g.pfs.map(k=>PLATS[k].n).join(" ")).includes(qn)) return false;
     for(const gn of F.genres) if(!g.g.includes(gn)) return false;
     for(const f of F.feats) if(!g.feats.includes(f)) return false;
     const cp=catPrice(g); if(!cp) return false; g._cp=cp;
@@ -732,14 +750,14 @@ function renderCat(){
   const chips=[...F.genres].map(gn=>`<button class="chip on" data-rm="genres|${gn}">${gn} ✕</button>`).concat([...F.stores].map(k=>`<button class="chip on" data-rm="stores|${k}">${STORES[k].n} ✕</button>`));
   $("#activeChips").innerHTML=chips.join("");
   $("#activeChips").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{const[k,v]=b.dataset.rm.split("|");F[k].delete(v);const i=app.querySelector(`[data-f="${k}"][value="${CSS.escape(v)}"]`);if(i)i.checked=false;renderCat()});
-  $("#cgrid").innerHTML=list.length?list.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>No hay juegos con estos filtros.</b><br>Prueba a quitar algún filtro o a subir el precio máximo.</div>`;
+  $("#cgrid").innerHTML=list.length?list.map(g=>cardB(g,F.pf==="all"?g.b:bestFor(g,F.pf))).join(""):`<div class="empty" style="grid-column:1/-1"><b>No hay juegos con estos filtros.</b><br>Prueba a quitar algún filtro o a subir el precio máximo.</div>`;
 }
 
 /* game page */
-let G=null, sel={ed:"Standard",rg:"Global",pick:null,shot:0};
+let G=null, sel={pf:"pc",ed:"Standard",rg:null,pick:null,shot:0};
 function viewGame(id){
   const g=BYID[id]; if(!g){viewHome();return}
-  G=g; sel={ed:"Standard",rg:"Global",pick:null,shot:0};
+  G=g; sel={pf:"pc",ed:"Standard",rg:null,pick:null,shot:0};
   const shots=[...Array(g.sh).keys()];
   const sameCo=GAMES.filter(x=>x.id!==g.id&&(x.pub.some(p=>g.pub.includes(p))||x.dev.some(d=>g.dev.includes(d))));
   const similar=GAMES.filter(x=>x.id!==g.id&&!sameCo.includes(x)).map(x=>({x,s:x.g.filter(t=>g.g.includes(t)).length+x.rec/1e7})).sort((a,b)=>b.s-a.s).slice(0,5).map(o=>o.x);
@@ -778,7 +796,7 @@ function renderTab(t){
     <dl class="facts"><dt>Desarrollador</dt><dd>${g.dev.map(d=>`<a href="#buscar-${encodeURIComponent(d)}">${esc(d)}</a>`).join(", ")}</dd>
     <dt>Editor</dt><dd>${g.pub.map(d=>`<a href="#buscar-${encodeURIComponent(d)}">${esc(d)}</a>`).join(", ")}</dd>
     <dt>Lanzamiento</dt><dd>${g.relD?fmtDL(g.relD):"Por anunciar"}</dd>
-    <dt>Plataforma</dt><dd>PC · Clave de Steam</dd>
+    <dt>Plataformas</dt><dd>${g.pfs.map(k=>PLATS[k].n).join(" · ")||"PC"}</dd>
     ${g.age?`<dt>Edad</dt><dd>+${g.age}</dd>`:""}
     ${g.mc?`<dt>Metacritic</dt><dd><span class="score ${g.mc>=85?"":"mid"}">${g.mc}</span></dd>`:""}
     ${g.rec?`<dt>Reseñas Steam</dt><dd class="num">${g.rec.toLocaleString("es-ES")}</dd>`:""}
@@ -793,23 +811,26 @@ function renderBuy(){
   if(g.free){el.innerHTML=`<span class="eyebrow">Precio</span><div class="buy-best"><span class="now">Gratis</span>${store("steam",1)}</div>
     <p class="buy-foot" style="margin:0">Este juego es gratuito. Se descarga directamente desde Steam.</p>
     <a class="btn btn-gold go" href="${STEAM(g.id)}" target="_blank" rel="noopener">Ir a Steam ${ICON.ext}</a>${wishBtns(g)}`;bindBuy();return}
-  const live=liveOffers(g);
-  const eds=[...new Set(g.o.map(o=>o.ed))];
+  if(!g.pfs.includes(sel.pf)) sel.pf=g.pfs[0]||"pc";
+  const live=liveOffers(g).filter(o=>o.pf===sel.pf);
+  const eds=[...new Set(live.map(o=>o.ed))].sort((a,b)=>a==="Standard"?-1:b==="Standard"?1:0);
+  if(!eds.includes(sel.ed)) sel.ed=eds[0]||"Standard";
   const forEd=live.filter(o=>o.ed===sel.ed);
   const regs=REGIONS.filter(r=>forEd.some(o=>o.rg===r));
-  if(!regs.includes(sel.rg)) sel.rg=regs[0];
+  if(!regs.includes(sel.rg)){const ok=forEd.filter(o=>REGION_OK[o.rg]).sort((x,y)=>x.p-y.p);sel.rg=ok.length?ok[0].rg:regs[0]}
   const list=forEd.filter(o=>o.rg===sel.rg).sort((a,b)=>a.p-b.p);
   const b=g.b;
   const minOf=f=>{const c=live.filter(f).map(o=>o.p);return c.length?Math.min(...c):null};
   el.innerHTML=`${g.nw?`<div class="reg-note hotnote">${ICON.clock}<span><b>Nueva oferta</b> en ${STORES[g.nw.s].n}: ${eur(g.nw.p)} · ${leftTxt(g.nw.end).toLowerCase()}</span></div>`:""}<div><span class="eyebrow">${b&&b.deal?"Mejor oferta ahora":"Precio base · sin ofertas activas"}</span>
     <div class="buy-best" style="margin-top:6px">${b?`<span class="now num">${eur(b.p)}</span>${b.off&&b.deal?`<span class="off">-${b.off}%</span>`:""}${store(b.o.s,1)}`:"Sin precio"}</div>
     ${b?`<div style="font-size:12px;color:var(--dim);margin-top:6px">Edición Standard · ${b.o.rg} · ${b.count>1?`comparando ${b.count} tiendas`:"precio oficial"}</div>`:""}</div>
+    ${g.pfs.length>1?`<div><div class="lbl-row" style="margin-bottom:6px"><span>Plataforma</span></div><div class="seg">${g.pfs.map(k=>{const c=liveOffers(g).filter(o=>o.pf===k&&REGION_OK[o.rg]).map(o=>o.p);return `<button data-pf="${k}" class="${k===sel.pf?"on":""}">${PLATS[k].n}<small>${c.length?"desde "+eur(Math.min(...c)):"otras regiones"}</small></button>`}).join("")}</div></div>`:""}
     ${eds.length>1?`<div><div class="lbl-row" style="margin-bottom:6px"><span>Edición</span></div><div class="seg">${eds.map(e=>{const m=minOf(o=>o.ed===e&&REGION_OK[o.rg]);return `<button data-ed="${e}" class="${e===sel.ed?"on":""}">${e}<small>${m!=null?"desde "+eur(m):"—"}</small></button>`}).join("")}</div></div>`:""}
     <div><div class="lbl-row" style="margin-bottom:6px"><span>Región de la clave</span></div><div class="seg">${regs.map(r=>{const m=minOf(o=>o.ed===sel.ed&&o.rg===r);return `<button data-rg="${r}" class="${r===sel.rg?"on":""}">${r==="Resto del mundo"?"Otras":r}<small>${eur(m)}</small></button>`}).join("")}</div></div>
-    ${REGION_OK[sel.rg]?`<div class="reg-note ok">${ICON.check}<span>Las claves ${sel.rg} se activan en España.</span></div>`:`<div class="reg-note bad">${ICON.warn}<span>Las claves de "Resto del mundo" <b>no se activan en España</b> ni en Europa. Cómpralas solo si vives fuera de Europa.</span></div>`}
+    ${REGION_OK[sel.rg]?`<div class="reg-note ok">${ICON.check}<span>${sel.pf==="pc"?"Las claves":"Los códigos"} ${sel.rg} se activan en España${sel.pf==="pc"?"":` en tu cuenta de ${PLATS[sel.pf].n}`}.</span></div>`:`<div class="reg-note bad">${ICON.warn}<span>Las claves de "Resto del mundo" <b>no se activan en España</b> ni en Europa. Cómpralas solo si vives fuera de Europa.</span></div>`}
     <div class="offers" role="radiogroup" aria-label="Elige tienda">${list.map((o,i)=>{const k=g.o.indexOf(o);const off=Math.round((1-o.p/o.was)*100);
       return `<label class="offer${sel.pick===k?" on":""}"><input type="radio" name="pick" value="${k}" ${sel.pick===k?"checked":""}><span class="radio"></span>
-      <span class="offer-m">${store(o.s)}<span class="offer-sub"><span>${o.official?"Tienda oficial":"Clave Steam"} · ${o.rg}</span>${o.end?`<span class="clock">${ICON.clock}${leftTxt(o.end)} · ${fmtD(o.end)}</span>`:o.official&&off>0?`<span class="clock">Oferta de Steam</span>`:`<span>Precio normal</span>`}</span></span>
+      <span class="offer-m">${store(o.s)}<span class="offer-sub"><span>${o.official?"Tienda oficial":PLATS[o.pf].key} · ${o.pv!=="PC"&&o.pv!==PLATS[o.pf].n?esc(o.pv)+" · ":""}${o.rg}</span>${o.end?`<span class="clock">${ICON.clock}${leftTxt(o.end)} · ${fmtD(o.end)}</span>`:o.official&&off>0?`<span class="clock">Oferta de Steam</span>`:`<span>Precio normal</span>`}</span></span>
       <span class="price">${i===0?`<span class="best-badge">Más barato</span>`:isNew(o)?`<span class="best-badge" style="color:var(--gold)">Nueva</span>`:""}<span class="now num">${eur(o.p)}</span>${off>0?`<span class="was num">${eur(o.was)}</span>`:""}</span></label>`}).join("")||`<div class="empty">No hay ofertas para esta edición y región.</div>`}</div>
     ${SOON_STORES.length?`<div class="soon-box"><span>Muy pronto también compararemos:</span><div>${SOON_STORES.map(k=>`<span class="st-soon">${store(k)}</span>`).join("")}</div></div>`:""}
     ${(()=>{const o=sel.pick!=null?g.o[sel.pick]:null;return o?`<a class="btn btn-gold go" href="${o.url||STEAM(g.id)}" target="_blank" rel="noopener sponsored">Ir a comprar en ${STORES[o.s].n} · ${eur(o.p)} ${ICON.ext}</a>`:`<button class="btn btn-gold go" disabled>Elige una tienda para continuar</button>`})()}
@@ -820,7 +841,8 @@ function renderBuy(){
 function wishBtns(g){const on=S.wish.has(g.id);const al=S.alerts[g.id];return `<div class="buy-actions"><button class="btn btn-line${on?" on":""}" data-wish="${g.id}">${on?ICON.heart+"En tu lista":ICON.heartO+"Lista de deseos"}</button><button class="btn btn-line${al?" on":""}" data-act="alert">${ICON.bell}${al?"Aviso: "+al+" €":"Avisar si baja"}</button></div>`}
 function bindBuy(){
   const el=$("#buy");
-  el.querySelectorAll("[data-ed]").forEach(b=>b.onclick=()=>{sel.ed=b.dataset.ed;sel.pick=null;renderBuy()});
+  el.querySelectorAll("[data-pf]").forEach(b=>b.onclick=()=>{sel.pf=b.dataset.pf;sel.ed="Standard";sel.rg=null;sel.pick=null;renderBuy()});
+  el.querySelectorAll("[data-ed]").forEach(b=>b.onclick=()=>{sel.ed=b.dataset.ed;sel.rg=null;sel.pick=null;renderBuy()});
   el.querySelectorAll("[data-rg]").forEach(b=>b.onclick=()=>{sel.rg=b.dataset.rg;sel.pick=null;renderBuy()});
   el.querySelectorAll("[name=pick]").forEach(r=>r.onchange=()=>{sel.pick=+r.value;renderBuy();const go=$("#buy .go");go&&go.focus({preventScroll:true})});
 }
@@ -973,6 +995,7 @@ function route(){
   else if(h.startsWith("juegos-")) viewCatalog("all",h.slice(7));
   else if(h==="juegos") viewCatalog("all");
   else if(h==="ofertas"||h==="novedades"||h==="proximamente"||h==="gratis") viewCatalog(h);
+  else if(PF_BY_SLUG[h]) viewCatalog("all",null,null,PF_BY_SLUG[h]);
   else if(h.startsWith("buscar-")) {sIn.value=h.slice(7);viewCatalog("search",null,h.slice(7))}
   else if(h==="deseos") viewWish();
   else if(LEGAL[h]) viewLegal(h);
