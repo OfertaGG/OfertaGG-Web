@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<title>OfertaGG · Compara precios de juegos de PC y ahorra</title>
+<link rel="canonical" href="https://ofertagg.com/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OfertaGG">
+<meta property="og:title" content="OfertaGG · El mismo juego. Menos dinero.">
+<meta property="og:description" content="Compara precios de juegos de PC en Steam, Kinguin y más tiendas, y encuentra la oferta más barata.">
+<meta property="og:url" content="https://ofertagg.com/">
+<meta property="og:image" content="https://ofertagg.com/img/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="google-site-verification" content="XuuWpAbyqw8ZCxHSCxWhF0-BwBpptKzzrBulyJPpEWo" />
+<meta name='impact-site-verification' value='2789870d-c90d-4314-a4cd-cc5135fb90e0'>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<meta name="description" content="Compara precios de juegos de PC y encuentra la oferta más barata. Precios por edición y región, ofertas nuevas cada día y avisos cuando bajan de precio.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>/* Layout: sticky store header + search, full-bleed hero carousel, then shelves of game cards ordered by popularity; game page = gallery left, price-comparison panel right. Single dark look in the OfertaGG brand: deep navy ground from the logo, orange accent, pink-red for discounts. */
+:root{
+  --bg:#0c0d1f; --bg-2:#10122a; --surface:#161937; --surface-2:#1e2146; --line:#292c56; --line-2:#373b6c;
+  --fg:#f3f3fb; --muted:#a4a7cc; --dim:#7b7fa8;
+  --gold:#f26a28; --gold-2:#ff8b4f; --gold-ink:#170903;
+  --hot:#ff4d72; --ok:#4fd39b; --warn:#ffb057; --info:#7fa8ff;
+  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r-s:6px; --r-m:10px; --r-l:16px;
+  --wrap:1280px; --gut:clamp(16px,3vw,32px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(18px,2.2vw,24px);font-weight:700}
+
+/* demo strip */
+.demo{background:repeating-linear-gradient(135deg,#1d1430 0 14px,#19122a 14px 28px);color:#ffc7a8;font-size:12.5px;text-align:center;padding:7px var(--gut);border-bottom:1px solid #3a2340}
+.demo b{color:var(--gold)}
+
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(12,13,31,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hdr-row{display:flex;align-items:center;gap:20px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;flex:none}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold-2),var(--gold) 55%,#b84a14);display:grid;place-items:center;box-shadow:0 0 0 2px #0c0d1f,0 0 0 3px #b84a1455,0 6px 18px #f26a2833;font-family:var(--f-display);font-weight:800;color:var(--gold-ink);font-size:17px}
+.logo-word{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:-.03em}
+.logo-word small{display:block;font-family:var(--f-body);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:-2px}
+.search{position:relative;flex:1;min-width:0;max-width:620px}
+.search-box{display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;transition:border-color .15s,background .15s}
+.search-box:focus-within{border-color:var(--gold);background:var(--surface-2)}
+.search-box svg{flex:none;color:var(--muted)}
+.search-box input{flex:1;min-width:0;background:none;border:0;outline:0;font-size:15px}
+.search-box input::placeholder{color:var(--dim)}
+.kbd{font-family:var(--f-mono);font-size:11px;color:var(--dim);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px}
+.sugg{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-l);box-shadow:0 24px 60px #000a;overflow:hidden;max-height:min(70vh,560px);overflow-y:auto}
+.sugg-h{padding:12px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.sugg-item{display:grid;grid-template-columns:92px 1fr auto;gap:14px;align-items:center;padding:8px 16px;cursor:pointer}
+.sugg-item img{width:92px;aspect-ratio:460/215;object-fit:cover;border-radius:5px;background:var(--surface-2)}
+.sugg-item.on,.sugg-item:hover{background:var(--surface-2)}
+.sugg-name{font-weight:600;font-size:14.5px;line-height:1.25;min-width:0}
+.sugg-name mark{background:none;color:var(--gold)}
+.sugg-meta{font-size:12px;color:var(--muted)}
+.sugg-price{text-align:right;font-size:15px;font-weight:700}
+.sugg-price .st{margin-top:3px}
+.sugg-chips{display:flex;flex-wrap:wrap;gap:6px;padding:4px 16px 12px}
+.sugg-all{display:block;width:100%;text-align:left;padding:12px 16px;border-top:1px solid var(--line);color:var(--gold);font-weight:600}
+.sugg-all:hover{background:var(--surface-2)}
+.sugg-empty{padding:18px 16px;color:var(--muted)}
+.hdr-actions{display:flex;align-items:center;gap:8px;flex:none}
+.icon-btn{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--fg);border:1px solid var(--line-2)}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+.icon-btn .count[hidden]{display:none}
+.icon-btn .count{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--hot);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap;transition:transform .12s,background .15s,border-color .15s,color .15s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-line{border:1px solid var(--line-2)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#7a5cff,#ff5d6e);display:grid;place-items:center;font-weight:800;font-family:var(--f-display)}
+
+.nav{display:flex;align-items:center;gap:4px;height:46px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a,.nav button{flex:none;padding:7px 12px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;white-space:nowrap}
+.nav a:hover,.nav button:hover,.nav .on{color:var(--fg);background:var(--surface)}
+.nav .sep{width:1px;height:20px;background:var(--line-2);margin:0 6px;flex:none}
+.nav .hotlink{color:var(--gold)}
+.upd{margin-left:auto;flex:none;font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px;padding-left:12px}
+.upd i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px #4fd39b22}
+
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--bg-2);border-bottom:1px solid var(--line);box-shadow:0 30px 60px #0009}
+.mega-in{display:grid;grid-template-columns:220px 1fr;gap:32px;padding-block:24px}
+.mega-side{display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--line);padding-right:20px}
+.mega-side a{padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
+.mega-side a:hover{background:var(--surface);color:var(--fg)}
+.mega-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.gtile{position:relative;height:64px;border-radius:var(--r-m);overflow:hidden;display:flex;align-items:flex-end;padding:8px 10px;font-weight:700;font-size:14px;border:1px solid var(--line)}
+.gtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;transition:opacity .2s,transform .3s}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0c0d1fee,#0c0d1f00 80%)}
+.gtile span{position:relative;z-index:1}
+.gtile small{position:relative;z-index:1;margin-left:auto;color:var(--muted);font-weight:500;font-family:var(--f-mono);font-size:11px}
+.gtile:hover img{opacity:.7;transform:scale(1.05)}
+.gtile:hover{border-color:var(--gold)}
+
+/* hero */
+.hero{position:relative;margin-top:20px;border-radius:var(--r-l);overflow:hidden;background:var(--surface);border:1px solid var(--line);min-height:380px;display:grid}
+.hero-slide{grid-area:1/1;position:relative;display:flex;align-items:flex-end;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
+.hero-slide.on{opacity:1;visibility:visible}
+.hero-slide>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0c0d1ff2 0%,#0c0d1fb0 38%,#0c0d1f00 70%),linear-gradient(0deg,#0c0d1fcc,#0c0d1f00 45%)}
+.hero-copy{position:relative;z-index:1;padding:clamp(20px,4vw,44px);max-width:560px;display:flex;flex-direction:column;gap:14px}
+.hero-copy h1{font-size:clamp(26px,4.4vw,46px);font-weight:800;line-height:1.02}
+.hero-copy p{color:#d7d9ee;margin:0;max-width:46ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hero-price{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-price .big{font-size:30px;font-weight:800}
+.hero-dots{position:absolute;z-index:2;right:20px;bottom:20px;display:flex;gap:8px}
+.hero-dots button{width:54px;height:30px;border-radius:5px;overflow:hidden;border:2px solid transparent;opacity:.55;transition:opacity .2s,border-color .2s}
+.hero-dots button img{width:100%;height:100%;object-fit:cover}
+.hero-dots button.on{opacity:1;border-color:var(--gold)}
+
+/* store badge ("logo" slot) */
+.st{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px 0 4px;border-radius:5px;font-size:11.5px;font-weight:700;letter-spacing:.01em;white-space:nowrap;background:var(--surface-2);color:var(--fg);border:1px solid var(--line-2)}
+.st i{width:15px;height:15px;border-radius:4px;display:grid;place-items:center;font-style:normal;font-size:9px;font-weight:900;font-family:var(--f-display);color:#fff}
+.st-lg{height:30px;font-size:13.5px;padding:0 10px 0 5px;gap:8px}
+.st-lg i{width:21px;height:21px;font-size:11px;border-radius:5px}
+
+/* strip */
+.strip{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;margin-top:18px;padding:14px 18px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--bg-2)}
+.strip .eyebrow{margin-right:4px}
+
+/* shelves */
+.shelf{margin-top:44px}
+.shelf-h{display:flex;align-items:flex-end;gap:16px;margin-bottom:16px}
+.shelf-h p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.shelf-h .more{margin-left:auto;flex:none;color:var(--gold);font-weight:700;font-size:14px;white-space:nowrap}
+.shelf-h .more:hover{text-decoration:underline}
+.tier{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.tier b{display:inline-flex;gap:2px}
+.tier b i{width:5px;height:12px;border-radius:2px;background:var(--gold)}
+.tier b i.off{background:var(--line-2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:18px}
+.grid.big{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(228px,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.row>*{scroll-snap-align:start}
+@media (min-width:1100px){.row{grid-auto-columns:calc((100% - 72px)/5)}}
+
+.card{position:relative;display:flex;flex-direction:column;border-radius:var(--r-m);background:var(--surface);border:1px solid var(--line);overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s;min-width:0}
+.card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 18px 40px #0008}
+.card-img{position:relative;aspect-ratio:460/215;background:var(--surface-2);overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.card:hover .card-img img{transform:scale(1.04)}
+.flag{position:absolute;left:8px;top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:5px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.pill-new{background:var(--info);color:#0b1330}
+.pill-soon{background:var(--gold);color:var(--gold-ink)}
+.pill-free{background:var(--ok);color:#06251a}
+.pill-ghost{background:#0c0d1fcc;color:var(--fg);backdrop-filter:blur(4px)}
+.heart{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0c0d1fb3;backdrop-filter:blur(4px);color:var(--fg);opacity:0;transition:opacity .15s,color .15s}
+.card:hover .heart,.heart.on,.heart:focus-visible{opacity:1}
+.heart.on{color:var(--hot)}
+.card-b{display:flex;flex-direction:column;gap:10px;padding:12px 14px 14px;flex:1}
+.card-t{font-weight:700;font-size:15px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+.card-p{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:6px 8px;flex-wrap:wrap}
+.card-p>div:first-child{min-width:0}
+.price .now,.price .was{white-space:nowrap}
+.offer-m .st,.deal-m .st{align-self:flex-start}
+.card-p .lbl{font-size:11px;color:var(--dim);margin-bottom:4px}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.price .now{font-size:19px;font-weight:800}
+.price .was{font-size:12.5px;color:var(--dim);text-decoration:line-through}
+.off{display:inline-grid;place-items:center;height:22px;padding:0 6px;border-radius:5px;background:var(--hot);color:#fff;font-weight:800;font-size:12px;font-family:var(--f-mono)}
+.base-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-2);border-radius:4px;padding:1px 6px}
+
+/* deals list (ending soon) */
+.deals{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.deal{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--surface);min-width:0}
+.deal:hover{border-color:var(--line-2);background:var(--surface-2)}
+.deal img{width:120px;aspect-ratio:460/215;object-fit:cover;border-radius:6px}
+.deal-n{font-weight:700;line-height:1.25;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.deal-m{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.clock{display:inline-flex;align-items:center;gap:4px;color:var(--warn);font-weight:600}
+.deal .price{flex-direction:column;align-items:flex-end;gap:2px}
+
+/* genres */
+.genres{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.genres .gtile{height:96px;font-size:16px}
+
+/* how it works */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;background:var(--bg-2)}
+.how>div{padding:24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.how>div:last-child{border-right:0}
+.how .n{font-family:var(--f-display);font-weight:800;font-size:28px;color:var(--gold)}
+.how h3{font-size:16px}
+.how p{margin:0;color:var(--muted);font-size:14px}
+.disclose{margin-top:12px;font-size:13px;color:var(--dim)}
+
+.alerts{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:clamp(20px,4vw,36px);border-radius:var(--r-l);background:radial-gradient(ellipse at 100% 0%,#f26a2826,transparent 60%),var(--surface);border:1px solid var(--line-2)}
+.alerts h2{font-size:clamp(20px,2.6vw,30px)}
+.alerts p{color:var(--muted);margin:10px 0 0}
+.alerts ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.alerts li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.alerts li svg{flex:none;color:var(--ok);margin-top:2px}
+
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--gold);font-weight:800;font-size:18px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--muted);margin:10px 0 0;max-width:75ch}
+
+footer{margin-top:64px;border-top:1px solid var(--line);background:var(--bg-2)}
+.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px;padding-block:36px}
+.foot h4{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.foot a{display:block;color:var(--dim);font-size:14px;padding:3px 0}
+.foot a:hover{color:var(--fg)}
+.foot p{color:var(--dim);font-size:13px;max-width:40ch}
+.legal{border-top:1px solid var(--line);padding-block:16px;font-size:12px;color:var(--dim)}
+
+/* catalog */
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--dim);margin-top:22px;flex-wrap:wrap}
+.crumbs a:hover{color:var(--fg)}
+.cat{display:grid;grid-template-columns:250px 1fr;gap:28px;margin-top:18px}
+.cat-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.cat-head h1{font-size:clamp(22px,3vw,32px);font-weight:800;margin-right:auto}
+.sel{height:40px;padding:0 12px;border-radius:9px;background:var(--surface);border:1px solid var(--line-2)}
+.filters{display:flex;flex-direction:column;gap:6px;align-self:start;position:sticky;top:130px;max-height:calc(100vh - 150px);overflow-y:auto;padding-right:6px;scrollbar-width:thin}
+.fgrp{border-bottom:1px solid var(--line);padding:12px 0}
+.fgrp>summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;font-size:14px}
+.fgrp>summary::after{content:"+";color:var(--muted)}
+.fgrp[open]>summary::after{content:"–"}
+.fopts{display:flex;flex-direction:column;gap:2px;margin-top:10px}
+.chk{display:flex;align-items:center;gap:10px;padding:5px 6px;border-radius:6px;cursor:pointer;font-size:14px;color:var(--muted)}
+.chk:hover{background:var(--surface);color:var(--fg)}
+.chk input{accent-color:var(--gold);width:16px;height:16px}
+.chk small{margin-left:auto;font-family:var(--f-mono);color:var(--dim);font-size:11px}
+.range{width:100%;accent-color:var(--gold)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);font-size:13px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--fg);border-color:var(--muted)}
+.chip.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.empty{padding:48px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line-2);border-radius:var(--r-l)}
+
+/* game page */
+.gp-bg{position:absolute;inset:0 0 auto 0;height:520px;overflow:hidden;z-index:-1}
+.gp-bg img{width:100%;height:100%;object-fit:cover;filter:blur(40px) saturate(1.2);opacity:.35;transform:scale(1.2)}
+.gp-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),#0c0d1f00)}
+.gp{position:relative;isolation:isolate}
+.gp-top{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;margin-top:14px}
+.gp-title{font-size:clamp(24px,3.6vw,40px);font-weight:800;line-height:1.05;margin-top:6px}
+.gp-sub{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--muted);font-size:14px;margin-top:10px}
+.gp-sub b{color:var(--fg);font-weight:600}
+.gal-main{position:relative;aspect-ratio:16/9;border-radius:var(--r-l);overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:zoom-in}
+.gal-main img{width:100%;height:100%;object-fit:cover}
+.gal-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:#0c0d1fb3;display:grid;place-items:center;backdrop-filter:blur(6px)}
+.gal-nav:hover{background:var(--gold);color:var(--gold-ink)}
+.gal-nav.l{left:12px}.gal-nav.r{right:12px}
+.gal-count{position:absolute;right:12px;bottom:12px;background:#0c0d1fb3;padding:3px 9px;border-radius:6px;font-size:12px}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px}
+.thumbs button{aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:2px solid transparent;opacity:.6;transition:opacity .15s,border-color .15s;position:relative}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button.on{border-color:var(--gold);opacity:1}
+.thumbs .vid{display:grid;place-items:center;background:var(--surface-2);opacity:1;border:1px solid var(--line-2);font-size:12px;font-weight:700;gap:2px;align-content:center;color:var(--fg)}
+.thumbs .vid:hover{border-color:var(--gold);color:var(--gold)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.tag:hover{color:var(--fg);border-color:var(--line-2)}
+
+.buy{position:sticky;top:130px;align-self:start;display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:var(--r-l);background:var(--surface);border:1px solid var(--line-2);box-shadow:0 24px 60px #0007}
+.buy-best{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.buy-best .now{font-size:32px;font-weight:800;line-height:1}
+.seg{display:flex;padding:3px;border-radius:10px;background:var(--bg-2);border:1px solid var(--line);gap:3px}
+.seg button{flex:1;padding:7px 8px;border-radius:7px;font-size:13px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.seg button small{font-weight:500;font-size:11px;color:var(--dim);font-family:var(--f-mono)}
+.seg button.on{background:var(--surface-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.seg button.on small{color:var(--gold)}
+.lbl-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.reg-note{font-size:12.5px;padding:8px 10px;border-radius:8px;display:flex;gap:8px;align-items:flex-start}
+.reg-note.ok{background:#4fd39b14;color:#9ee8c6;border:1px solid #4fd39b33}
+.reg-note.bad{background:#ff5d6e14;color:#ffb3bb;border:1px solid #ff5d6e40}
+.offers{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
+.offer{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg-2);cursor:pointer;transition:border-color .15s,background .15s}
+.offer:hover{border-color:var(--line-2)}
+.offer.on{border-color:var(--gold);background:#f26a280f}
+.offer input{position:absolute;opacity:0;pointer-events:none}
+.radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center}
+.offer.on .radio{border-color:var(--gold)}
+.offer.on .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.offer-m{display:flex;flex-direction:column;gap:5px;min-width:0}
+.offer-sub{font-size:11.5px;color:var(--dim);display:flex;gap:8px;flex-wrap:wrap}
+.offer .price{flex-direction:column;align-items:flex-end;gap:2px}
+.offer .now{font-size:17px}
+.best-badge{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ok)}
+.go{height:50px;font-size:15px;width:100%;border-radius:12px}
+.buy-foot{font-size:11.5px;color:var(--dim);line-height:1.45}
+.buy-actions{display:flex;gap:8px}
+.buy-actions .btn{flex:1;height:38px;font-size:13px}
+.btn.on{color:var(--hot);border-color:var(--hot)}
+
+.gp-sec{margin-top:40px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto;scrollbar-width:none}
+.tabs button{padding:10px 14px;font-weight:700;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button.on{color:var(--fg);border-color:var(--gold)}
+.about{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px}
+.prose{white-space:pre-line;color:#d7d9ee;max-width:72ch;line-height:1.65}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:14px;align-self:start;padding:18px;border:1px solid var(--line);border-radius:var(--r-l);background:var(--bg-2)}
+.facts dt{color:var(--dim)}
+.facts dd{margin:0;font-weight:600;min-width:0}
+.facts dd a{color:var(--gold)}
+.score{display:inline-grid;place-items:center;width:34px;height:28px;border-radius:6px;font-weight:800;font-family:var(--f-mono);color:#06251a;background:var(--ok)}
+.score.mid{background:var(--warn);color:#2a1700}
+.reqs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.reqs>div{padding:18px;border:1px solid var(--line);border-radius:var(--r-l);background:var(--bg-2);min-width:0}
+.reqs pre{white-space:pre-wrap;font-family:var(--f-body);color:#d7d9ee;margin:10px 0 0;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+
+/* lightbox & modal */
+.lb{position:fixed;inset:0;z-index:100;background:#07060cf2;display:grid;place-items:center;padding:20px}
+.lb img{max-width:min(1200px,100%);max-height:82vh;border-radius:10px}
+.lb .x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px}
+.lb .gal-nav{position:fixed}
+.lb-c{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:var(--muted);font-size:13px}
+.modal-bg{position:fixed;inset:0;z-index:90;background:#07060ccc;display:grid;place-items:center;padding:16px;backdrop-filter:blur(4px)}
+.modal{width:min(440px,100%);background:var(--surface);border:1px solid var(--line-2);border-radius:20px;padding:28px;position:relative;display:flex;flex-direction:column;gap:16px;max-height:90vh;overflow-y:auto}
+.modal h2{font-size:22px}
+.modal p{margin:0;color:var(--muted);font-size:14px}
+.modal .x{position:absolute;right:14px;top:14px}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:12px;height:48px;border-radius:12px;background:#fff;color:#1f1f1f;font-weight:700;font-size:15px}
+.gbtn:hover{background:#eceaf2}
+.g-ico{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-family:var(--f-display);font-size:12px;color:#fff;background:conic-gradient(#4285f4 0 25%,#34a853 0 50%,#fbbc05 0 75%,#ea4335 0)}
+.toggle{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--bg-2)}
+.toggle span{flex:1;font-size:14px}
+.toggle small{display:block;color:var(--dim);font-size:12px}
+.sw{position:relative;width:40px;height:24px;flex:none}
+.sw input{opacity:0;position:absolute;inset:0;margin:0;cursor:pointer}
+.sw i{position:absolute;inset:0;border-radius:12px;background:var(--line-2);transition:background .15s;pointer-events:none}
+.sw i::after{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;border-radius:50%;background:#fff;transition:transform .15s}
+.sw input:checked+i{background:var(--gold)}
+.sw input:checked+i::after{transform:translateX(16px)}
+.toast{position:fixed;z-index:120;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;box-shadow:0 20px 40px #0008;max-width:calc(100% - 32px)}
+.field{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--bg-2)}
+.field input{flex:1;min-width:0;background:none;border:0;outline:0}
+
+/* responsive */
+@media (max-width:980px){
+  .gp-top,.about{grid-template-columns:1fr}
+  .buy{position:static}
+  .cat{grid-template-columns:1fr}
+  .filters{position:static;max-height:none}
+  .alerts{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .mega-in{grid-template-columns:1fr}
+  .mega-side{flex-direction:row;flex-wrap:wrap;border-right:0;padding-right:0}
+}
+@media (max-width:720px){
+  .hdr-row{flex-wrap:wrap;height:auto;padding-block:10px;gap:10px 12px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .hdr-actions{margin-left:auto}
+  .logo-word small{display:none}
+  .hdr-login-t{display:none}
+  .hero{min-height:420px}
+  .hero-slide::after{background:linear-gradient(0deg,#0c0d1ff5 10%,#0c0d1f88 55%,#0c0d1f22)}
+  .hero-dots{left:20px;right:auto;top:16px;bottom:auto}
+  .hero-dots button{width:40px;height:24px}
+  .how{grid-template-columns:1fr}
+  .how>div{border-right:0;border-bottom:1px solid var(--line)}
+  .deals{grid-template-columns:1fr}
+  .deal{grid-template-columns:90px 1fr auto}
+  .deal img{width:90px}
+  .reqs{grid-template-columns:1fr}
+  .thumbs{grid-template-columns:repeat(4,1fr)}
+  .thumbs button:nth-child(n+4):not(.vid){display:none}
+  .upd{display:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .row{grid-auto-columns:minmax(200px,72%)}
+  .card-t{font-size:14px}
+  .price .now{font-size:17px}
+  .sugg-item{grid-template-columns:70px 1fr auto;gap:10px}
+  .sugg-item img{width:70px}
+  .foot{grid-template-columns:1fr}
+}
+
+/* OfertaGG brand */
+.logo-img{height:34px;width:auto;flex:none}
+.logo-word em{font-style:normal;color:var(--gold)}
+.pill-hot{background:var(--gold);color:var(--gold-ink)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 #f26a2888;animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px #f26a2800}100%{box-shadow:0 0 0 0 #f26a2800}}
+.hotgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.hotc{position:relative;display:grid;grid-template-columns:1fr;border-radius:var(--r-l);overflow:hidden;border:1px solid #f26a2866;background:linear-gradient(180deg,#f26a2814,transparent 60%),var(--surface);transition:transform .18s,box-shadow .18s}
+.hotc:hover{transform:translateY(-3px);box-shadow:0 18px 40px #f26a2826}
+.hotc img{width:100%;aspect-ratio:460/215;object-fit:cover}
+.hotc-b{display:flex;flex-direction:column;gap:8px;padding:14px 16px 16px;min-width:0}
+.hotc-b b{font-size:16px;line-height:1.25}
+.hotc-b .pill{align-self:flex-start}
+.hotc-p{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hotc-p .now{font-size:24px;font-weight:800}
+.hotc-p .was{color:var(--dim);text-decoration:line-through;font-size:13px}
+.hotc-p .st{align-self:center}
+.hotnote{background:#f26a2814;color:#ffc7a8;border:1px solid #f26a2855}
+.hotnote svg{flex:none;margin-top:2px}
+
+/* upcoming stores + legal pages */
+.soon-l{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px}
+.st-soon{opacity:.45;filter:grayscale(.6)}
+.soon-box{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px dashed var(--line-2);border-radius:10px;font-size:12.5px;color:var(--muted)}
+.soon-box div{display:flex;flex-wrap:wrap;gap:6px}
+.legal-page{max-width:72ch;margin:24px 0 0;display:flex;flex-direction:column;gap:14px;line-height:1.7;color:#d7d9ee}
+.legal-page h1{font-size:clamp(24px,3.4vw,36px);font-weight:800;color:var(--fg);margin-bottom:6px}
+.legal-page p{margin:0}
+.legal-page .sel{user-select:all;color:var(--gold);font-weight:700}
+.legal-page .big{font-size:18px}
+.legal-upd{font-size:12.5px;color:var(--dim)}
+/* plataformas */
+.pfs{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px}
+.pfb{font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:2px 6px;border-radius:5px;border:1px solid currentColor;line-height:1.3}
+.pf-pc{color:#66c0f4}.pf-xbox{color:#6fcf4f}.pf-ps{color:#5b9bff}.pf-switch{color:#ff6b6b}
+</style>
+</head>
+<body>
+<div class="demo" id="demoBar" hidden></div>
+<header class="hdr"><div class="wrap">
+  <div class="hdr-row">
+    <a class="logo" href="#" aria-label="OfertaGG, inicio"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em><small>Comparador de juegos</small></span></a>
+    <div class="search" role="search">
+      <label class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Busca entre juegos, géneros o compañías" autocomplete="off" aria-label="Buscar juegos" aria-controls="sugg"><span class="kbd">/</span></label>
+      <div class="sugg" id="sugg" role="listbox" hidden></div>
+    </div>
+    <div class="hdr-actions">
+      <a class="icon-btn" href="#deseos" aria-label="Lista de deseos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg><span class="count" id="wishCount" hidden>0</span></a>
+      <span id="userSlot"></span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Secciones">
+    <button id="megaBtn" aria-expanded="false" aria-controls="mega">Géneros ▾</button>
+    <a href="#" data-nav="">Inicio</a>
+    <a href="#juegos" data-nav="juegos">Todos los juegos</a>
+    <a href="#ofertas" data-nav="ofertas" class="hotlink">Ofertas</a>
+    <a href="#novedades" data-nav="novedades">Novedades</a>
+    <a href="#proximamente" data-nav="proximamente">Próximamente</a>
+    <a href="#gratis" data-nav="gratis">Gratis</a>
+    <span class="sep"></span>
+    <a href="#pc" data-nav="pc">PC</a>
+    <a href="#xbox" data-nav="xbox">Xbox</a>
+    <a href="#playstation" data-nav="playstation">PlayStation</a>
+    <a href="#switch" data-nav="switch">Switch</a>
+    <span class="upd"><i></i><span id="updTxt"></span></span>
+  </nav>
+</div>
+<div class="mega" id="mega" hidden><div class="wrap mega-in">
+  <div class="mega-side"><a href="#ofertas">Ofertas de la semana</a><a href="#novedades">Nuevos lanzamientos</a><a href="#proximamente">Próximamente</a><a href="#gratis">Gratis para jugar</a><a href="#juegos">Todo el catálogo</a></div>
+  <div class="mega-grid" id="megaGrid"></div></div></div>
+</header>
+<main id="app"></main>
+<footer><div class="wrap foot">
+  <div><a class="logo" href="#"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></a><p style="margin-top:12px">Comparamos los precios de las tiendas de juegos para PC y te llevamos a la oferta que elijas. No vendemos juegos.</p></div>
+  <div><h4>Explorar</h4><a href="#ofertas">Ofertas</a><a href="#novedades">Novedades</a><a href="#proximamente">Próximamente</a><a href="#gratis">Gratis</a></div>
+  <div><h4>Géneros</h4><a href="#juegos-accion">Acción</a><a href="#juegos-rpg">RPG</a><a href="#juegos-futbol">Fútbol</a><a href="#juegos-estrategia">Estrategia</a></div>
+  <div><h4>OfertaGG</h4><a href="#deseos">Lista de deseos</a><a href="#aviso-afiliados">Aviso de afiliación</a><a href="#privacidad">Privacidad</a><a href="#cookies">Cookies</a><a href="#contacto">Contacto</a></div>
+</div><div class="wrap legal">© 2026 OfertaGG · Imágenes y descripciones de los juegos © de sus respectivos propietarios, obtenidas de Steam. Algunos enlaces son de afiliado.</div></footer>
+<script>(async function(){
+"use strict";
+let D;try{D=await (await fetch("data.json",{cache:"no-cache"})).json()}catch(e){document.getElementById("app").innerHTML='<div class="wrap"><div class="empty" style="margin-top:40px"><b>No se pudieron cargar los precios.</b><br>Recarga la página en unos segundos.</div></div>';return}
+const GAMES=D.games;
+/* ---------- config ---------- */
+const STORES={
+  steam:{n:"Steam",c:"#1b2838",t:"#66c0f4",m:"S"},
+  eneba:{n:"Eneba",c:"#7b3ff2",t:"#fff",m:"E"},
+  instant:{n:"Instant Gaming",c:"#ff5400",t:"#fff",m:"IG"},
+  kinguin:{n:"Kinguin",c:"#f2a900",t:"#1d1405",m:"K"},
+  loaded:{n:"Loaded",c:"#00c2a0",t:"#03201a",m:"L"},
+  gamivo:{n:"Gamivo",c:"#2f6bff",t:"#fff",m:"G"},
+  fanatical:{n:"Fanatical",c:"#ff7a00",t:"#fff",m:"F"}
+};
+const REGIONS=["Global","Europa","Resto del mundo"];
+const REGION_OK={"Global":true,"Europa":true,"Resto del mundo":false};
+/* Platforms: every key is for one platform. PC = Steam key. */
+const PLATS={pc:{n:"PC",key:"Clave de Steam",slug:"pc"},xbox:{n:"Xbox",key:"Clave de Xbox",slug:"xbox"},ps:{n:"PlayStation",key:"Código de PlayStation",slug:"playstation"},switch:{n:"Switch",key:"Código de Nintendo eShop",slug:"switch"}};
+const PF_ORDER=["pc","xbox","ps","switch"];
+const PF_BY_SLUG=Object.fromEntries(PF_ORDER.map(k=>[PLATS[k].slug,k]));
+const GENRE_ORDER=["Acción","Aventura","RPG","Mundo abierto","Shooter","Soulslike","Terror","Fútbol","Deportes","Carreras","Estrategia","Simulación","Indie","Cooperativo","Multijugador","Casual","Gratis"];
+const GENRE_IMG={"Acción":2807960,"Aventura":1174180,"RPG":1086940,"Mundo abierto":1091500,"Shooter":553850,"Soulslike":1245620,"Terror":3764200,"Fútbol":3405690,"Deportes":2878980,"Carreras":1551360,"Estrategia":3551340,"Simulación":413150,"Indie":367520,"Cooperativo":1426210,"Multijugador":2767030,"Casual":1868140,"Gratis":1665460};
+/* Real site: dates come from the affiliate feeds as-is. Demo feeds only: shift dates so the demo stays "live". */
+const UPDATED=new Date(D.updated);
+const DATA_DAY=new Date(UPDATED.getFullYear(),UPDATED.getMonth(),UPDATED.getDate());
+const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const SHIFT=D.demo?Math.max(0,Math.round((today-DATA_DAY)/864e5)):0;
+const DAY=864e5;
+function shiftISO(iso){if(!iso)return null;const d=new Date(iso+"T23:59:59");return new Date(d.getTime()+SHIFT*DAY)}
+GAMES.forEach(g=>{g.o.forEach(o=>{o.pf=o.pf||"pc";o.pv=o.pv||"PC";o.end=shiftISO(o.exp);o.sinceD=o.since?new Date(new Date(o.since+"T00:00:00").getTime()+SHIFT*DAY):null});g.relD=g.rel?new Date(g.rel+"T00:00:00"):null;g.sh=Math.min(g.sh,4)});
+const BYID=Object.fromEntries(GAMES.map(g=>[g.id,g]));
+
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const eur=n=>n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
+const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[™®©:’'\-]/g," ").replace(/\s+/g," ").toLowerCase().trim();
+const img=(id,k)=>`img/${id}_${k}.webp`;
+const fmtD=d=>d.toLocaleDateString("es-ES",{day:"numeric",month:"short"});
+const fmtDL=d=>d.toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});
+const STEAM=id=>`https://store.steampowered.com/app/${id}/`;
+function store(k,lg){const s=STORES[k];return `<span class="st${lg?" st-lg":""}"><i style="background:${s.c};color:${s.t}">${s.m}</i>${s.n}</span>`}
+function daysLeft(d){return Math.ceil((d-now)/DAY)}
+function leftTxt(d){const n=daysLeft(d);return n<=0?"Termina hoy":n===1?"Termina mañana":`Termina en ${n} días`}
+const ICON={
+  search:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  heart:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>',
+  heartO:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>',
+  bell:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>',
+  clock:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  ext:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  l:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg>',
+  r:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>',
+  x:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  check:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m5 12 5 5L20 7"/></svg>',
+  play:'<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  warn:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>'
+};
+
+/* ---------- price engine ---------- */
+/* An offer is alive when it has no end date (regular price) or its end date has not passed. Expired offers never reach the page. */
+const alive=o=>!o.end||o.end>=now;
+function liveOffers(g){return g.o.filter(alive)}
+function isDeal(o){return (o.end&&alive(o))||(o.official&&o.p<o.was)}
+/* Card price: cheapest live offer, Standard edition, region that activates in Spain. */
+function bestFor(g,pf){
+  if(g.free&&pf==="pc") return {free:true};
+  const c=liveOffers(g).filter(o=>o.pf===pf&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);
+  if(!c.length) return null;
+  const b=c[0]; const deals=c.filter(isDeal);
+  const off=Math.round((1-b.p/b.was)*100);
+  return {o:b,p:b.p,was:b.was,off:off>0?off:0,deal:deals.length>0,count:new Set(c.map(o=>o.s)).size};
+}
+const best=g=>bestFor(g,"pc");
+GAMES.forEach(g=>{g.b=best(g);g.pfs=PF_ORDER.filter(k=>liveOffers(g).some(o=>o.pf===k))});
+const pfCount=k=>GAMES.filter(g=>g.pfs.includes(k)).length;
+const CONTACT_EMAIL="ofertagg.oficial@gmail.com";
+const LIVE_STORES=Object.keys(STORES).filter(k=>GAMES.some(g=>g.o.some(o=>o.s===k)));
+const SOON_STORES=Object.keys(STORES).filter(k=>!LIVE_STORES.includes(k));
+const soonRow=()=>SOON_STORES.length?`<span class="soon-l">Próximamente</span>${SOON_STORES.map(k=>`<span class="st-soon">${store(k)}</span>`).join("")}`:"";
+/* "Nueva oferta": a deal that appeared in the last few days. On popular games it goes straight to the top of the home page. */
+const NUEVA=(D.nueva_dias||7)*DAY;
+/* Only a real, live discount counts: it must have an end date, be cheaper than the normal price by at least 5%, and be recent. */
+const isNew=o=>o.end&&alive(o)&&o.p<=o.was*0.95&&o.sinceD&&(now-o.sinceD)<NUEVA&&o.sinceD.getFullYear()>2001;
+GAMES.forEach(g=>{const n=liveOffers(g).filter(o=>o.pf==="pc"&&isNew(o)&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);g.nw=n[0]||null;g.hot=!!(g.pop&&g.nw)});
+const POP_HI=250000, POP_MID=60000;
+const tierOf=g=>g.rec>=POP_HI?3:(g.rec>=POP_MID||g.pop)?2:1;
+
+/* ---------- state ---------- */
+const LS={get(k,d){try{const v=localStorage.getItem("ofertagg_"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("ofertagg_"+k,JSON.stringify(v))}catch(e){}}};
+const S={user:LS.get("user",null),wish:new Set(LS.get("wish",[])),prefs:LS.get("prefs",{weekly:true,drops:true,launch:false}),alerts:LS.get("alerts",{})};
+function saveWish(){LS.set("wish",[...S.wish]);updWish()}
+function updWish(){const c=$("#wishCount");c.textContent=S.wish.size;c.hidden=!S.wish.size}
+function toast(t){const el=document.createElement("div");el.className="toast";el.setAttribute("role","status");el.textContent=t;document.body.append(el);setTimeout(()=>el.remove(),2600)}
+
+/* ---------- components ---------- */
+function priceBlock(g,compact,bo){
+  const b=bo===undefined?g.b:bo;
+  if(!b) return `<span class="base-tag">Sin stock</span>`;
+  if(b.free) return `<div class="price"><span class="now">Gratis</span></div>`;
+  return `<div class="price">${b.off&&b.deal?`<span class="off">-${b.off}%</span>`:""}<span class="now num">${eur(b.p)}</span>${b.off&&b.deal&&!compact?`<span class="was num">${eur(b.was)}</span>`:""}</div>`;
+}
+function flags(g){
+  const f=[];
+  if(g.nw) f.push(`<span class="pill pill-hot">Nueva oferta</span>`);
+  if(g.soon) f.push(`<span class="pill pill-soon">Reserva · ${fmtD(g.relD)}</span>`);
+  else if(g.relD&&(now-g.relD)/DAY<75) f.push(`<span class="pill pill-new">Nuevo</span>`);
+  if(g.free) f.push(`<span class="pill pill-free">Gratis</span>`);
+  return f.length?`<div class="flag">${f.join("")}</div>`:"";
+}
+function pfBadges(g){return g.pfs.length>1||g.pfs[0]!=="pc"?`<div class="pfs">${g.pfs.map(k=>`<span class="pfb pf-${k}">${PLATS[k].n}</span>`).join("")}</div>`:""}
+function card(g){return cardB(g,g.b)}
+function cardB(g,b){
+  const on=S.wish.has(g.id);
+  let lbl="";
+  if(b&&!b.free) lbl=b.deal?`<div class="lbl">Mejor precio</div>${store(b.o.s)}`:`<div class="lbl">Precio base</div>${store(b.o.s)}`;
+  if(b&&b.free) lbl=`<div class="lbl">Disponible en</div>${store("steam")}`;
+  return `<a class="card" href="#juego-${g.id}" aria-label="${esc(g.n)}">
+    <div class="card-img"><img loading="lazy" src="${img(g.id,"h")}" alt="">${flags(g)}
+      <button class="heart${on?" on":""}" data-wish="${g.id}" aria-label="${on?"Quitar de":"Añadir a"} la lista de deseos">${on?ICON.heart:ICON.heartO}</button></div>
+    <div class="card-b"><div class="card-t">${esc(g.n)}</div>${pfBadges(g)}
+      <div class="card-p"><div>${lbl}</div>${priceBlock(g,true,b)}</div></div></a>`;
+}
+function tierMark(t){return `<b>${[1,2,3].map(i=>`<i class="${i<=t?"":"off"}"></i>`).join("")}</b>`}
+function shelf({title,sub,items,more,tier,row,big}){
+  if(!items.length) return "";
+  return `<section class="shelf"><div class="shelf-h"><div>${tier?`<div class="tier">${tierMark(tier)}${["","Menos conocidos","Popularidad media","Los más populares"][tier]}</div>`:""}<h2>${title}</h2>${sub?`<p>${sub}</p>`:""}</div>${more?`<a class="more" href="${more}">Ver todos →</a>`:""}</div>
+  <div class="${row?"row":"grid"+(big?" big":"")}">${items.map(card).join("")}</div></section>`;
+}
+function genreCount(gn){return GAMES.filter(g=>g.g.includes(gn)).length}
+function gtile(gn){return `<a class="gtile" href="#juegos-${slug(gn)}"><img loading="lazy" src="${img(GENRE_IMG[gn],"h")}" alt=""><span>${gn}</span><small>${genreCount(gn)}</small></a>`}
+const slug=s=>norm(s).replace(/ /g,"-");
+const GENRE_BY_SLUG=Object.fromEntries(GENRE_ORDER.map(g=>[slug(g),g]));
+
+/* ---------- weekly update info ---------- */
+function lastMonday(d0){const d=new Date(d0);const k=(d.getDay()+6)%7;d.setDate(d.getDate()-k);return d}
+const UPD=D.demo?today:DATA_DAY; const NEXT=new Date(lastMonday(UPD).getTime()+7*DAY);
+
+/* ---------- views ---------- */
+const app=$("#app");
+function viewHome(){
+  const pop=[...GAMES].filter(g=>!g.soon);
+  const hotG=GAMES.filter(g=>g.hot).sort((a,b)=>b.rec-a.rec);
+  const feat=[...hotG,...GAMES.filter(g=>g.hero&&!g.hot)].slice(0,8);
+  const deals=GAMES.filter(g=>!g.soon&&g.b&&!g.b.free).map(g=>{
+      const ds=liveOffers(g).filter(o=>o.end&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);
+      return ds.length?{g,o:ds[0],off:Math.round((1-ds[0].p/ds[0].was)*100)}:null}).filter(Boolean)
+    .sort((a,b)=>b.off-a.off).slice(0,8);
+  const newRel=GAMES.filter(g=>!g.soon&&g.relD&&(now-g.relD)/DAY<420).sort((a,b)=>b.relD-a.relD);
+  const soon=GAMES.filter(g=>g.soon).sort((a,b)=>a.relD-b.relD);
+  const t3=pop.filter(g=>tierOf(g)===3&&!g.free), t2=pop.filter(g=>tierOf(g)===2&&!g.free), t1=pop.filter(g=>tierOf(g)===1&&!g.free);
+  const under10=pop.filter(g=>g.b&&!g.b.free&&g.b.p<10).sort((a,b)=>b.rec-a.rec);
+  const foot=GAMES.filter(g=>g.g.includes("Fútbol")||g.g.includes("Deportes")).sort((a,b)=>b.rec-a.rec);
+  const free=GAMES.filter(g=>g.free);
+  app.innerHTML=`<div class="wrap">
+  <section class="hero" aria-label="Destacados">${feat.map((g,i)=>`<div class="hero-slide${i?"":" on"}" data-i="${i}">
+      <img src="${img(g.id,g.hero?"hero":"s0")}" alt="" ${i?'loading="lazy"':""}>
+      <div class="hero-copy"><span class="eyebrow">${g.hot?`<span style="color:var(--gold)">Nueva oferta · ${leftTxt(g.nw.end).toLowerCase()}</span>`:g.soon?"Próximamente":g.relD&&(now-g.relD)/DAY<300?"Lanzamiento reciente":"Destacado de la semana"} · ${esc(g.g.slice(0,2).join(" · "))}</span>
+        <h1>${esc(g.n)}</h1><p>${esc(g.sd)}</p>
+        <div class="hero-price">${g.b&&!g.b.free?`<span class="big num">${eur(g.b.p)}</span>${g.b.off?`<span class="off">-${g.b.off}%</span>`:""}<span style="color:var(--muted);font-size:13px">en</span>${store(g.b.o.s,1)}`:""}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-gold" href="#juego-${g.id}">${g.b&&g.b.count>1?`Comparar ${g.b.count} tiendas`:"Ver el juego"}</a><button class="btn btn-line" data-wish="${g.id}">${S.wish.has(g.id)?"En tu lista":"Añadir a mi lista"}</button></div></div></div>`).join("")}
+    <div class="hero-dots">${feat.map((g,i)=>`<button class="${i?"":"on"}" data-dot="${i}" aria-label="${esc(g.n)}"><img src="${img(g.id,"h")}" alt=""></button>`).join("")}</div>
+  </section>
+  <div class="strip"><span class="eyebrow">Comparamos precios en</span>${LIVE_STORES.map(k=>store(k,1)).join("")}${soonRow()}
+    <span style="margin-left:auto;font-size:12.5px;color:var(--muted)">Ofertas comprobadas el ${fmtDL(UPD)} · Revisión completa cada lunes (próxima: ${fmtD(NEXT)})</span></div>
+
+  ${hotG.length?`<section class="shelf"><div class="shelf-h"><div><div class="tier"><span class="live"></span>Recién rebajados</div><h2>Nuevas ofertas en juegos populares</h2><p>Bajadas de precio que acaban de aparecer. Las publicamos en cuanto las detectamos.</p></div><a class="more" href="#ofertas">Todas las ofertas →</a></div>
+    <div class="hotgrid">${hotG.map(g=>{const o=g.nw,off=Math.round((1-o.p/o.was)*100);return `<a class="hotc" href="#juego-${g.id}"><img loading="lazy" src="${img(g.id,"h")}" alt=""><div class="hotc-b"><span class="pill pill-hot">Nueva · -${off}%</span><b>${esc(g.n)}</b>
+      <div class="hotc-p"><span class="now num">${eur(o.p)}</span><span class="was num">${eur(o.was)}</span>${store(o.s)}</div><span class="clock">${ICON.clock}${leftTxt(o.end)}</span></div></a>`}).join("")}</div></section>`:""}
+  ${shelf({title:"Los más populares",sub:hotG.length?"Lo que más se juega ahora mismo, con el precio más bajo entre nuestras tiendas.":"Ahora mismo no hay ofertas nuevas en estos juegos. Te mostramos el precio más bajo que tiene cada uno entre nuestras tiendas.",items:t3.slice(0,10),more:"#juegos",tier:3})}
+
+  ${deals.length?`<section class="shelf"><div class="shelf-h"><div><h2>Ofertas que terminan pronto</h2><p>Descuentos con fecha de fin. Cuando una oferta caduca, desaparece sola de la web.</p></div><a class="more" href="#ofertas">Ver todas →</a></div>
+    <div class="deals">${deals.map(({g,o,off})=>`<a class="deal" href="#juego-${g.id}"><img loading="lazy" src="${img(g.id,"h")}" alt=""><div style="min-width:0"><div class="deal-n">${esc(g.n)}</div>
+      <div class="deal-m">${store(o.s)}<span>${o.rg}</span><span class="clock">${ICON.clock}${leftTxt(o.end)}</span></div></div>
+      <div class="price"><span class="off">-${off}%</span><span class="now num">${eur(o.p)}</span><span class="was num">${eur(o.was)}</span></div></a>`).join("")}</div></section>`:""}
+
+  ${shelf({title:"Nuevos lanzamientos",sub:"Los juegos que han salido en los últimos meses.",items:newRel.slice(0,10),more:"#novedades",row:1})}
+  ${shelf({title:"Próximamente · reservas",sub:"Reserva al mejor precio antes del lanzamiento.",items:soon,more:"#proximamente"})}
+
+  <section class="shelf"><div class="shelf-h"><div><h2>Explora por género</h2></div><a class="more" href="#juegos">Todo el catálogo →</a></div>
+    <div class="genres">${GENRE_ORDER.map(gtile).join("")}</div></section>
+
+  ${shelf({title:"Fútbol y deportes",items:foot,more:"#juegos-futbol",row:1})}
+  ${shelf({title:"Muy recomendados",sub:"Juegos con muchísimas reseñas positivas que quizá aún no tienes.",items:t2,more:"#juegos",tier:2})}
+  ${shelf({title:"Por menos de 10 €",items:under10,more:"#juegos",row:1})}
+  ${shelf({title:"Joyas por descubrir",sub:"Menos conocidos, igual de buenos.",items:t1,tier:1})}
+  ${shelf({title:"Gratis para jugar",items:free})}
+
+  <section class="shelf"><div class="shelf-h"><div><h2>Cómo funciona</h2></div></div>
+    <div class="how"><div><span class="n">1</span><h3>Busca tu juego</h3><p>Escribe el nombre arriba o explora por género, novedades y ofertas.</p></div>
+    <div><span class="n">2</span><h3>Compara tiendas</h3><p>Ves el precio de cada tienda separado por edición y región, para que sepas exactamente qué compras.</p></div>
+    <div><span class="n">3</span><h3>Compra en la tienda</h3><p>Eliges la oferta y te llevamos a la tienda. El pago y la clave los gestiona la tienda.</p></div></div>
+    <p class="disclose">OfertaGG no vende juegos. Algunos enlaces son de afiliado: si compras a través de ellos, la tienda puede pagarnos una comisión sin coste extra para ti.</p></section>
+
+  <section class="shelf"><div class="alerts"><div><h2>Que las ofertas te encuentren a ti</h2><p>${D.demo?"Entra con tu cuenta de Google y te avisamos":"Muy pronto podrás entrar con tu cuenta de Google y te avisaremos"} por correo cada semana con las nuevas ofertas, o cuando un juego de tu lista baje de precio.</p>
+    <div style="margin-top:18px">${S.user?`<button class="btn btn-gold" data-act="account">Gestionar mis avisos</button>`:`<button class="btn btn-gold" data-act="login"><span class="g-ico">G</span>Entrar con Google</button>`}</div></div>
+    <ul><li>${ICON.check}Resumen semanal de ofertas nuevas</li><li>${ICON.check}Aviso cuando un juego de tu lista baja de precio</li><li>${ICON.check}Avisos de lanzamientos y reservas</li><li>${ICON.check}Puedes darte de baja cuando quieras</li></ul></div></section>
+
+  <section class="shelf faq"><div class="shelf-h"><h2>Preguntas frecuentes</h2></div>
+    <details><summary>¿Vendéis juegos?</summary><p>No. Somos un comparador: buscamos el precio en varias tiendas y te enviamos a la que elijas. La compra, el pago y la entrega de la clave se hacen en esa tienda.</p></details>
+    <details><summary>¿Qué significa Global, Europa o Resto del mundo?</summary><p>Es la región en la que se puede activar la clave. Las claves Global y Europa se activan en España. Las de "Resto del mundo" no se activan en Europa, por eso las mostramos aparte y con aviso.</p></details>
+    <details><summary>¿Cada cuánto se actualizan los precios?</summary><p>Cada día comprobamos las ofertas de los juegos más populares, para publicar las rebajas nuevas en cuanto salen. Cada lunes revisamos el catálogo entero: añadimos ofertas nuevas, cambiamos los precios que hayan variado y quitamos las que ya no existen. Las ofertas con fecha de fin desaparecen solas en cuanto caducan.</p></details>
+    <details><summary>¿Por qué un juego sale sin descuento?</summary><p>Los juegos nunca se quitan de la web. Si ahora no hay ninguna oferta, ves el precio normal de cada tienda para que elijas la que más te convenga.</p></details>
+    <details><summary>¿Qué es la edición Standard o Deluxe?</summary><p>Muchos juegos tienen varias ediciones con contenido extra. Cada edición tiene su propia lista de precios para que no compares cosas distintas.</p></details>
+    <details><summary>¿Qué pasa si no hay ninguna oferta?</summary><p>Te mostramos el precio normal más bajo entre las tiendas, marcado como "Precio base".</p></details></section>
+  </div>`;
+  startHero(feat.length);
+}
+let heroT=null;
+function startHero(n){
+  clearInterval(heroT); let i=0;
+  const go=k=>{i=(k+n)%n;document.querySelectorAll(".hero-slide").forEach(s=>s.classList.toggle("on",+s.dataset.i===i));document.querySelectorAll("[data-dot]").forEach(s=>s.classList.toggle("on",+s.dataset.dot===i))};
+  app.querySelectorAll("[data-dot]").forEach(b=>b.onclick=()=>{go(+b.dataset.dot);clearInterval(heroT)});
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches) heroT=setInterval(()=>go(i+1),6500);
+}
+
+/* catalog */
+const F={q:"",genres:new Set(),stores:new Set(),max:80,region:"es",deals:false,feats:new Set(),sort:"pop",mode:"all",pf:"all"};
+function viewCatalog(mode,genreSlug,q,pf){
+  F.mode=mode; F.genres=new Set(); F.q=q||""; F.pf=pf||"all";
+  if(genreSlug&&GENRE_BY_SLUG[genreSlug]) F.genres.add(GENRE_BY_SLUG[genreSlug]);
+  F.deals=mode==="ofertas"; F.sort=mode==="novedades"?"new":mode==="proximamente"?"soon":mode==="ofertas"?"off":"pop";
+  const title={all:F.genres.size?[...F.genres][0]:F.pf!=="all"?`Juegos de ${PLATS[F.pf].n}`:"Todos los juegos",ofertas:"Ofertas de la semana",novedades:"Nuevos lanzamientos",proximamente:"Próximamente",gratis:"Juegos gratis",search:`Resultados para "${F.q}"`}[mode];
+  const feats=["Un jugador","Multijugador en línea","Cooperativo en línea","JcJ en línea"];
+  app.innerHTML=`<div class="wrap"><nav class="crumbs"><a href="#">Inicio</a><span>/</span><span>${esc(title)}</span></nav>
+  <div class="cat"><aside class="filters" aria-label="Filtros">
+    <details class="fgrp" open><summary>Plataforma</summary><div class="fopts">
+      <label class="chk"><input type="radio" name="fpf" value="all" ${F.pf==="all"?"checked":""}>Todas</label>
+      ${PF_ORDER.map(k=>`<label class="chk"><input type="radio" name="fpf" value="${k}" ${F.pf===k?"checked":""}>${PLATS[k].n}<small>${pfCount(k)}</small></label>`).join("")}</div></details>
+    <details class="fgrp" open><summary>Género</summary><div class="fopts">${GENRE_ORDER.map(gn=>`<label class="chk"><input type="checkbox" id="fg-${slug(gn)}" data-f="genres" value="${gn}" ${F.genres.has(gn)?"checked":""}>${gn}<small>${genreCount(gn)}</small></label>`).join("")}</div></details>
+    <details class="fgrp" open><summary>Precio máximo</summary><div class="fopts"><input class="range" type="range" id="fmax" min="5" max="80" step="5" value="${F.max}"><div class="lbl-row"><span>5 €</span><b class="num" id="fmaxv">${F.max>=80?"Sin límite":"Hasta "+F.max+" €"}</b></div></div></details>
+    <details class="fgrp" open><summary>Tienda</summary><div class="fopts">${Object.keys(STORES).map(k=>`<label class="chk"><input type="checkbox" id="fs-${k}" data-f="stores" value="${k}">${store(k)}</label>`).join("")}</div></details>
+    <details class="fgrp"><summary>Región de activación</summary><div class="fopts">
+      <label class="chk"><input type="radio" name="freg" id="fr-es" value="es" checked>Se activa en España</label>
+      <label class="chk"><input type="radio" name="freg" id="fr-all" value="all">Todas las regiones</label></div></details>
+    <details class="fgrp"><summary>Características</summary><div class="fopts">${feats.map(f=>`<label class="chk"><input type="checkbox" id="ff-${slug(f)}" data-f="feats" value="${f}">${f}</label>`).join("")}</div></details>
+    <label class="chk" style="margin-top:8px"><input type="checkbox" id="fdeals" ${F.deals?"checked":""}>Solo juegos con oferta activa</label>
+  </aside>
+  <div style="min-width:0"><div class="cat-head"><h1>${esc(title)}</h1><span id="ccount" class="num" style="color:var(--muted);font-size:13px"></span>
+    <select class="sel" id="fsort" aria-label="Ordenar"><option value="pop">Más populares</option><option value="off">Mayor descuento</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option><option value="new">Más recientes</option><option value="soon">Próximos lanzamientos</option><option value="mc">Mejor valorados</option></select></div>
+    <div class="chips" id="activeChips" style="margin-bottom:14px"></div>
+    <div class="grid" id="cgrid"></div></div></div></div>`;
+  $("#fsort").value=F.sort;
+  app.querySelectorAll("[data-f]").forEach(i=>i.onchange=()=>{F[i.dataset.f][i.checked?"add":"delete"](i.value);renderCat()});
+  $("#fmax").oninput=e=>{F.max=+e.target.value;$("#fmaxv").textContent=F.max>=80?"Sin límite":"Hasta "+F.max+" €";renderCat()};
+  app.querySelectorAll("[name=freg]").forEach(r=>r.onchange=()=>{F.region=r.value;renderCat()});
+  app.querySelectorAll("[name=fpf]").forEach(r=>r.onchange=()=>{F.pf=r.value;renderCat()});
+  $("#fdeals").onchange=e=>{F.deals=e.target.checked;renderCat()};
+  $("#fsort").onchange=e=>{F.sort=e.target.value;renderCat()};
+  renderCat();
+}
+function catPrice(g){
+  if(g.free) return {p:0,off:0,deal:false};
+  const pf=F.pf==="all"?"pc":F.pf;
+  if(g.free&&pf!=="pc") return null;
+  let c=liveOffers(g).filter(o=>o.pf===pf&&o.ed==="Standard"&&(F.region==="all"||REGION_OK[o.rg]));
+  if(F.stores.size) c=c.filter(o=>F.stores.has(o.s));
+  if(!c.length) return null;
+  c.sort((a,b)=>a.p-b.p);
+  return {p:c[0].p,off:Math.round((1-c[0].p/c[0].was)*100),deal:c.some(isDeal)};
+}
+function renderCat(){
+  const qn=norm(F.q);
+  let list=GAMES.filter(g=>{
+    if(F.mode==="novedades"&&(g.soon||!g.relD||(now-g.relD)/DAY>420)) return false;
+    if(F.mode==="proximamente"&&!g.soon) return false;
+    if(F.mode==="gratis"&&!g.free) return false;
+    if(qn&&!norm(g.n+" "+g.dev.join(" ")+" "+g.pub.join(" ")+" "+g.g.join(" ")+" "+g.pfs.map(k=>PLATS[k].n).join(" ")).includes(qn)) return false;
+    for(const gn of F.genres) if(!g.g.includes(gn)) return false;
+    for(const f of F.feats) if(!g.feats.includes(f)) return false;
+    const cp=catPrice(g); if(!cp) return false; g._cp=cp;
+    if(F.max<80&&cp.p>F.max) return false;
+    if(F.deals&&!cp.deal) return false;
+    return true;});
+  const s={pop:(a,b)=>b.rec-a.rec,off:(a,b)=>b._cp.off-a._cp.off,asc:(a,b)=>a._cp.p-b._cp.p,desc:(a,b)=>b._cp.p-a._cp.p,new:(a,b)=>(b.relD||0)-(a.relD||0),soon:(a,b)=>(a.soon===b.soon?(a.relD-b.relD):a.soon?-1:1),mc:(a,b)=>(b.mc||0)-(a.mc||0)}[F.sort];
+  list.sort(s);
+  $("#ccount").textContent=list.length+" juegos";
+  const chips=[...F.genres].map(gn=>`<button class="chip on" data-rm="genres|${gn}">${gn} ✕</button>`).concat([...F.stores].map(k=>`<button class="chip on" data-rm="stores|${k}">${STORES[k].n} ✕</button>`));
+  $("#activeChips").innerHTML=chips.join("");
+  $("#activeChips").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{const[k,v]=b.dataset.rm.split("|");F[k].delete(v);const i=app.querySelector(`[data-f="${k}"][value="${CSS.escape(v)}"]`);if(i)i.checked=false;renderCat()});
+  $("#cgrid").innerHTML=list.length?list.map(g=>cardB(g,F.pf==="all"?g.b:bestFor(g,F.pf))).join(""):`<div class="empty" style="grid-column:1/-1"><b>No hay juegos con estos filtros.</b><br>Prueba a quitar algún filtro o a subir el precio máximo.</div>`;
+}
+
+/* game page */
+let G=null, sel={pf:"pc",ed:"Standard",rg:null,pick:null,shot:0};
+function viewGame(id){
+  const g=BYID[id]; if(!g){viewHome();return}
+  G=g; sel={pf:"pc",ed:"Standard",rg:null,pick:null,shot:0};
+  const shots=[...Array(g.sh).keys()];
+  const sameCo=GAMES.filter(x=>x.id!==g.id&&(x.pub.some(p=>g.pub.includes(p))||x.dev.some(d=>g.dev.includes(d))));
+  const similar=GAMES.filter(x=>x.id!==g.id&&!sameCo.includes(x)).map(x=>({x,s:x.g.filter(t=>g.g.includes(t)).length+x.rec/1e7})).sort((a,b)=>b.s-a.s).slice(0,5).map(o=>o.x);
+  const mcCls=g.mc>=85?"":"mid";
+  app.innerHTML=`<div class="gp"><div class="gp-bg"><img src="${img(g.id,"h")}" alt=""></div><div class="wrap">
+    <nav class="crumbs"><a href="#">Inicio</a><span>/</span><a href="#juegos-${slug(g.g[0]||"accion")}">${esc(g.g[0]||"Juegos")}</a><span>/</span><span>${esc(g.n)}</span></nav>
+    <div class="gp-top"><div style="min-width:0">
+      <div class="tier">${tierMark(tierOf(g))}${g.soon?"Próximo lanzamiento":["","Joya por descubrir","Muy recomendado","Muy popular"][tierOf(g)]}</div>
+      <h1 class="gp-title">${esc(g.n)}</h1>
+      <div class="gp-sub"><span>${esc(g.dev.join(", "))}</span>${g.relD?`<span>· ${g.soon?"Sale el":"Lanzado el"} <b>${fmtDL(g.relD)}</b></span>`:""}${g.mc?`<span>· <span class="score ${mcCls}">${g.mc}</span> Metacritic</span>`:""}${g.rec?`<span>· <b class="num">${g.rec.toLocaleString("es-ES")}</b> reseñas en Steam</span>`:""}</div>
+      <div class="tags" style="margin:14px 0 16px">${g.g.map(t=>`<a class="tag" href="#juegos-${slug(t)}">${esc(t)}</a>`).join("")}</div>
+      <div class="gal-main" id="galMain"><img id="galImg" src="${img(g.id,"s0")}" alt="Captura de ${esc(g.n)}">
+        <button class="gal-nav l" data-gal="-1" aria-label="Anterior">${ICON.l}</button><button class="gal-nav r" data-gal="1" aria-label="Siguiente">${ICON.r}</button><span class="gal-count" id="galCount">1 / ${g.sh}</span></div>
+      <div class="thumbs">${shots.map(i=>`<button data-shot="${i}" class="${i?"":"on"}" aria-label="Captura ${i+1}"><img loading="lazy" src="${img(g.id,"s"+i)}" alt=""></button>`).join("")}
+        ${g.vid?`<a class="vid" href="${STEAM(g.id)}" target="_blank" rel="noopener">${ICON.play}<span>Ver ${g.vid} vídeo${g.vid>1?"s":""}</span></a>`:""}</div>
+      <p style="color:#d6d0e2;margin:18px 0 0;max-width:70ch">${esc(g.sd)}</p>
+    </div>
+    <aside class="buy" id="buy" aria-label="Comparar precios"></aside></div>
+
+    <section class="gp-sec"><div class="tabs" role="tablist">
+      <button class="on" data-tab="about">Acerca del juego</button><button data-tab="req">Requisitos</button><button data-tab="lang">Idiomas</button></div>
+      <div id="tabBody"></div></section>
+    ${sameCo.length?`<section class="shelf"><div class="shelf-h"><div><h2>Más de ${esc(g.pub[0]||g.dev[0])}</h2><p>Otros juegos de la misma compañía.</p></div></div><div class="row">${sameCo.sort((a,b)=>b.rec-a.rec).map(card).join("")}</div></section>`:""}
+    ${shelf({title:"Juegos parecidos",items:similar,row:1})}
+  </div></div>`;
+  renderBuy(); renderTab("about");
+  app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{app.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("on",x===b));renderTab(b.dataset.tab)});
+  app.querySelectorAll("[data-shot]").forEach(b=>b.onclick=()=>setShot(+b.dataset.shot));
+  app.querySelectorAll("[data-gal]").forEach(b=>b.onclick=e=>{e.stopPropagation();setShot(sel.shot+ +b.dataset.gal)});
+  $("#galMain").onclick=()=>openLB(sel.shot);
+}
+function setShot(i){const n=G.sh;sel.shot=(i+n)%n;$("#galImg").src=img(G.id,"s"+sel.shot);$("#galCount").textContent=`${sel.shot+1} / ${n}`;app.querySelectorAll("[data-shot]").forEach(b=>b.classList.toggle("on",+b.dataset.shot===sel.shot))}
+function renderTab(t){
+  const g=G,b=$("#tabBody");
+  if(t==="about") b.innerHTML=`<div class="about"><div class="prose">${esc(g.ab)}</div>
+    <dl class="facts"><dt>Desarrollador</dt><dd>${g.dev.map(d=>`<a href="#buscar-${encodeURIComponent(d)}">${esc(d)}</a>`).join(", ")}</dd>
+    <dt>Editor</dt><dd>${g.pub.map(d=>`<a href="#buscar-${encodeURIComponent(d)}">${esc(d)}</a>`).join(", ")}</dd>
+    <dt>Lanzamiento</dt><dd>${g.relD?fmtDL(g.relD):"Por anunciar"}</dd>
+    <dt>Plataformas</dt><dd>${g.pfs.map(k=>PLATS[k].n).join(" · ")||"PC"}</dd>
+    ${g.age?`<dt>Edad</dt><dd>+${g.age}</dd>`:""}
+    ${g.mc?`<dt>Metacritic</dt><dd><span class="score ${g.mc>=85?"":"mid"}">${g.mc}</span></dd>`:""}
+    ${g.rec?`<dt>Reseñas Steam</dt><dd class="num">${g.rec.toLocaleString("es-ES")}</dd>`:""}
+    ${g.ach?`<dt>Logros</dt><dd class="num">${g.ach}</dd>`:""}
+    ${g.dlc?`<dt>DLC y extras</dt><dd class="num">${g.dlc}</dd>`:""}
+    ${g.feats.length?`<dt>Modos</dt><dd>${g.feats.slice(0,5).map(esc).join(" · ")}</dd>`:""}</dl></div>`;
+  if(t==="req") b.innerHTML=`<div class="reqs"><div><span class="eyebrow">Mínimos</span><pre>${esc(g.req.replace(/^Mínimo:\s*/i,"")||"Sin datos")}</pre></div><div><span class="eyebrow">Recomendados</span><pre>${esc(g.reqr.replace(/^Recomendado:\s*/i,"")||"Sin datos")}</pre></div></div>`;
+  if(t==="lang") b.innerHTML=`<div class="tags">${g.langs.map(l=>`<span class="tag" style="font-size:13.5px;padding:6px 12px">${esc(l)}</span>`).join("")}</div>`;
+}
+function renderBuy(){
+  const g=G, el=$("#buy");
+  if(g.free){el.innerHTML=`<span class="eyebrow">Precio</span><div class="buy-best"><span class="now">Gratis</span>${store("steam",1)}</div>
+    <p class="buy-foot" style="margin:0">Este juego es gratuito. Se descarga directamente desde Steam.</p>
+    <a class="btn btn-gold go" href="${STEAM(g.id)}" target="_blank" rel="noopener">Ir a Steam ${ICON.ext}</a>${wishBtns(g)}`;bindBuy();return}
+  if(!g.pfs.includes(sel.pf)) sel.pf=g.pfs[0]||"pc";
+  const live=liveOffers(g).filter(o=>o.pf===sel.pf);
+  const eds=[...new Set(live.map(o=>o.ed))].sort((a,b)=>a==="Standard"?-1:b==="Standard"?1:0);
+  if(!eds.includes(sel.ed)) sel.ed=eds[0]||"Standard";
+  const forEd=live.filter(o=>o.ed===sel.ed);
+  const regs=REGIONS.filter(r=>forEd.some(o=>o.rg===r));
+  if(!regs.includes(sel.rg)){const ok=forEd.filter(o=>REGION_OK[o.rg]).sort((x,y)=>x.p-y.p);sel.rg=ok.length?ok[0].rg:regs[0]}
+  const list=forEd.filter(o=>o.rg===sel.rg).sort((a,b)=>a.p-b.p);
+  const b=g.b;
+  const minOf=f=>{const c=live.filter(f).map(o=>o.p);return c.length?Math.min(...c):null};
+  el.innerHTML=`${g.nw?`<div class="reg-note hotnote">${ICON.clock}<span><b>Nueva oferta</b> en ${STORES[g.nw.s].n}: ${eur(g.nw.p)} · ${leftTxt(g.nw.end).toLowerCase()}</span></div>`:""}<div><span class="eyebrow">${b&&b.deal?"Mejor oferta ahora":"Precio base · sin ofertas activas"}</span>
+    <div class="buy-best" style="margin-top:6px">${b?`<span class="now num">${eur(b.p)}</span>${b.off&&b.deal?`<span class="off">-${b.off}%</span>`:""}${store(b.o.s,1)}`:"Sin precio"}</div>
+    ${b?`<div style="font-size:12px;color:var(--dim);margin-top:6px">Edición Standard · ${b.o.rg} · ${b.count>1?`comparando ${b.count} tiendas`:"precio oficial"}</div>`:""}</div>
+    ${g.pfs.length>1?`<div><div class="lbl-row" style="margin-bottom:6px"><span>Plataforma</span></div><div class="seg">${g.pfs.map(k=>{const c=liveOffers(g).filter(o=>o.pf===k&&REGION_OK[o.rg]).map(o=>o.p);return `<button data-pf="${k}" class="${k===sel.pf?"on":""}">${PLATS[k].n}<small>${c.length?"desde "+eur(Math.min(...c)):"otras regiones"}</small></button>`}).join("")}</div></div>`:""}
+    ${eds.length>1?`<div><div class="lbl-row" style="margin-bottom:6px"><span>Edición</span></div><div class="seg">${eds.map(e=>{const m=minOf(o=>o.ed===e&&REGION_OK[o.rg]);return `<button data-ed="${e}" class="${e===sel.ed?"on":""}">${e}<small>${m!=null?"desde "+eur(m):"—"}</small></button>`}).join("")}</div></div>`:""}
+    <div><div class="lbl-row" style="margin-bottom:6px"><span>Región de la clave</span></div><div class="seg">${regs.map(r=>{const m=minOf(o=>o.ed===sel.ed&&o.rg===r);return `<button data-rg="${r}" class="${r===sel.rg?"on":""}">${r==="Resto del mundo"?"Otras":r}<small>${eur(m)}</small></button>`}).join("")}</div></div>
+    ${REGION_OK[sel.rg]?`<div class="reg-note ok">${ICON.check}<span>${sel.pf==="pc"?"Las claves":"Los códigos"} ${sel.rg} se activan en España${sel.pf==="pc"?"":` en tu cuenta de ${PLATS[sel.pf].n}`}.</span></div>`:`<div class="reg-note bad">${ICON.warn}<span>Las claves de "Resto del mundo" <b>no se activan en España</b> ni en Europa. Cómpralas solo si vives fuera de Europa.</span></div>`}
+    <div class="offers" role="radiogroup" aria-label="Elige tienda">${list.map((o,i)=>{const k=g.o.indexOf(o);const off=Math.round((1-o.p/o.was)*100);
+      return `<label class="offer${sel.pick===k?" on":""}"><input type="radio" name="pick" value="${k}" ${sel.pick===k?"checked":""}><span class="radio"></span>
+      <span class="offer-m">${store(o.s)}<span class="offer-sub"><span>${o.official?"Tienda oficial":PLATS[o.pf].key} · ${o.pv!=="PC"&&o.pv!==PLATS[o.pf].n?esc(o.pv)+" · ":""}${o.rg}</span>${o.end?`<span class="clock">${ICON.clock}${leftTxt(o.end)} · ${fmtD(o.end)}</span>`:o.official&&off>0?`<span class="clock">Oferta de Steam</span>`:`<span>Precio normal</span>`}</span></span>
+      <span class="price">${i===0?`<span class="best-badge">Más barato</span>`:isNew(o)?`<span class="best-badge" style="color:var(--gold)">Nueva</span>`:""}<span class="now num">${eur(o.p)}</span>${off>0?`<span class="was num">${eur(o.was)}</span>`:""}</span></label>`}).join("")||`<div class="empty">No hay ofertas para esta edición y región.</div>`}</div>
+    ${SOON_STORES.length?`<div class="soon-box"><span>Muy pronto también compararemos:</span><div>${SOON_STORES.map(k=>`<span class="st-soon">${store(k)}</span>`).join("")}</div></div>`:""}
+    ${(()=>{const o=sel.pick!=null?g.o[sel.pick]:null;return o?`<a class="btn btn-gold go" href="${o.url||STEAM(g.id)}" target="_blank" rel="noopener sponsored">Ir a comprar en ${STORES[o.s].n} · ${eur(o.p)} ${ICON.ext}</a>`:`<button class="btn btn-gold go" disabled>Elige una tienda para continuar</button>`})()}
+    <p class="buy-foot" style="margin:0">Te llevamos a la tienda que elijas; la compra se hace allí. ${D.demo?'<b style="color:var(--gold)">Demo:</b> por ahora todos los enlaces abren la página del juego en Steam.':""}</p>
+    ${wishBtns(g)}`;
+  bindBuy();
+}
+function wishBtns(g){const on=S.wish.has(g.id);const al=S.alerts[g.id];return `<div class="buy-actions"><button class="btn btn-line${on?" on":""}" data-wish="${g.id}">${on?ICON.heart+"En tu lista":ICON.heartO+"Lista de deseos"}</button><button class="btn btn-line${al?" on":""}" data-act="alert">${ICON.bell}${al?"Aviso: "+al+" €":"Avisar si baja"}</button></div>`}
+function bindBuy(){
+  const el=$("#buy");
+  el.querySelectorAll("[data-pf]").forEach(b=>b.onclick=()=>{sel.pf=b.dataset.pf;sel.ed="Standard";sel.rg=null;sel.pick=null;renderBuy()});
+  el.querySelectorAll("[data-ed]").forEach(b=>b.onclick=()=>{sel.ed=b.dataset.ed;sel.rg=null;sel.pick=null;renderBuy()});
+  el.querySelectorAll("[data-rg]").forEach(b=>b.onclick=()=>{sel.rg=b.dataset.rg;sel.pick=null;renderBuy()});
+  el.querySelectorAll("[name=pick]").forEach(r=>r.onchange=()=>{sel.pick=+r.value;renderBuy();const go=$("#buy .go");go&&go.focus({preventScroll:true})});
+}
+
+/* lightbox */
+function openLB(i){
+  const n=G.sh;let k=i;const lb=document.createElement("div");lb.className="lb";lb.setAttribute("role","dialog");lb.setAttribute("aria-label","Capturas");
+  const draw=()=>{lb.innerHTML=`<img src="${img(G.id,"s"+k)}" alt=""><button class="icon-btn x" aria-label="Cerrar">${ICON.x}</button><button class="gal-nav l" aria-label="Anterior">${ICON.l}</button><button class="gal-nav r" aria-label="Siguiente">${ICON.r}</button><div class="lb-c">${k+1} de ${n} · ${esc(G.n)}</div>`;
+    lb.querySelector(".x").onclick=close;lb.querySelector(".l").onclick=e=>{e.stopPropagation();k=(k-1+n)%n;draw()};lb.querySelector(".r").onclick=e=>{e.stopPropagation();k=(k+1)%n;draw()}};
+  const key=e=>{if(e.key==="Escape")close();if(e.key==="ArrowLeft"){k=(k-1+n)%n;draw()}if(e.key==="ArrowRight"){k=(k+1)%n;draw()}};
+  function close(){lb.remove();document.removeEventListener("keydown",key)}
+  lb.onclick=e=>{if(e.target===lb)close()};document.addEventListener("keydown",key);draw();document.body.append(lb);
+}
+
+/* modals: login / account / alert */
+function modal(html,onBind){
+  const bg=document.createElement("div");bg.className="modal-bg";bg.innerHTML=`<div class="modal" role="dialog" aria-modal="true">${html}<button class="icon-btn x" aria-label="Cerrar">${ICON.x}</button></div>`;
+  const close=()=>{bg.remove();document.removeEventListener("keydown",k)};const k=e=>{if(e.key==="Escape")close()};
+  bg.onclick=e=>{if(e.target===bg)close()};bg.querySelector(".x").onclick=close;document.addEventListener("keydown",k);document.body.append(bg);onBind&&onBind(bg,close);
+}
+function login(after){
+  if(!D.demo){soonLogin();return}
+  modal(`<div class="logo"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></div>
+    <h2>Entra para recibir avisos</h2><p>Guarda tu lista de deseos y recibe por correo las nuevas ofertas cada semana.</p>
+    <button class="gbtn" id="gLogin"><span class="g-ico">G</span>Continuar con Google</button>
+    <p style="font-size:12px;color:var(--dim)">Demo: el botón simula el inicio de sesión. En la web real se conecta con Google y solo usamos tu nombre y tu correo.</p>`,
+  (m,close)=>{m.querySelector("#gLogin").onclick=()=>{S.user={name:"Jugador",email:"tucorreo@gmail.com"};LS.set("user",S.user);close();renderUser();toast("Sesión iniciada con Google");after&&after();if(location.hash===""||location.hash==="#")viewHome()}});
+}
+function soonLogin(){
+  modal(`<div class="logo"><img class="logo-img" src="img/logo_dark.png" alt=""><span class="logo-word">Oferta<em>GG</em></span></div>
+    <h2>Avisos por correo: muy pronto</h2><p>Estamos preparando el acceso con tu cuenta de Google para enviarte las nuevas ofertas y avisarte cuando bajen de precio los juegos de tu lista.</p>
+    <p>Mientras tanto, tu lista de deseos se guarda en este navegador. Pulsa el corazón de cualquier juego para guardarlo.</p>
+    <a class="btn btn-line" href="#deseos" data-close>Ver mi lista de deseos (${S.wish.size})</a>`,(m,close)=>{m.querySelector("[data-close]").onclick=close});
+}
+function account(){
+  modal(`<div style="display:flex;gap:12px;align-items:center"><span class="avatar">${S.user.name[0]}</span><div><b>${esc(S.user.name)}</b><div style="color:var(--muted);font-size:13px">${esc(S.user.email)}</div></div></div>
+    <h2 style="font-size:18px">Avisos por correo</h2>
+    ${[["weekly","Resumen semanal de ofertas","Cada lunes, con las ofertas nuevas"],["drops","Bajadas de precio","De los juegos de tu lista de deseos"],["launch","Lanzamientos y reservas","Cuando salga un juego de tus géneros"]].map(([k,t,s])=>`<label class="toggle"><span>${t}<small>${s}</small></span><span class="sw"><input type="checkbox" id="p-${k}" data-p="${k}" ${S.prefs[k]?"checked":""}><i></i></span></label>`).join("")}
+    <a class="btn btn-line" href="#deseos" data-close>Ver mi lista de deseos (${S.wish.size})</a>
+    <button class="btn btn-line" id="logout">Cerrar sesión</button>`,
+  (m,close)=>{m.querySelectorAll("[data-p]").forEach(i=>i.onchange=()=>{S.prefs[i.dataset.p]=i.checked;LS.set("prefs",S.prefs);toast(i.checked?"Aviso activado":"Aviso desactivado")});
+    m.querySelector("[data-close]").onclick=close;
+    m.querySelector("#logout").onclick=()=>{S.user=null;LS.set("user",null);close();renderUser();toast("Has cerrado sesión")}});
+}
+function alertModal(){
+  if(!S.user){login(alertModal);return}
+  const g=G,cur=g.b?g.b.p:0,sug=Math.max(1,Math.floor(cur*0.8));
+  modal(`<h2>Avísame si baja de precio</h2><p>${esc(g.n)} · ahora desde <b class="num">${eur(cur)}</b></p>
+    <label class="field"><input id="alertP" type="number" min="1" step="0.5" value="${S.alerts[g.id]||sug}" aria-label="Precio objetivo"><span>€</span></label>
+    <p style="font-size:12.5px">Te escribiremos a ${esc(S.user.email)} cuando alguna tienda lo tenga por debajo de ese precio.</p>
+    <div style="display:flex;gap:8px"><button class="btn btn-gold" id="alertOk" style="flex:1">Crear aviso</button>${S.alerts[g.id]?`<button class="btn btn-line" id="alertDel">Quitar aviso</button>`:""}</div>`,
+  (m,close)=>{m.querySelector("#alertOk").onclick=()=>{const v=parseFloat(m.querySelector("#alertP").value);if(!(v>0)){toast("Escribe un precio válido");return}S.alerts[g.id]=v;LS.set("alerts",S.alerts);if(!S.wish.has(g.id)){S.wish.add(g.id);saveWish()}close();renderBuy();toast("Aviso creado: te escribiremos si baja de "+eur(v))};
+    const d=m.querySelector("#alertDel");if(d)d.onclick=()=>{delete S.alerts[g.id];LS.set("alerts",S.alerts);close();renderBuy();toast("Aviso eliminado")}});
+}
+function renderUser(){
+  $("#userSlot").innerHTML=S.user?`<button class="avatar" data-act="account" aria-label="Mi cuenta">${S.user.name[0]}</button>`:`<button class="btn btn-gold" data-act="login"><span class="g-ico">G</span><span class="hdr-login-t">Entrar</span></button>`;
+}
+const LEGAL={
+ "aviso-afiliados":["Aviso de afiliación",`<p>OfertaGG es un comparador de precios de videojuegos. <b>No vendemos juegos</b> ni gestionamos pagos ni claves: cuando pulsas "Ir a comprar", te llevamos a la tienda que has elegido y la compra se hace allí, bajo sus condiciones.</p>
+<p>Algunos de los enlaces de esta web son <b>enlaces de afiliado</b>. Si compras a través de ellos, la tienda puede pagarnos una pequeña comisión. <b>Para ti el precio es exactamente el mismo.</b> Estas comisiones nos ayudan a mantener la web gratuita.</p>
+<p>Las comisiones no influyen en el orden de los precios: siempre mostramos primero la oferta más barata, sea de la tienda que sea.</p>
+<p>Los precios se actualizan de forma automática varias veces por semana y pueden cambiar en la tienda en cualquier momento. El precio válido es siempre el que aparece en la tienda al hacer la compra.</p>`],
+ "privacidad":["Política de privacidad",`<p><b>Responsable:</b> OfertaGG. Contacto: <span class="sel">${CONTACT_EMAIL}</span>.</p>
+<p><b>Qué datos tratamos.</b> Ahora mismo OfertaGG no tiene registro de usuarios ni formularios, así que no recogemos tu nombre ni tu correo. Tu lista de deseos y tus preferencias se guardan solo en tu navegador (almacenamiento local) y no nos llegan.</p>
+<p><b>Datos técnicos.</b> Nuestro proveedor de alojamiento, Netlify, registra de forma automática datos técnicos de las visitas (como la dirección IP y el navegador) para servir la web y protegerla. Las fuentes tipográficas se cargan desde Google Fonts, que también recibe la dirección IP de quien visita la web.</p>
+<p><b>Enlaces a tiendas.</b> Cuando pulsas un enlace a una tienda, sales de OfertaGG. A partir de ahí se aplica la política de privacidad de esa tienda.</p>
+<p><b>Tus derechos.</b> Puedes pedirnos acceso, rectificación o supresión de tus datos escribiendo a <span class="sel">${CONTACT_EMAIL}</span>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+<p>Cuando activemos el acceso con Google y los avisos por correo, actualizaremos esta política antes de empezar a usarlos.</p>`],
+ "cookies":["Política de cookies",`<p>OfertaGG <b>no usa cookies de publicidad ni de seguimiento</b>.</p>
+<p>Solo usamos el almacenamiento local de tu navegador para recordar tu lista de deseos y tus preferencias. Es información que se queda en tu dispositivo y puedes borrarla cuando quieras desde los ajustes de tu navegador.</p>
+<p>Las tiendas a las que enlazamos pueden usar sus propias cookies cuando entras en su web, incluidas las que identifican que llegas desde un enlace de afiliado. Consulta la política de cookies de cada tienda.</p>`],
+ "contacto":["Contacto",`<p>¿Has visto un precio mal, quieres proponer un juego o eres una tienda y quieres colaborar con nosotros?</p>
+<p>Escríbenos a: <span class="sel big">${CONTACT_EMAIL}</span></p>
+<p>Respondemos normalmente en uno o dos días.</p>`]
+};
+function viewLegal(k){
+  const [t,body]=LEGAL[k];
+  app.innerHTML=`<div class="wrap"><nav class="crumbs"><a href="#">Inicio</a><span>/</span><span>${t}</span></nav>
+    <article class="legal-page"><h1>${t}</h1>${body}<p class="legal-upd">Última actualización: ${fmtDL(today)}</p></article></div>`;
+}
+function viewWish(){
+  const list=[...S.wish].map(id=>BYID[id]).filter(Boolean);
+  app.innerHTML=`<div class="wrap"><nav class="crumbs"><a href="#">Inicio</a><span>/</span><span>Lista de deseos</span></nav>
+    <div class="cat-head" style="margin-top:16px"><h1>Mi lista de deseos</h1>${!S.user?`<button class="btn btn-line" data-act="login">${ICON.bell}Entrar para recibir avisos</button>`:""}</div>
+    ${list.length?`<div class="grid">${list.map(card).join("")}</div>`:`<div class="empty"><b>Tu lista está vacía.</b><br>Pulsa el corazón de cualquier juego para guardarlo y te avisaremos cuando baje de precio.</div>`}</div>`;
+}
+
+/* ---------- search with suggestions ---------- */
+const sIn=$("#q"), sBox=$("#sugg"); let sIdx=-1, sItems=[];
+function hl(name,q){if(!q)return esc(name);const n=norm(name);const i=n.indexOf(q);if(i<0)return esc(name);return esc(name.slice(0,i))+"<mark>"+esc(name.slice(i,i+q.length))+"</mark>"+esc(name.slice(i+q.length))}
+function score(g,q){const n=norm(g.n);if(n.startsWith(q))return 3;if(n.split(" ").some(w=>w.startsWith(q)))return 2;if(n.includes(q))return 1;if(norm(g.dev.concat(g.pub).join(" ")).includes(q))return .5;return 0}
+function suggest(){
+  const raw=sIn.value.trim(), q=norm(raw);
+  if(!q){
+    const trend=[...GAMES].filter(g=>!g.soon).sort((a,b)=>b.rec-a.rec).slice(0,5);
+    sItems=trend;
+    sBox.innerHTML=`<div class="sugg-h"><span class="eyebrow">Tendencias</span></div>${trend.map((g,i)=>sRow(g,"",i)).join("")}
+      <div class="sugg-h"><span class="eyebrow">Géneros</span></div><div class="sugg-chips">${GENRE_ORDER.slice(0,9).map(gn=>`<a class="chip" href="#juegos-${slug(gn)}">${gn}</a>`).join("")}</div>`;
+  } else {
+    const gens=GENRE_ORDER.filter(gn=>norm(gn).startsWith(q));
+    sItems=GAMES.map(g=>({g,s:score(g,q)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s||b.g.rec-a.g.rec).slice(0,6).map(x=>x.g);
+    sBox.innerHTML=(gens.length?`<div class="sugg-chips" style="padding-top:12px">${gens.map(gn=>`<a class="chip" href="#juegos-${slug(gn)}">Género: ${gn}</a>`).join("")}</div>`:"")+
+      (sItems.length?`<div class="sugg-h"><span class="eyebrow">Juegos</span><span class="eyebrow">Mejor precio</span></div>${sItems.map((g,i)=>sRow(g,q,i)).join("")}`:`<div class="sugg-empty">No encontramos "${esc(raw)}". Revisa cómo está escrito o prueba con otra palabra.</div>`)+
+      `<button class="sugg-all" data-all>Ver todos los resultados de "${esc(raw)}" →</button>`;
+  }
+  sIdx=-1; sBox.hidden=false;
+  sBox.querySelectorAll("[data-sg]").forEach(r=>r.onmousedown=e=>{e.preventDefault();go("#juego-"+r.dataset.sg)});
+  sBox.querySelectorAll("a.chip").forEach(a=>a.onmousedown=e=>{e.preventDefault();go(a.getAttribute("href"))});
+  const all=sBox.querySelector("[data-all]");if(all)all.onmousedown=e=>{e.preventDefault();go("#buscar-"+encodeURIComponent(raw))};
+}
+function sRow(g,q,i){const b=g.b;return `<div class="sugg-item" role="option" data-sg="${g.id}" data-i="${i}"><img src="${img(g.id,"h")}" alt=""><div style="min-width:0"><div class="sugg-name">${hl(g.n,q)}</div><div class="sugg-meta">${g.soon?"Reserva · ":""}${esc(g.g.slice(0,3).join(" · "))}</div></div>
+  <div class="sugg-price num">${b?b.free?"Gratis":eur(b.p):""}${b&&!b.free?`<div>${store(b.o.s)}</div>`:""}</div></div>`}
+function go(h){sBox.hidden=true;sIn.blur();if(location.hash===h)route();else location.hash=h}
+sIn.addEventListener("focus",suggest);sIn.addEventListener("input",suggest);
+sIn.addEventListener("blur",()=>setTimeout(()=>sBox.hidden=true,120));
+sIn.addEventListener("keydown",e=>{
+  const rows=[...sBox.querySelectorAll(".sugg-item")];
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();sIdx=(sIdx+(e.key==="ArrowDown"?1:-1)+rows.length)%rows.length;rows.forEach((r,i)=>r.classList.toggle("on",i===sIdx));rows[sIdx]&&rows[sIdx].scrollIntoView({block:"nearest"})}
+  if(e.key==="Enter"){e.preventDefault();if(sIdx>=0&&rows[sIdx])go("#juego-"+rows[sIdx].dataset.sg);else if(sIn.value.trim())go("#buscar-"+encodeURIComponent(sIn.value.trim()))}
+  if(e.key==="Escape"){sBox.hidden=true;sIn.blur()}});
+document.addEventListener("keydown",e=>{if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();sIn.focus()}});
+
+/* mega menu */
+const mega=$("#mega");
+$("#megaBtn").onclick=e=>{e.stopPropagation();mega.hidden=!mega.hidden;$("#megaBtn").setAttribute("aria-expanded",!mega.hidden)};
+$("#megaGrid").innerHTML=GENRE_ORDER.map(gtile).join("");
+document.addEventListener("click",e=>{if(!mega.hidden&&!mega.contains(e.target))mega.hidden=true});
+
+/* global delegation */
+document.addEventListener("click",e=>{
+  const w=e.target.closest("[data-wish]");
+  if(w){e.preventDefault();e.stopPropagation();const id=+w.dataset.wish;
+    if(S.wish.has(id)){S.wish.delete(id);toast("Quitado de tu lista")}else{S.wish.add(id);toast(S.user?"Añadido a tu lista · te avisaremos si baja":"Añadido a tu lista de deseos")}
+    saveWish();
+    document.querySelectorAll(`.heart[data-wish="${id}"]`).forEach(h=>{const on=S.wish.has(id);h.classList.toggle("on",on);h.innerHTML=on?ICON.heart:ICON.heartO});
+    if(G&&G.id===id&&$("#buy"))renderBuy();
+    if(w.classList.contains("btn")&&!w.closest("#buy"))w.textContent=S.wish.has(id)?"En tu lista":"Añadir a mi lista";
+    if(location.hash==="#deseos")viewWish();
+    return}
+  const a=e.target.closest("[data-act]");
+  if(a){const k=a.dataset.act;if(k==="login")login();if(k==="account")account();if(k==="alert")alertModal()}
+});
+
+/* ---------- router ---------- */
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  clearInterval(heroT); mega.hidden=true;
+  document.querySelectorAll(".nav [data-nav]").forEach(a=>a.classList.toggle("on",h.startsWith(a.dataset.nav)&&a.dataset.nav!==""||(!h&&a.dataset.nav==="")));
+  if(h.startsWith("juego-")) viewGame(+h.slice(6));
+  else if(h.startsWith("juegos-")) viewCatalog("all",h.slice(7));
+  else if(h==="juegos") viewCatalog("all");
+  else if(h==="ofertas"||h==="novedades"||h==="proximamente"||h==="gratis") viewCatalog(h);
+  else if(PF_BY_SLUG[h]) viewCatalog("all",null,null,PF_BY_SLUG[h]);
+  else if(h.startsWith("buscar-")) {sIn.value=h.slice(7);viewCatalog("search",null,h.slice(7))}
+  else if(h==="deseos") viewWish();
+  else if(LEGAL[h]) viewLegal(h);
+  else viewHome();
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+$("#updTxt").textContent=`Precios del ${fmtD(UPD)}`;
+if(!D.demo)$("#demoBar").hidden=true;
+renderUser(); updWish(); route();
+})();
+</script>
+
+</body>
+</html>
