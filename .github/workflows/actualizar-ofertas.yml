@@ -1,8 +1,9 @@
 # Robot de OfertaGG: se ejecuta solo en GitHub, gratis.
 #  - SOLO una vez por semana: cada lunes a las 6:00 (hora de España), revisión completa
-#    de todo el catálogo y de los precios de las tiendas (Steam, Kinguin...).
-#  - También se puede lanzar a mano con el botón "Run workflow" (cada vez gasta 15 créditos de Netlify).
-# Después guarda los cambios en GitHub y Netlify publica la web nueva automáticamente.
+#    de todo el catálogo y de los precios de las tiendas (Steam, Kinguin, Loaded...).
+#  - Además genera una página por juego para Google (scripts/seo_pages.py).
+#  - También se puede lanzar a mano con el botón "Run workflow" (en Cloudflare Pages es gratis).
+# Después guarda los cambios en GitHub y Cloudflare Pages publica la web nueva automáticamente.
 name: Actualizar ofertas
 
 on:
@@ -53,9 +54,25 @@ jobs:
           KINGUIN_FEED_URL: ${{ secrets.KINGUIN_FEED_URL }}
           KINGUIN_REF: ${{ secrets.KINGUIN_REF }}
 
+      - name: Catálogo de Loaded (Impact)
+        continue-on-error: true
+        run: python scripts/feeds/loaded.py
+        env:
+          IMPACT_SID: ${{ secrets.IMPACT_SID }}
+          IMPACT_TOKEN: ${{ secrets.IMPACT_TOKEN }}
+
       - name: Actualizar juegos y ofertas
         run: |
           if [ "${{ steps.modo.outputs.modo }}" = "diario" ]; then python scripts/update.py --diario; else python scripts/update.py; fi
+
+      # Junta src/ (diseño) en site/index.html: así los cambios de diseño salen en el mismo deploy que los precios
+      - name: Montar la web
+        run: python scripts/build_page.py && rm -f preview.html
+
+      # Páginas que Google puede leer: una por juego, listas y sitemap (salen en la misma publicación)
+      - name: Páginas SEO
+        continue-on-error: true   # si fallara, los precios se guardan igual
+        run: python scripts/seo_pages.py
 
       - name: Guardar cambios
         run: |
