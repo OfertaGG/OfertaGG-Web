@@ -9,7 +9,6 @@ const STORES={
   instant:{n:"Instant Gaming",c:"#ff5400",t:"#fff",m:"IG"},
   kinguin:{n:"Kinguin",c:"#f2a900",t:"#1d1405",m:"K"},
   loaded:{n:"Loaded",c:"#00c2a0",t:"#03201a",m:"L"},
-  gamivo:{n:"Gamivo",c:"#2f6bff",t:"#fff",m:"G"},
   fanatical:{n:"Fanatical",c:"#ff7a00",t:"#fff",m:"F"}
 };
 const REGIONS=["Global","Europa","Resto del mundo"];

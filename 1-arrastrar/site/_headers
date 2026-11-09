@@ -1,0 +1,9 @@
+# Cloudflare Pages: cache (igual que netlify.toml)
+/data.json
+  Cache-Control: public, max-age=300
+/img/*
+  Cache-Control: public, max-age=604800
+/seo.css
+  Cache-Control: public, max-age=86400
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
