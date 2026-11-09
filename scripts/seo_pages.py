@@ -15,6 +15,8 @@ import datetime, html, json, os, re, shutil, unicodedata
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(R, "site")
+# Cloudflare Web Analytics: cuenta visitas sin cookies (el token es público)
+BEACON = '<!-- Cloudflare Web Analytics (sin cookies) --><script type=\'module\' src=\'https://static.cloudflareinsights.com/beacon.min.js\' data-cf-beacon=\'{"token": "8e40c011df3545b4a6baae2da6e9e786"}\'></script>'
 URL = "https://ofertagg.com"
 D = json.load(open(os.path.join(SITE, "data.json"), encoding="utf-8"))
 GAMES = D["games"]
@@ -80,6 +82,7 @@ def page(path, title, desc, body, ld=None, img=None):
 <footer class="foot"><div class="wrap"><p><b>OfertaGG</b> · El mismo juego. Menos dinero. Comparamos precios de claves de juegos; no vendemos juegos. Algunos enlaces son de afiliado: si compras, la tienda nos da una comisión y a ti no te cuesta más.</p>
 <p>Precios comprobados el {FECHA}. Pueden cambiar: confirma siempre el precio en la tienda.</p>
 <p><a href="/juegos/">Todos los juegos</a> · <a href="/#aviso-afiliados">Aviso de afiliación</a> · <a href="/#privacidad">Privacidad</a> · <a href="/#contacto">Contacto</a></p></div></footer>
+{BEACON}
 </body></html>
 """
     d = os.path.join(SITE, path.strip("/"))
