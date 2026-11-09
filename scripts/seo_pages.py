@@ -77,7 +77,7 @@ def page(path, title, desc, body, ld=None, img=None):
 <link rel="icon" type="image/png" href="/img/favicon.png"><link rel="stylesheet" href="/seo.css">{lds}
 </head><body>
 <header class="top"><div class="wrap row"><a class="logo" href="/"><img src="/img/logo_dark.png" alt="" width="36" height="36"><span>Oferta<em>GG</em></span></a>
-<nav><a href="/juegos/">Juegos</a><a href="/juegos-pc-baratos/">PC baratos</a><a href="/#ofertas">Ofertas</a><a class="cta" href="/">Comparador</a></nav></div></header>
+<nav><a href="/juegos/">Juegos</a><a href="/juegos-pc-baratos/">PC baratos</a><a class="bf" href="/black-friday/">Black Friday</a><a class="cta" href="/">Comparador</a></nav></div></header>
 <main class="wrap">{body}</main>
 <footer class="foot"><div class="wrap"><p><b>OfertaGG</b> · El mismo juego. Menos dinero. Comparamos precios de claves de juegos; no vendemos juegos. Algunos enlaces son de afiliado: si compras, la tienda nos da una comisión y a ti no te cuesta más.</p>
 <p>Precios comprobados el {FECHA}. Pueden cambiar: confirma siempre el precio en la tienda.</p>
@@ -196,6 +196,58 @@ for gen, lst in sorted(by_genre.items()):
     if len(lst) >= 6 and gen != "Gratis":
         t = gen_name(gen); t = t[0].upper() + t[1:] + " baratos"
         list_page(gen_path(gen), t, f"{t}: los mejores al mejor precio en PC, Xbox, PlayStation y Switch.", popular(lst), f"{esc(t)}, ordenados por popularidad, con su precio más barato.")
+
+# ---------- Black Friday (URL fija: sirve cada año) ----------
+BF, CM = datetime.date(2026, 11, 27), datetime.date(2026, 11, 30)   # cambiar las fechas cada año
+def steam_normal(g):
+    s = next((o for o in offers(g) if o["s"] == "steam"), None)
+    return s.get("was") or s["p"] if s else None
+def deal_card(g, o, note, vs=None):
+    pf = PLATS[o.get("pf", "pc")][0]
+    old = f'<s>{eur(o["was"])}</s> ' if is_deal(o) else ""
+    return (f'<a class="card" href="{gurl(g)}"><img loading="lazy" src="/img/{g["id"]}_h.webp" alt="{esc(g["n"])}" width="460" height="215">'
+            f'<span class="cn">{esc(g["n"])} <small class="mut">· {pf}</small></span><span class="cp">{old}<b class="pr">{eur(o["p"])}</b> <span class="tag{' vs' if vs else ''}">{note}</span>' + (f'<small class="mut vsn">En Steam: {eur(vs)}</small>' if vs else "") + '</span></a>')
+# 1) rebajas de verdad: descuento oficial de Steam u oferta con fecha de fin
+rebajas = []
+for g in GAMES:
+    ds = [o for o in offers(g) if is_deal(o) and o.get("ed") == "Standard" and REGION_OK.get(o.get("rg"))]
+    if ds:
+        o = max(ds, key=lambda o: 1 - o["p"] / o["was"])
+        rebajas.append((round(100 * (1 - o["p"] / o["was"])), g, o))
+rebajas.sort(key=lambda x: (-x[0], -(x[1].get("rec") or 0)))
+# 2) clave mucho más barata que el precio normal de Steam (comparación, no descuento)
+ahorro = []
+for g in GAMES:
+    b, sn = best(g, "pc"), steam_normal(g)
+    if b and sn and b["s"] != "steam" and not g.get("free") and b["p"] < sn:
+        ahorro.append((round(100 * (1 - b["p"] / sn)), g, b, sn))
+ahorro.sort(key=lambda x: (-x[0], -(x[1].get("rec") or 0)))
+low5 = cheap(5)[:12]
+if TODAY < BF: cuando = f"El Black Friday es el viernes {BF.day} de noviembre y el Cyber Monday el lunes {CM.day}. Mientras tanto, estas son las mejores ofertas que hay ahora mismo."
+elif TODAY <= CM + datetime.timedelta(days=2): cuando = "¡Ya es Black Friday! Revisamos los precios cada día mientras duren las ofertas."
+else: cuando = f"El Black Friday de {BF.year} ya terminó. Estas son las mejores ofertas que hay ahora; el año que viene actualizamos esta misma página."
+bf_faq = [
+    (f"¿Cuándo es el Black Friday {BF.year}?", f"El Black Friday {BF.year} es el viernes {BF.day} de noviembre y el Cyber Monday el lunes {CM.day} de noviembre. Muchas tiendas de juegos empiezan sus rebajas días antes."),
+    ("¿Las claves de esta página funcionan en España?", "Sí. Solo mostramos como precio principal ediciones Standard en regiones Global o Europa, que se activan en España. Si una oferta es de otra región, en la ficha del juego la marcamos en rojo."),
+    ("¿Los descuentos son reales?", "Solo tachamos un precio cuando hay un descuento oficial de Steam o una oferta con fecha de fin. En la lista de «más baratos que en Steam» comparamos la clave con el precio normal de Steam, no inventamos precios anteriores."),
+    ("¿Cada cuánto se actualizan los precios?", f"Durante la campaña de Black Friday revisamos los precios cada día. Última revisión: {FECHA}. Confirma siempre el precio final en la tienda.")]
+body = (f'<nav class="crumbs"><a href="/">Inicio</a> › Black Friday {BF.year}</nav><h1>Black Friday {BF.year} en juegos: las mejores ofertas en claves</h1>'
+        f'<p class="lead">{cuando} Comparamos Steam, Kinguin y Loaded para PC, Xbox, PlayStation y Switch, y solo mostramos claves que se activan en España.</p>'
+        '<p class="chips"><a href="#rebajas">Rebajas</a><a href="#ahorro">Más baratos que en Steam</a><a href="#menos5">Menos de 5 €</a><a href="#faq">Preguntas</a></p>')
+if rebajas:
+    body += f'<h2 id="rebajas">Rebajas de verdad ahora mismo ({len(rebajas)})</h2><p class="mut small">Descuentos oficiales o con fecha de fin, ordenados por porcentaje.</p><div class="grid">' + "".join(deal_card(g, o, f"-{d}%") for d, g, o in rebajas[:24]) + "</div>"
+if ahorro:
+    body += '<h2 id="ahorro">Claves de PC mucho más baratas que en Steam</h2><p class="mut small">Precio de la clave más barata (Global o Europa) frente al precio normal en Steam.</p><div class="grid">' + "".join(deal_card(g, b, f"-{d}% vs Steam", sn) for d, g, b, sn in ahorro[:24]) + "</div>"
+if low5:
+    body += '<h2 id="menos5">Por menos de 5 €</h2><div class="grid">' + "".join(card(g) for g in low5) + '</div><p><a href="/juegos-pc-menos-de-5-euros/">Ver todos los juegos por menos de 5 €</a></p>'
+body += '<h2 id="faq">Preguntas frecuentes</h2>' + "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in bf_faq)
+bf_list = [g for _, g, *_ in rebajas[:24]] + [g for _, g, *_ in ahorro[:24]]
+bf_ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": f"Ofertas de Black Friday {BF.year} en juegos", "itemListElement": [
+             {"@type": "ListItem", "position": i + 1, "url": URL + gurl(g), "name": g["n"]} for i, g in enumerate({x["id"]: x for x in bf_list}.values())]},
+         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in bf_faq]}]
+page("/black-friday/", f"Black Friday {BF.year} juegos: ofertas en claves de PC, Xbox, PS y Switch | OfertaGG",
+     f"Las mejores ofertas de Black Friday {BF.year} en juegos: rebajas reales y claves más baratas que en Steam que se activan en España. Revisado el {FECHA}.",
+     body, bf_ld, f"/img/{bf_list[0]['id']}_h.webp" if bf_list else None)
 
 # ---------- todos los juegos (A-Z) ----------
 az = {}
