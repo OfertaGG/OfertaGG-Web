@@ -1,5 +1,5 @@
 # Robot de OfertaGG: se ejecuta solo en GitHub, gratis.
-#  - SOLO una vez por semana: cada lunes a las 6:00 (hora de España), revisión completa
+#  - Cada lunes a las 5:00 (hora de España) revisión completa; del 17-nov al 2-dic, también cada día (Black Friday)
 #    de todo el catálogo y de los precios de las tiendas (Steam, Kinguin, Loaded...).
 #  - Además genera una página por juego para Google (scripts/seo_pages.py).
 #  - También se puede lanzar a mano con el botón "Run workflow" (en Cloudflare Pages es gratis).
@@ -9,6 +9,9 @@ name: Actualizar ofertas
 on:
   schedule:
     - cron: "0 4 * * 1"   # lunes, completo (UTC)
+    # Black Friday: cada día del 17-nov al 2-dic (precios cambian rápido). Fuera de esas fechas no hace nada.
+    - cron: "30 4 17-30 11 *"
+    - cron: "30 4 1-2 12 *"
   workflow_dispatch:       # botón "Run workflow" para lanzarlo a mano
     inputs:
       modo:
@@ -38,6 +41,8 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ github.event.inputs.modo }}";
           elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ]; then M="completo";
+          elif [ "${{ github.event.schedule }}" != "" ] && [ "$(date -u +%u)" = "1" ]; then M="diario";   # lunes: la completa ya se hizo a las 4:00
+          elif [ "${{ github.event.schedule }}" != "" ]; then M="completo";   # Black Friday: revisión completa diaria
           else M="diario"; fi
           echo "modo=$M" >> "$GITHUB_OUTPUT"; echo "Modo: $M"
 
