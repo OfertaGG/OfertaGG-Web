@@ -18,4 +18,5 @@ juegos-de-mundo-abierto
 juegos-rpg
 juegos-de-simulacion
 juegos-soulslike
+black-friday
 juegos
