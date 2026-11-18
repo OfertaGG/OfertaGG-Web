@@ -708,6 +708,18 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SUBNAUPC&u=https%3A%2F%2Fwww.loaded.com%2Fsubnautica-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 264710,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox Play Anywhere",
+"edition": "Standard",
+"region": "Europa",
+"price": 7.19,
+"was": 7.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SUBXOXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Fsubnautica-xbox-one-xbox-series-xs-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 268500,
 "store": "loaded",
 "platform": "pc",
@@ -966,8 +978,8 @@
 "version": "PC",
 "edition": "Definitive Edition",
 "region": "Global",
-"price": 2.29,
-"was": 2.29,
+"price": 2.99,
+"was": 2.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=MESOWDEPC&u=https%3A%2F%2Fwww.loaded.com%2Fmiddle-earth-shadow-of-war-definitive-edition-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1126,18 +1138,6 @@
 "was": 8.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=F4XOXSPX_EU&u=https%3A%2F%2Fwww.loaded.com%2Ffallout-4-xbox-one-xbox-series-xs-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
-"appid": 379430,
-"store": "loaded",
-"platform": "pc",
-"version": "PC",
-"edition": "Standard",
-"region": "Global",
-"price": 4.19,
-"was": 4.19,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=KINCDPC&u=https%3A%2F%2Fwww.loaded.com%2Fkingdom-come-deliverance-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 379430,
@@ -1590,8 +1590,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 2.99,
-"was": 2.99,
+"price": 3.79,
+"was": 3.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CLSTEPC&u=https%3A%2F%2Fwww.loaded.com%2Fceleste-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2274,8 +2274,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 11.99,
-"was": 11.99,
+"price": 10.79,
+"was": 10.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SBNTCABLW0PC&u=https%3A%2F%2Fwww.loaded.com%2Fsubnautica-below-zero-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2338,6 +2338,18 @@
 "was": 9.59,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RE2XO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fresident-evil-2-xbox-one-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 892970,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 21.59,
+"was": 21.59,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=VALHEIMPC&u=https%3A%2F%2Fwww.loaded.com%2Fvalheim-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 945360,
@@ -2602,6 +2614,18 @@
 "was": 5.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=INSCRYPTIONPC&u=https%3A%2F%2Fwww.loaded.com%2Finscryption-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1113000,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Deluxe",
+"region": "Europa",
+"price": 11.29,
+"was": 11.29,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PSN4GDEPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fpersona-4-golden-deluxe-pc-eu-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 1113000,
@@ -3137,6 +3161,18 @@
 "platform": "xbox",
 "version": "Xbox Play Anywhere",
 "edition": "Standard",
+"region": "Europa",
+"price": 23.99,
+"was": 23.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FH5XOXSPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fforza-horizon-5-xbox-one-xbox-series-x-s-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1551360,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox Play Anywhere",
+"edition": "Standard",
 "region": "Global",
 "price": 25.19,
 "was": 25.19,
@@ -3162,8 +3198,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 4.59,
-"was": 4.59,
+"price": 4.39,
+"was": 4.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=VRSBGPC&u=https%3A%2F%2Fwww.loaded.com%2Fv-rising-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
