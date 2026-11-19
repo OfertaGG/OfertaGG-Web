@@ -2,7 +2,7 @@
 
 > Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»
 
-Precios comprobados el 18 de noviembre de 2026. 250 juegos.
+Precios comprobados el 19 de noviembre de 2026. 250 juegos.
 
 ## Páginas
 - [Todos los juegos](https://ofertagg.com/juegos/)
@@ -47,15 +47,15 @@ Precios comprobados el 18 de noviembre de 2026. 250 juegos.
 - [Geometry Dash](https://ofertagg.com/juego/geometry-dash/): desde 4,99 € en Steam
 - [ARK: Survival Evolved](https://ofertagg.com/juego/ark-survival-evolved/): desde 14,79 € en Steam
 - [The Forest](https://ofertagg.com/juego/the-forest/): desde 16,79 € en Steam
-- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 8,33 € en Kinguin
+- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 8,58 € en Kinguin
 - [Valheim](https://ofertagg.com/juego/valheim/): desde 20,01 € en Kinguin
-- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,82 € en Kinguin
-- [Palworld](https://ofertagg.com/juego/palworld/): desde 14,19 € en Kinguin
+- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,49 € en Kinguin
+- [Palworld](https://ofertagg.com/juego/palworld/): desde 13,97 € en Kinguin
 - [BeamNG.drive](https://ofertagg.com/juego/beamng-drive/): desde 22,50 € en Steam
 - [Portal 2](https://ofertagg.com/juego/portal-2/): desde 9,69 € en Steam
-- [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 18,40 € en Kinguin
+- [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 18,89 € en Kinguin
 - [DayZ](https://ofertagg.com/juego/dayz/): desde 23,39 € en Loaded
 - [Dying Light](https://ofertagg.com/juego/dying-light/): desde 24,99 € en Steam
-- [Don't Starve Together](https://ofertagg.com/juego/don-t-starve-together/): desde 4,40 € en Kinguin
-- [Project Zomboid](https://ofertagg.com/juego/project-zomboid/): desde 21,61 € en Kinguin
+- [Don't Starve Together](https://ofertagg.com/juego/don-t-starve-together/): desde 4,29 € en Kinguin
+- [Project Zomboid](https://ofertagg.com/juego/project-zomboid/): desde 23,39 € en Loaded
 - [Bloons TD 6](https://ofertagg.com/juego/bloons-td-6/): desde 11,49 € en Kinguin

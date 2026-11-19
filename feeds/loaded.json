@@ -288,6 +288,18 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=STRBNDPC&u=https%3A%2F%2Fwww.loaded.com%2Fstarbound-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 212680,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 2.19,
+"was": 2.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FASTLIGHTPC&u=https%3A%2F%2Fwww.loaded.com%2Fftl-faster-than-light-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 213670,
 "store": "loaded",
 "platform": "xbox",
@@ -462,8 +474,8 @@
 "version": "PC",
 "edition": "Digital Deluxe Edition",
 "region": "Global",
-"price": 3.19,
-"was": 3.19,
+"price": 2.99,
+"was": 2.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=KF2DDEPC&u=https%3A%2F%2Fwww.loaded.com%2Fkilling-floor-2-digital-deluxe-edition-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -810,8 +822,8 @@
 "version": "PC",
 "edition": "Complete Edition",
 "region": "Global",
-"price": 2.29,
-"was": 2.29,
+"price": 2.19,
+"was": 2.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=TWAROMCOMEDIPC&u=https%3A%2F%2Fwww.loaded.com%2Fthis-war-of-mine-complete-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1684,6 +1696,18 @@
 "store": "loaded",
 "platform": "pc",
 "version": "PC",
+"edition": "Deluxe Edition",
+"region": "Global",
+"price": 13.19,
+"was": 13.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DEEROGDEPC&u=https%3A%2F%2Fwww.loaded.com%2Fdeep-rock-galactic-deluxe-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 548430,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
 "edition": "Standard",
 "region": "Global",
 "price": 7.79,
@@ -2118,8 +2142,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 8.39,
-"was": 8.39,
+"price": 7.79,
+"was": 7.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PLNTZOOPC&u=https%3A%2F%2Fwww.loaded.com%2Fplanet-zoo-steam-pc%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2130,8 +2154,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 3.99,
-"was": 3.99,
+"price": 5.39,
+"was": 5.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=OVRCKD2PC&u=https%3A%2F%2Fwww.loaded.com%2Fovercooked-2-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2226,8 +2250,8 @@
 "version": "PC",
 "edition": "Anniversary Edition",
 "region": "Global",
-"price": 2.39,
-"was": 2.39,
+"price": 2.99,
+"was": 2.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=GNHAEPC&u=https%3A%2F%2Fwww.loaded.com%2Fgreen-hell-anniversary-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2694,8 +2718,8 @@
 "version": "PC",
 "edition": "Digital Deluxe Edition",
 "region": "Global",
-"price": 26.39,
-"was": 26.39,
+"price": 25.19,
+"was": 25.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RONDDEPC&u=https%3A%2F%2Fwww.loaded.com%2Fready-or-not-digital-deluxe-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -4194,8 +4218,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 33.59,
-"was": 33.59,
+"price": 34.79,
+"was": 34.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=007FRSTLTPC&u=https%3A%2F%2Fwww.loaded.com%2F007-first-light-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -4290,8 +4314,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 45.59,
-"was": 45.59,
+"price": 41.99,
+"was": 41.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PNTMBLD0PC&u=https%3A%2F%2Fwww.loaded.com%2Fphantom-blade-zero-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 }
