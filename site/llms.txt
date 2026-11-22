@@ -2,7 +2,7 @@
 
 > Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»
 
-Precios comprobados el 21 de noviembre de 2026. 250 juegos.
+Precios comprobados el 22 de noviembre de 2026. 250 juegos.
 
 ## Páginas
 - [Todos los juegos](https://ofertagg.com/juegos/)
@@ -43,17 +43,17 @@ Precios comprobados el 21 de noviembre de 2026. 250 juegos.
 - [Euro Truck Simulator 2](https://ofertagg.com/juego/euro-truck-simulator-2/): desde 4,99 € en Steam
 - [Baldur's Gate 3](https://ofertagg.com/juego/baldur-s-gate-3/): desde 59,99 € en Steam
 - [Dead by Daylight](https://ofertagg.com/juego/dead-by-daylight/): desde 6,99 € en Loaded
-- [Among Us](https://ofertagg.com/juego/among-us/): desde 2,56 € en Kinguin
+- [Among Us](https://ofertagg.com/juego/among-us/): desde 2,45 € en Kinguin
 - [Geometry Dash](https://ofertagg.com/juego/geometry-dash/): desde 4,99 € en Steam
 - [ARK: Survival Evolved](https://ofertagg.com/juego/ark-survival-evolved/): desde 14,79 € en Steam
 - [The Forest](https://ofertagg.com/juego/the-forest/): desde 16,79 € en Steam
 - [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 8,58 € en Kinguin
-- [Valheim](https://ofertagg.com/juego/valheim/): desde 18,85 € en Kinguin
+- [Valheim](https://ofertagg.com/juego/valheim/): desde 18,69 € en Kinguin
 - [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,67 € en Kinguin
-- [Palworld](https://ofertagg.com/juego/palworld/): desde 15,39 € en Kinguin
+- [Palworld](https://ofertagg.com/juego/palworld/): desde 15,60 € en Kinguin
 - [BeamNG.drive](https://ofertagg.com/juego/beamng-drive/): desde 22,50 € en Steam
 - [Portal 2](https://ofertagg.com/juego/portal-2/): desde 9,69 € en Steam
-- [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 18,65 € en Kinguin
+- [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 19,00 € en Kinguin
 - [DayZ](https://ofertagg.com/juego/dayz/): desde 23,39 € en Loaded
 - [Dying Light](https://ofertagg.com/juego/dying-light/): desde 24,99 € en Steam
 - [Don't Starve Together](https://ofertagg.com/juego/don-t-starve-together/): desde 4,40 € en Kinguin

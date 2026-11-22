@@ -732,18 +732,6 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SUBNAUPC&u=https%3A%2F%2Fwww.loaded.com%2Fsubnautica-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
-"appid": 264710,
-"store": "loaded",
-"platform": "xbox",
-"version": "Xbox Play Anywhere",
-"edition": "Standard",
-"region": "Europa",
-"price": 7.19,
-"was": 7.19,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SUBXOXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Fsubnautica-xbox-one-xbox-series-xs-eu%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
 "appid": 268500,
 "store": "loaded",
 "platform": "pc",
@@ -1030,18 +1018,6 @@
 "was": 7.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=MSWDEXOPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fmiddleearth-shadow-of-war-definitive-edition-xbox-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
-"appid": 359320,
-"store": "loaded",
-"platform": "pc",
-"version": "PC",
-"edition": "Standard",
-"region": "Global",
-"price": 4.59,
-"was": 4.59,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=ELTDNGPC&u=https%3A%2F%2Fwww.loaded.com%2Felite-dangerous-pc%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 359320,
@@ -1626,8 +1602,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 3.79,
-"was": 3.79,
+"price": 4.79,
+"was": 4.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=TABSPC&u=https%3A%2F%2Fwww.loaded.com%2Ftotally-accurate-battle-simulator-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1654,18 +1630,6 @@
 "was": 1.69,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=THCOTWPC&u=https%3A%2F%2Fwww.loaded.com%2Fthe-hunter-call-of-the-wild-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
-"appid": 526870,
-"store": "loaded",
-"platform": "pc",
-"version": "PC",
-"edition": "Standard",
-"region": "Global",
-"price": 33.59,
-"was": 33.59,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SATISPC&u=https%3A%2F%2Fwww.loaded.com%2Fsatisfactory-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 526870,
@@ -2650,6 +2614,18 @@
 "was": 5.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=INSCRYPTIONPC&u=https%3A%2F%2Fwww.loaded.com%2Finscryption-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1113000,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Deluxe",
+"region": "Europa",
+"price": 11.29,
+"was": 11.29,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PSN4GDEPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fpersona-4-golden-deluxe-pc-eu-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 1113000,
@@ -4294,18 +4270,6 @@
 "was": 79.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=EASTFC27UEXO&u=https%3A%2F%2Fwww.loaded.com%2Fea-sports-fc-27-ultimate-edition-xbox-one-xbox-series-xs%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
-"appid": 4115450,
-"store": "loaded",
-"platform": "pc",
-"version": "PC",
-"edition": "Digital Deluxe Edition",
-"region": "Global",
-"price": 53.99,
-"was": 53.99,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PB0DDEPC&u=https%3A%2F%2Fwww.loaded.com%2Fphantom-blade-zero-digital-deluxe-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 4115450,
