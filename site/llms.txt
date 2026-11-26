@@ -2,7 +2,7 @@
 
 > Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»
 
-Precios comprobados el 26 de noviembre de 2026. 250 juegos.
+Precios comprobados el 26 de noviembre de 2026. 600 juegos.
 
 ## Páginas
 - [Todos los juegos](https://ofertagg.com/juegos/)
@@ -30,7 +30,7 @@ Precios comprobados el 26 de noviembre de 2026. 250 juegos.
 
 ## Juegos populares (precio más barato de la clave de Steam)
 - [Terraria](https://ofertagg.com/juego/terraria/): desde 6,39 € en Loaded
-- [Rust](https://ofertagg.com/juego/rust/): desde 23,44 € en Kinguin
+- [Rust](https://ofertagg.com/juego/rust/): desde 23,41 € en Kinguin
 - [Garry's Mod](https://ofertagg.com/juego/garry-s-mod/): desde 4,99 € en Steam
 - [Cyberpunk 2077](https://ofertagg.com/juego/cyberpunk-2077/): desde 59,99 € en Steam
 - [Stardew Valley](https://ofertagg.com/juego/stardew-valley/): desde 13,99 € en Steam
@@ -43,19 +43,19 @@ Precios comprobados el 26 de noviembre de 2026. 250 juegos.
 - [Euro Truck Simulator 2](https://ofertagg.com/juego/euro-truck-simulator-2/): desde 8,99 € en Kinguin
 - [Baldur's Gate 3](https://ofertagg.com/juego/baldur-s-gate-3/): desde 41,99 € en Steam
 - [Dead by Daylight](https://ofertagg.com/juego/dead-by-daylight/): desde 6,99 € en Loaded
+- [Phasmophobia](https://ofertagg.com/juego/phasmophobia/): desde 18,99 € en Steam
 - [Among Us](https://ofertagg.com/juego/among-us/): desde 2,39 € en Loaded
 - [Geometry Dash](https://ofertagg.com/juego/geometry-dash/): desde 4,99 € en Steam
 - [ARK: Survival Evolved](https://ofertagg.com/juego/ark-survival-evolved/): desde 14,79 € en Steam
 - [The Forest](https://ofertagg.com/juego/the-forest/): desde 16,79 € en Steam
-- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 9,08 € en Kinguin
+- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 9,11 € en Kinguin
 - [Valheim](https://ofertagg.com/juego/valheim/): desde 17,99 € en Loaded
-- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,47 € en Kinguin
-- [Palworld](https://ofertagg.com/juego/palworld/): desde 16,16 € en Kinguin
+- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,49 € en Kinguin
+- [The Binding of Isaac: Rebirth](https://ofertagg.com/juego/the-binding-of-isaac-rebirth/): desde 14,99 € en Steam
+- [Palworld](https://ofertagg.com/juego/palworld/): desde 16,06 € en Kinguin
+- [Lethal Company](https://ofertagg.com/juego/lethal-company/): desde 9,75 € en Steam
 - [BeamNG.drive](https://ofertagg.com/juego/beamng-drive/): desde 22,50 € en Steam
 - [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 19,50 € en Steam
 - [Portal 2](https://ofertagg.com/juego/portal-2/): desde 9,69 € en Steam
 - [DayZ](https://ofertagg.com/juego/dayz/): desde 22,19 € en Loaded
 - [Dying Light](https://ofertagg.com/juego/dying-light/): desde 24,99 € en Steam
-- [Don't Starve Together](https://ofertagg.com/juego/don-t-starve-together/): desde 4,38 € en Kinguin
-- [Project Zomboid](https://ofertagg.com/juego/project-zomboid/): desde 21,60 € en Kinguin
-- [Bloons TD 6](https://ofertagg.com/juego/bloons-td-6/): desde 11,49 € en Kinguin

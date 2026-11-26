@@ -545,7 +545,8 @@ function bestFor(g,pf){
   const off=Math.round((1-b.p/b.was)*100);
   return {o:b,p:b.p,was:b.was,off:off>0?off:0,deal:deals.length>0,count:new Set(c.map(o=>o.s)).size};
 }
-const best=g=>bestFor(g,"pc");
+/* Juegos que no están en Steam (consola): su mejor precio es el de la plataforma más barata. */
+const best=g=>bestFor(g,"pc")||(g.ns?PF_ORDER.map(k=>bestFor(g,k)).filter(Boolean).sort((a,b)=>a.p-b.p)[0]||null:null);
 GAMES.forEach(g=>{g.b=best(g);g.pfs=PF_ORDER.filter(k=>liveOffers(g).some(o=>o.pf===k))});
 const pfCount=k=>GAMES.filter(g=>g.pfs.includes(k)).length;
 const CONTACT_EMAIL="ofertagg.oficial@gmail.com";
@@ -558,7 +559,8 @@ const NUEVA=(D.nueva_dias||7)*DAY;
 const isNew=o=>o.end&&alive(o)&&o.p<=o.was*0.95&&o.sinceD&&(now-o.sinceD)<NUEVA&&o.sinceD.getFullYear()>2001;
 GAMES.forEach(g=>{const n=liveOffers(g).filter(o=>o.pf==="pc"&&isNew(o)&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);g.nw=n[0]||null;g.hot=!!(g.pop&&g.nw)});
 const POP_HI=250000, POP_MID=60000;
-const tierOf=g=>g.rec>=POP_HI?3:(g.rec>=POP_MID||g.pop)?2:1;
+const RK=g=>g.rec||g.rk||0;   // popularidad: reseñas de Steam, o una estimación para juegos que no están en Steam
+const tierOf=g=>RK(g)>=POP_HI?3:(RK(g)>=POP_MID||g.pop)?2:1;
 
 /* ---------- state ---------- */
 const LS={get(k,d){try{const v=localStorage.getItem("ofertagg_"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("ofertagg_"+k,JSON.stringify(v))}catch(e){}}};
@@ -614,7 +616,7 @@ const UPD=D.demo?today:DATA_DAY; const NEXT=new Date(lastMonday(UPD).getTime()+7
 const app=$("#app");
 function viewHome(){
   const pop=[...GAMES].filter(g=>!g.soon);
-  const hotG=GAMES.filter(g=>g.hot).sort((a,b)=>b.rec-a.rec);
+  const hotG=GAMES.filter(g=>g.hot).sort((a,b)=>RK(b)-RK(a));
   const feat=[...hotG,...GAMES.filter(g=>g.hero&&!g.hot)].slice(0,8);
   const deals=GAMES.filter(g=>!g.soon&&g.b&&!g.b.free).map(g=>{
       const ds=liveOffers(g).filter(o=>o.end&&o.ed==="Standard"&&REGION_OK[o.rg]).sort((a,b)=>a.p-b.p);
@@ -623,8 +625,8 @@ function viewHome(){
   const newRel=GAMES.filter(g=>!g.soon&&g.relD&&(now-g.relD)/DAY<420).sort((a,b)=>b.relD-a.relD);
   const soon=GAMES.filter(g=>g.soon).sort((a,b)=>a.relD-b.relD);
   const t3=pop.filter(g=>tierOf(g)===3&&!g.free), t2=pop.filter(g=>tierOf(g)===2&&!g.free), t1=pop.filter(g=>tierOf(g)===1&&!g.free);
-  const under10=pop.filter(g=>g.b&&!g.b.free&&g.b.p<10).sort((a,b)=>b.rec-a.rec);
-  const foot=GAMES.filter(g=>g.g.includes("Fútbol")||g.g.includes("Deportes")).sort((a,b)=>b.rec-a.rec);
+  const under10=pop.filter(g=>g.b&&!g.b.free&&g.b.p<10).sort((a,b)=>RK(b)-RK(a));
+  const foot=GAMES.filter(g=>g.g.includes("Fútbol")||g.g.includes("Deportes")).sort((a,b)=>RK(b)-RK(a));
   const free=GAMES.filter(g=>g.free);
   app.innerHTML=`<div class="wrap">
   <section class="hero" aria-label="Destacados">${feat.map((g,i)=>`<div class="hero-slide${i?"":" on"}" data-i="${i}">
@@ -727,7 +729,7 @@ function catPrice(g){
   if(g.free) return {p:0,off:0,deal:false};
   const pf=F.pf==="all"?"pc":F.pf;
   if(g.free&&pf!=="pc") return null;
-  let c=liveOffers(g).filter(o=>o.pf===pf&&o.ed==="Standard"&&(F.region==="all"||REGION_OK[o.rg]));
+  let c=liveOffers(g).filter(o=>(o.pf===pf||(F.pf==="all"&&g.ns))&&o.ed==="Standard"&&(F.region==="all"||REGION_OK[o.rg]));   // juegos sin Steam: en "Todas" cuenta su consola
   if(F.stores.size) c=c.filter(o=>F.stores.has(o.s));
   if(!c.length) return null;
   c.sort((a,b)=>a.p-b.p);
@@ -746,7 +748,7 @@ function renderCat(){
     if(F.max<80&&cp.p>F.max) return false;
     if(F.deals&&!cp.deal) return false;
     return true;});
-  const s={pop:(a,b)=>b.rec-a.rec,off:(a,b)=>b._cp.off-a._cp.off,asc:(a,b)=>a._cp.p-b._cp.p,desc:(a,b)=>b._cp.p-a._cp.p,new:(a,b)=>(b.relD||0)-(a.relD||0),soon:(a,b)=>(a.soon===b.soon?(a.relD-b.relD):a.soon?-1:1),mc:(a,b)=>(b.mc||0)-(a.mc||0)}[F.sort];
+  const s={pop:(a,b)=>RK(b)-RK(a),off:(a,b)=>b._cp.off-a._cp.off,asc:(a,b)=>a._cp.p-b._cp.p,desc:(a,b)=>b._cp.p-a._cp.p,new:(a,b)=>(b.relD||0)-(a.relD||0),soon:(a,b)=>(a.soon===b.soon?(a.relD-b.relD):a.soon?-1:1),mc:(a,b)=>(b.mc||0)-(a.mc||0)}[F.sort];
   list.sort(s);
   $("#ccount").textContent=list.length+" juegos";
   const chips=[...F.genres].map(gn=>`<button class="chip on" data-rm="genres|${gn}">${gn} ✕</button>`).concat([...F.stores].map(k=>`<button class="chip on" data-rm="stores|${k}">${STORES[k].n} ✕</button>`));
@@ -762,7 +764,7 @@ function viewGame(id){
   G=g; sel={pf:"pc",ed:"Standard",rg:null,pick:null,shot:0};
   const shots=[...Array(g.sh).keys()];
   const sameCo=GAMES.filter(x=>x.id!==g.id&&(x.pub.some(p=>g.pub.includes(p))||x.dev.some(d=>g.dev.includes(d))));
-  const similar=GAMES.filter(x=>x.id!==g.id&&!sameCo.includes(x)).map(x=>({x,s:x.g.filter(t=>g.g.includes(t)).length+x.rec/1e7})).sort((a,b)=>b.s-a.s).slice(0,5).map(o=>o.x);
+  const similar=GAMES.filter(x=>x.id!==g.id&&!sameCo.includes(x)).map(x=>({x,s:x.g.filter(t=>g.g.includes(t)).length+RK(x)/1e7})).sort((a,b)=>b.s-a.s).slice(0,5).map(o=>o.x);
   const mcCls=g.mc>=85?"":"mid";
   app.innerHTML=`<div class="gp"><div class="gp-bg"><img src="${img(g.id,"h")}" alt=""></div><div class="wrap">
     <nav class="crumbs"><a href="#">Inicio</a><span>/</span><a href="#juegos-${slug(g.g[0]||"accion")}">${esc(g.g[0]||"Juegos")}</a><span>/</span><span>${esc(g.n)}</span></nav>
@@ -780,9 +782,9 @@ function viewGame(id){
     <aside class="buy" id="buy" aria-label="Comparar precios"></aside></div>
 
     <section class="gp-sec"><div class="tabs" role="tablist">
-      <button class="on" data-tab="about">Acerca del juego</button><button data-tab="req">Requisitos</button><button data-tab="lang">Idiomas</button></div>
+      <button class="on" data-tab="about">Acerca del juego</button>${g.ns?"":`<button data-tab="req">Requisitos</button><button data-tab="lang">Idiomas</button>`}</div>
       <div id="tabBody"></div></section>
-    ${sameCo.length?`<section class="shelf"><div class="shelf-h"><div><h2>Más de ${esc(g.pub[0]||g.dev[0])}</h2><p>Otros juegos de la misma compañía.</p></div></div><div class="row">${sameCo.sort((a,b)=>b.rec-a.rec).map(card).join("")}</div></section>`:""}
+    ${sameCo.length?`<section class="shelf"><div class="shelf-h"><div><h2>Más de ${esc(g.pub[0]||g.dev[0])}</h2><p>Otros juegos de la misma compañía.</p></div></div><div class="row">${sameCo.sort((a,b)=>RK(b)-RK(a)).map(card).join("")}</div></section>`:""}
     ${shelf({title:"Juegos parecidos",items:similar,row:1})}
   </div></div>`;
   renderBuy(); renderTab("about");
@@ -939,13 +941,13 @@ function score(g,q){const n=norm(g.n);if(n.startsWith(q))return 3;if(n.split(" "
 function suggest(){
   const raw=sIn.value.trim(), q=norm(raw);
   if(!q){
-    const trend=[...GAMES].filter(g=>!g.soon).sort((a,b)=>b.rec-a.rec).slice(0,5);
+    const trend=[...GAMES].filter(g=>!g.soon).sort((a,b)=>RK(b)-RK(a)).slice(0,5);
     sItems=trend;
     sBox.innerHTML=`<div class="sugg-h"><span class="eyebrow">Tendencias</span></div>${trend.map((g,i)=>sRow(g,"",i)).join("")}
       <div class="sugg-h"><span class="eyebrow">Géneros</span></div><div class="sugg-chips">${GENRE_ORDER.slice(0,9).map(gn=>`<a class="chip" href="#juegos-${slug(gn)}">${gn}</a>`).join("")}</div>`;
   } else {
     const gens=GENRE_ORDER.filter(gn=>norm(gn).startsWith(q));
-    sItems=GAMES.map(g=>({g,s:score(g,q)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s||b.g.rec-a.g.rec).slice(0,6).map(x=>x.g);
+    sItems=GAMES.map(g=>({g,s:score(g,q)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s||RK(b.g)-RK(a.g)).slice(0,6).map(x=>x.g);
     sBox.innerHTML=(gens.length?`<div class="sugg-chips" style="padding-top:12px">${gens.map(gn=>`<a class="chip" href="#juegos-${slug(gn)}">Género: ${gn}</a>`).join("")}</div>`:"")+
       (sItems.length?`<div class="sugg-h"><span class="eyebrow">Juegos</span><span class="eyebrow">Mejor precio</span></div>${sItems.map((g,i)=>sRow(g,q,i)).join("")}`:`<div class="sugg-empty">No encontramos "${esc(raw)}". Revisa cómo está escrito o prueba con otra palabra.</div>`)+
       `<button class="sugg-all" data-all>Ver todos los resultados de "${esc(raw)}" →</button>`;
