@@ -111,6 +111,46 @@ def images(appid, d, featured):
     return n, os.path.exists(f"{IMG}/{appid}_hero.webp")
 
 
+def cover_images(appid, url):
+    """Juegos sin Steam: con la portada de la tienda se hacen la cabecera y la imagen grande
+    (portada centrada sobre un fondo difuminado de sí misma)."""
+    h, s0 = f"{IMG}/{appid}_h.webp", f"{IMG}/{appid}_s0.webp"
+    if os.path.exists(h) and os.path.exists(s0):
+        return True
+    b = get_bytes(url) if url else None
+    if not b:
+        return False
+    try:
+        from PIL import Image, ImageFilter
+        im = Image.open(io.BytesIO(b)).convert("RGB")
+        os.makedirs(IMG, exist_ok=True)
+        for path, (w, hh) in ((h, (460, 215)), (s0, (1100, 515))):
+            bg = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+            top = max(0, (bg.height - hh) // 2)
+            bg = bg.crop((0, top, w, top + hh)).filter(ImageFilter.GaussianBlur(18))
+            fg = im.resize((round(im.width * hh / im.height), hh), Image.LANCZOS)
+            if fg.width > w:
+                fg = fg.resize((w, round(fg.height * w / fg.width)), Image.LANCZOS)
+            bg.paste(fg, ((w - fg.width) // 2, (hh - fg.height) // 2))
+            bg.save(path, "WEBP", quality=74, method=6)
+        return True
+    except Exception as e:
+        log("  portada falló", url, e)
+        return False
+
+
+def build_manual(j, portadas):
+    """Juego que no está en Steam (GTA VI, juegos de Nintendo...): los datos salen de config/juegos.json
+    -> "sin_steam" y la portada de la tienda. No tiene precio oficial de Steam ni reseñas de Steam."""
+    a = j["id"]
+    sh = 1 if cover_images(a, portadas.get(str(a)) or j.get("img")) else 0
+    rel = j.get("rel")
+    return dict(id=a, n=j["n"], sd=j["sd"], ab=j.get("ab") or j["sd"], dev=j.get("dev", []), pub=j.get("pub", []),
+                rel=rel, soon=bool(rel and rel > TODAY.isoformat()), g=j.get("g", []), mc=None, rec=0, rk=j.get("rk", 0),
+                age=j.get("age", 0), ach=0, dlc=0, free=False, base=0, sh=sh, hero=False, feats=j.get("feats", []),
+                langs=[], req="", reqr="", vid=0, ns=True)
+
+
 # ---------- Steam ----------
 def steam(appid, cache):
     d = get_json(f"https://store.steampowered.com/api/appdetails?appids={appid}&cc=es&l=spanish")
@@ -158,11 +198,26 @@ def build_game(appid, d, cfg, old):
 
 
 # ---------- ofertas de afiliados ----------
-def read_feeds():
+def moved(r, rules):
+    """config "mover": ofertas que las tiendas titulan igual pero son OTRO juego.
+    Ej.: 'Resident Evil 4' para Xbox One o Switch es el original (2005), no el remake (que no salió ahí)."""
+    for m in rules:
+        if int(r["appid"]) != m["de"]:
+            continue
+        if "versiones" in m and (r.get("version") or "PC") not in m["versiones"]:
+            continue
+        if "ediciones" in m and (r.get("edition") or "Standard") not in m["ediciones"]:
+            continue
+        return m.get("a")          # None = esa oferta no es de ningún juego de la lista: fuera
+    return int(r["appid"])
+
+
+def read_feeds(cfg=None):
     """Cada tienda deja un archivo feeds/<tienda>.json con una lista de ofertas:
     {"appid":1091500,"store":"eneba","platform":"pc","version":"PC","edition":"Standard","region":"Global",
      "price":35.25,"was":59.99,"ends":"2026-10-20","url":"https://...enlace de afiliado..."}
     "ends" vacío o null = precio normal (no es oferta)."""
+    rules = (cfg or {}).get("mover") or []
     offers = []
     for f in sorted(glob.glob(os.path.join(ROOT, "feeds", "*.json"))):
         try:
@@ -177,7 +232,10 @@ def read_feeds():
                 pf = r.get("platform") or "pc"
                 if pf not in PLATFORMS:
                     continue
-                offers.append(dict(appid=int(r["appid"]), s=r["store"], pf=pf, pv=r.get("version") or "PC",
+                appid = moved(r, rules)
+                if appid is None:
+                    continue
+                offers.append(dict(appid=appid, s=r["store"], pf=pf, pv=r.get("version") or "PC",
                                    ed=r.get("edition") or "Standard",
                                    rg=r["region"], p=round(float(r["price"]), 2), was=round(float(r.get("was") or r["price"]), 2),
                                    exp=r.get("ends") or None, url=r.get("url") or None, since=r.get("since") or None))
@@ -199,13 +257,16 @@ def main():
     cache = json.load(open(CACHE, encoding="utf-8")) if os.path.exists(CACHE) else {}
     old = json.load(open(DATA, encoding="utf-8")) if os.path.exists(DATA) else {"games": []}
     old_games = {g["id"]: g for g in old["games"]}
-    popular = lambda g: g.get("rec", 0) >= cfg["umbral_popular"] or g["id"] in cfg["populares_extra"]
+    popular = lambda g: g.get("rec", 0) >= cfg["umbral_popular"] or g["id"] in cfg["populares_extra"] or g.get("ns")
+    sin_steam = {j["id"]: j for j in cfg.get("sin_steam", [])}
+    pp = os.path.join(ROOT, "config", "portadas.json")
+    portadas = json.load(open(pp, encoding="utf-8")) if os.path.exists(pp) else {}
 
-    feeds = read_feeds()
+    feeds = read_feeds(cfg)
     log(f"Modo: {'diario' if DIARIO else 'completo'} · {len(cfg['juegos'])} juegos · {len(feeds)} ofertas en los feeds")
 
     games, stats = [], dict(nuevas=0, quitadas=0, cambiadas=0)
-    for appid in cfg["juegos"]:
+    for appid in cfg["juegos"] + list(sin_steam):
         prev = old_games.get(appid)
         if DIARIO and prev and not popular(prev):
             g = dict(prev)                       # juego no popular: en modo diario no se pide nada a Steam,
@@ -219,22 +280,29 @@ def main():
             stats["quitadas"] += len(set(prev_by_key) - {key(o) for o in g["o"]})
             games.append(g)
             continue
-        d = steam(appid, cache)
-        if not d:
-            if prev:
-                games.append(prev)
-            continue
-        g = build_game(appid, d, cfg, prev)
+        if appid in sin_steam:
+            g = build_manual(sin_steam[appid], portadas)
+            if not g["sh"]:
+                log("  sin portada todavía, no lo enseño:", g["n"])
+                continue
+        else:
+            d = steam(appid, cache)
+            if not d:
+                if prev:
+                    games.append(prev)
+                continue
+            g = build_game(appid, d, cfg, prev)
         log(" ·", g["n"])
 
-        # 1) precio oficial de Steam, siempre presente
+        # 1) precio oficial de Steam, siempre presente (si el juego está en Steam)
         offers = []
-        if not g["free"]:
+        if not g["free"] and "steam" in g:
             st = g["steam"]
             offers.append(dict(s="steam", pf="pc", pv="PC", ed="Standard", rg="Global", p=st["p"] if not g["soon"] else st["was"],
                                was=st["was"], exp=None, official=True, url=None))
         # 2) ofertas de los afiliados para este juego (vivas)
-        offers += [dict(o) for o in feeds if o["appid"] == appid and alive(o)]
+        tope = sin_steam[appid].get("max", 100) * 1.4 if appid in sin_steam else None   # precios absurdos fuera
+        offers += [dict(o) for o in feeds if o["appid"] == appid and alive(o) and not (tope and o["p"] > tope)]
         for o in offers:
             o.pop("appid", None)
 

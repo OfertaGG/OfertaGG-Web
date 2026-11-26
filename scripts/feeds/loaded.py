@@ -19,7 +19,7 @@ Para probar con un archivo exportado desde Impact (TSV):
 import base64, csv, json, os, re, sys, time, urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from kinguin import ROOT, EDITION, norm, close, english_names, log   # mismas reglas que Kinguin
+from kinguin import ROOT, EDITION, norm, close, clean_parens, build_aliases, english_names, log   # mismas reglas que Kinguin
 
 OUT = os.path.join(ROOT, "feeds", "loaded.json")
 SID = (os.environ.get("IMPACT_SID") or "").strip()
@@ -65,7 +65,7 @@ def region_of(r):
 
 
 def split_name(name):
-    core = re.sub(r"\s*\(.*?\)\s*", " ", name).strip()
+    core = clean_parens(name)
     core = SUFFIX.sub("", core).strip(" -–:")
     edition = "Standard"
     m = EDITION.search(core)
@@ -127,13 +127,15 @@ def items_from_file(path):
 
 def main():
     cfg = json.load(open(os.path.join(ROOT, "config", "juegos.json"), encoding="utf-8"))
-    ids = cfg["juegos"]
-    names_en = english_names(ids)
-    aliases = {a: norm(n) for a, n in names_en.items() if a in set(ids)}
+    sin_steam = {j["id"]: j for j in cfg.get("sin_steam", [])}    # juegos que no están en Steam
+    ids = cfg["juegos"] + list(sin_steam)
+    names_en = english_names(cfg["juegos"])
     by_name = {}
-    for a, n in aliases.items():
-        by_name.setdefault(n, a)
-    steam_base = {}
+    for a, al in build_aliases(ids, names_en, cfg).items():
+        for n in sorted(al, key=len):
+            if n:
+                by_name.setdefault(n, a)
+    steam_base = {a: j.get("max", 100) / MAX_VS_STEAM["ps"] for a, j in sin_steam.items()}
     data = os.path.join(ROOT, "site", "data.json")
     if os.path.exists(data):
         for g in json.load(open(data, encoding="utf-8"))["games"]:

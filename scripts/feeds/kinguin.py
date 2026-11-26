@@ -56,10 +56,64 @@ def log(*a):
 
 
 def norm(s):
+    """Nombre simplificado para comparar. OJO: el año se queda ("Resident Evil 4 (2005)" no es el remake de 2023)."""
     s = s.lower().replace("’", "'")
     s = re.sub(r"[™®©]", "", s)
-    s = re.sub(r"\(\d{4}\)", "", s)
     return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
+YEAR_ONLY = re.compile(r"\s*(19[6-9]\d|20[0-4]\d)\s*")
+VARIANT = re.compile(r"\b(remake|remaster(?:ed)?|classic|original|hd|legacy|reloaded)\b", re.I)
+
+
+def clean_parens(s):
+    """Quita lo que va entre paréntesis SALVO lo que dice qué juego es:
+    'Resident Evil 2 (1998)' -> 'Resident Evil 2 1998'; '... (Ultimate HD Edition)' se queda;
+    '(PC)', '(EU)', '(Valid until June 2027)' se van."""
+    def keep(m):
+        t = m.group(1)
+        if YEAR_ONLY.fullmatch(t) or (VARIANT.search(t) and len(t) <= 30):
+            return " " + t.strip() + " "
+        return " "
+    return re.sub(r"\s*\((.*?)\)\s*", keep, s).strip()
+
+
+def no_years(s):
+    return " ".join(re.sub(r"\b(19[6-9]\d|20[0-4]\d)\b", " ", s).split())
+
+
+def build_aliases(ids, names_en, cfg):
+    """Nombres con los que reconocer cada juego en las tiendas:
+       - su nombre de Steam en inglés
+       - nombre + año de salida ("Resident Evil 4 2023", así lo titulan muchas tiendas)
+       - nombre + "Remake" si no hay otro juego de la lista con el mismo nombre
+       - los alias escritos a mano en config/juegos.json -> "alias"
+    """
+    years = {}
+    data = os.path.join(ROOT, "site", "data.json")
+    if os.path.exists(data):
+        for g in json.load(open(data, encoding="utf-8"))["games"]:
+            if g.get("rel"):
+                years[g["id"]] = g["rel"][:4]
+    al = {a: set() for a in ids}
+    bases = {}
+    for a in ids:
+        if a in names_en:
+            n = norm(names_en[a])
+            al[a].add(n)
+            bases.setdefault(no_years(n), []).append(a)
+            y = years.get(a)
+            if y and y not in n.split():
+                al[a].add(f"{n} {y}")
+    for b, lst in bases.items():
+        if len(lst) == 1 and b and "remake" not in b.split():
+            al[lst[0]].add(b + " remake")
+    for a, extra in (cfg.get("alias") or {}).items():
+        if int(a) in al:
+            al[int(a)].update(norm(x) for x in extra)
+    for j in cfg.get("sin_steam", []):          # juegos sin Steam: su nombre y los que pongas en "buscar"
+        al[j["id"]] = {norm(x) for x in [j["n"]] + j.get("buscar", [])}
+    return al
 
 
 def english_names(ids):
@@ -98,7 +152,7 @@ def region_of(title, rg):
 
 def split_title(title):
     """'Resident Evil Village Gold Edition EU XBOX One CD Key' -> ('Resident Evil Village', 'Gold Edition')"""
-    core = re.sub(r"\s*\(.*?\)\s*", " ", title).strip()
+    core = clean_parens(title)
     core = CUT_PLATFORM.sub("", core)
     core = re.sub(r"\s+PRE-ORDER\b", "", core, flags=re.I)
     core = re.sub(r"\s+\+\s*Pre-Order Bonus.*$", "", core, flags=re.I)
@@ -118,9 +172,14 @@ def split_title(title):
 ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xv", "xvi"}
 
 
+VARIANT_WORDS = {"remake": "remake", "remaster": "remastered", "remastered": "remastered", "classic": "classic",
+                 "original": "original", "hd": "hd", "legacy": "legacy", "reloaded": "reloaded"}
+
+
 def nums(s):
-    """Números de la saga (2, 3, IV...) para no confundir Resident Evil 2 con Resident Evil 3."""
-    return {t for t in s.split() if t.isdigit() or t in ROMAN}
+    """Lo que distingue juegos de la misma saga: números (2, 3, IV...), años (1998, 2023)
+    y palabras como Remake / Remastered / HD. Así Resident Evil 2 (1998) no se mezcla con el de 2019."""
+    return {VARIANT_WORDS.get(t, t) for t in s.split() if t.isdigit() or t in ROMAN or t in VARIANT_WORDS}
 
 
 def close(c, n):
@@ -128,8 +187,10 @@ def close(c, n):
 
 
 def same_game(core, names):
+    """Para claves de PC que ya traen el número de Steam: solo comprueba que no sea un DLC
+    o algo con otro nombre. El año se ignora ('Resident Evil 4 (2023)' = 'Resident Evil 4')."""
     c = norm(core)
-    return any(close(c, n) for n in names)
+    return any(close(c, n) or close(no_years(c), no_years(n)) for n in names)
 
 
 def read_item(el):
@@ -158,15 +219,17 @@ def read_item(el):
     sid = el.findtext(G + "steam_id") or ""
     core, edition = split_title(title)
     return dict(title=title, pf=pf, pv=pv, sid=int(sid) if sid.isdigit() else None, core=core, edition=edition,
-                region=region_of(title, el.findtext(G + "region")), price=price, link=link)
+                region=region_of(title, el.findtext(G + "region")), price=price, link=link,
+                img=(el.findtext(G + "image_link") or "").strip())
 
 
 def main():
     cfg = json.load(open(os.path.join(ROOT, "config", "juegos.json"), encoding="utf-8"))
-    ids = cfg["juegos"]
+    sin_steam = {j["id"]: j for j in cfg.get("sin_steam", [])}    # juegos que no están en Steam (GTA VI, Nintendo...)
+    ids = cfg["juegos"] + list(sin_steam)
     idset = set(ids)
-    names_en = english_names(ids)
-    steam_base = {}
+    names_en = english_names(cfg["juegos"])
+    steam_base = {a: j.get("max", 100) / MAX_VS_STEAM["ps"] for a, j in sin_steam.items()}
     data = os.path.join(ROOT, "site", "data.json")
     if os.path.exists(data):
         for g in json.load(open(data, encoding="utf-8"))["games"]:
@@ -196,7 +259,7 @@ def main():
         sys.exit(0)
 
     # nombres con los que reconocer cada juego: el de Steam en inglés + el que usa Kinguin en sus claves de Steam
-    aliases = {a: {norm(names_en[a])} if a in names_en else set() for a in ids}
+    aliases = build_aliases(ids, names_en, cfg)
     for it in pc_items:   # sin nombre de Steam: uso el de Kinguin
         if it["edition"] == "Standard" and it["sid"] not in names_en:
             aliases[it["sid"]].add(norm(it["core"]))
@@ -219,8 +282,10 @@ def main():
         if a is not None:
             offers.append((a, it))
 
-    best = {}
+    best, imgs = {}, {}
     for a, it in offers:
+        if a in sin_steam and it["edition"] == "Standard" and it["img"] and it["region"] in ("Europa", "Global"):
+            imgs.setdefault(a, it["img"])      # portada para los juegos que no tienen ficha de Steam
         base = steam_base.get(a)
         if base and it["edition"] == "Standard" and it["price"] > base * MAX_VS_STEAM[it["pf"]]:
             continue
@@ -232,6 +297,7 @@ def main():
                            region=it["region"], price=it["price"], was=it["price"], ends="", url=url)
     rows = sorted(best.values(), key=lambda o: (o["appid"], o["platform"], o["version"], o["edition"], o["region"]))
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    json.dump({str(k): v for k, v in imgs.items()}, open(os.path.join(ROOT, "config", "portadas.json"), "w", encoding="utf-8"), indent=0)
     json.dump(rows, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     per = {}
     for o in rows:

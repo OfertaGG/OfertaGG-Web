@@ -106,7 +106,7 @@ GEN_NAME = {"Casual": "juegos casuales", "Indie": "juegos indie", "Multijugador"
             "RPG": "juegos RPG", "Simulación": "juegos de simulación"}
 gen_name = lambda x: GEN_NAME.get(x, "juegos de " + x.lower())
 gen_path = lambda x: "/" + slugify(gen_name(x)) + "/"
-popular = lambda lst: sorted(lst, key=lambda g: -(g.get("rec") or 0))
+popular = lambda lst: sorted(lst, key=lambda g: -(g.get("rec") or g.get("rk") or 0))
 
 # ---------- página de cada juego ----------
 for g in GAMES:
@@ -184,10 +184,10 @@ def list_page(path, h1, desc, lst, intro):
     page(path, f"{h1} | OfertaGG", desc, f'<nav class="crumbs"><a href="/">Inicio</a> › {esc(h1)}</nav><h1>{esc(h1)}</h1><p class="lead">{intro}</p><div class="grid">{"".join(card(g) for g in lst)}</div>', ld, f"/img/{lst[0]['id']}_h.webp")
 
 pc_price = lambda g: (best(g, "pc") or {}).get("p", 9e9)
-cheap = lambda lim: sorted((g for g in GAMES if not g.get("free") and pc_price(g) <= lim), key=lambda g: (-(g.get("rec") or 0)))
+cheap = lambda lim: sorted((g for g in GAMES if not g.get("free") and pc_price(g) <= lim), key=lambda g: (-(g.get("rec") or g.get("rk") or 0)))
 list_page("/juegos-pc-baratos/", "Juegos de PC baratos: claves de Steam por menos de 10 €", f"Juegos de PC por menos de 10 € con clave de Steam que se activa en España. Precios comparados el {FECHA}.", cheap(10), "Claves de Steam por menos de 10 €, ordenadas por popularidad. Solo regiones que se activan en España.")
 list_page("/juegos-pc-menos-de-5-euros/", "Juegos de PC por menos de 5 €", f"Claves de Steam por menos de 5 € que funcionan en España ({FECHA}).", cheap(5), "Los juegos más baratos del catálogo: claves de Steam por menos de 5 €.")
-list_page("/claves-steam-baratas/", "Claves de Steam baratas", "Compara precios de claves de Steam en varias tiendas y compra la más barata que se activa en España.", sorted((g for g in GAMES if best(g, "pc") and not g.get("free")), key=lambda g: -(g.get("rec") or 0)), "Los juegos más populares con su clave de Steam más barata en tiendas de claves.")
+list_page("/claves-steam-baratas/", "Claves de Steam baratas", "Compara precios de claves de Steam en varias tiendas y compra la más barata que se activa en España.", sorted((g for g in GAMES if best(g, "pc") and not g.get("free")), key=lambda g: -(g.get("rec") or g.get("rk") or 0)), "Los juegos más populares con su clave de Steam más barata en tiendas de claves.")
 for k, path, h1 in [("xbox", "/claves-xbox-baratas/", "Claves de Xbox baratas"), ("ps", "/juegos-playstation-baratos/", "Juegos de PlayStation baratos"), ("switch", "/juegos-switch-baratos/", "Juegos de Switch baratos")]:
     lst = sorted((g for g in GAMES if best(g, k)), key=lambda g: best(g, k)["p"])
     list_page(path, h1, f"{h1}: comparamos precios de códigos para {PLATS[k][0]} que se activan en España.", lst, f"{PLATS[k][1]} al mejor precio, solo en regiones que funcionan en España.")
@@ -214,14 +214,14 @@ for g in GAMES:
     if ds:
         o = max(ds, key=lambda o: 1 - o["p"] / o["was"])
         rebajas.append((round(100 * (1 - o["p"] / o["was"])), g, o))
-rebajas.sort(key=lambda x: (-x[0], -(x[1].get("rec") or 0)))
+rebajas.sort(key=lambda x: (-x[0], -(x[1].get("rec") or x[1].get("rk") or 0)))
 # 2) clave mucho más barata que el precio normal de Steam (comparación, no descuento)
 ahorro = []
 for g in GAMES:
     b, sn = best(g, "pc"), steam_normal(g)
     if b and sn and b["s"] != "steam" and not g.get("free") and b["p"] < sn:
         ahorro.append((round(100 * (1 - b["p"] / sn)), g, b, sn))
-ahorro.sort(key=lambda x: (-x[0], -(x[1].get("rec") or 0)))
+ahorro.sort(key=lambda x: (-x[0], -(x[1].get("rec") or x[1].get("rk") or 0)))
 low5 = cheap(5)[:12]
 if TODAY < BF: cuando = f"El Black Friday es el viernes {BF.day} de noviembre y el Cyber Monday el lunes {CM.day}. Mientras tanto, estas son las mejores ofertas que hay ahora mismo."
 elif TODAY <= CM + datetime.timedelta(days=2): cuando = "¡Ya es Black Friday! Revisamos los precios cada día mientras duren las ofertas."
@@ -267,7 +267,7 @@ urls = [("/", "1.0")] + [(p, "0.8" if not p.startswith("/juego/") else "0.6") fo
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "\n".join(f"  <url><loc>{URL}{p}</loc><lastmod>{lastmod}</lastmod><priority>{pr}</priority></url>" for p, pr in urls) + "\n</urlset>\n")
-top = sorted((g for g in GAMES if best(g, "pc")), key=lambda g: -(g.get("rec") or 0))[:30]
+top = sorted((g for g in GAMES if best(g, "pc")), key=lambda g: -(g.get("rec") or g.get("rk") or 0))[:30]
 open(os.path.join(SITE, "llms.txt"), "w", encoding="utf-8").write(
     f"# OfertaGG\n\n> Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»\n\n"
     f"Precios comprobados el {FECHA}. {len(GAMES)} juegos.\n\n## Páginas\n- [Todos los juegos]({URL}/juegos/)\n"
