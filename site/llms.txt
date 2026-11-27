@@ -2,7 +2,7 @@
 
 > Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»
 
-Precios comprobados el 26 de noviembre de 2026. 600 juegos.
+Precios comprobados el 27 de noviembre de 2026. 625 juegos.
 
 ## Páginas
 - [Todos los juegos](https://ofertagg.com/juegos/)
@@ -29,14 +29,14 @@ Precios comprobados el 26 de noviembre de 2026. 600 juegos.
 - [Black Friday 2026 juegos: ofertas en claves de PC, Xbox, PS y Switch](https://ofertagg.com/black-friday/)
 
 ## Juegos populares (precio más barato de la clave de Steam)
-- [Terraria](https://ofertagg.com/juego/terraria/): desde 6,39 € en Loaded
+- [Terraria](https://ofertagg.com/juego/terraria/): desde 5,61 € en Kinguin
 - [Rust](https://ofertagg.com/juego/rust/): desde 23,41 € en Kinguin
 - [Garry's Mod](https://ofertagg.com/juego/garry-s-mod/): desde 4,99 € en Steam
-- [Cyberpunk 2077](https://ofertagg.com/juego/cyberpunk-2077/): desde 59,99 € en Steam
+- [Cyberpunk 2077](https://ofertagg.com/juego/cyberpunk-2077/): desde 17,99 € en Steam
 - [Stardew Valley](https://ofertagg.com/juego/stardew-valley/): desde 13,99 € en Steam
-- [Black Myth: Wukong](https://ofertagg.com/juego/black-myth-wukong/): desde 33,59 € en Loaded
+- [Black Myth: Wukong](https://ofertagg.com/juego/black-myth-wukong/): desde 33,87 € en Kinguin
 - [Red Dead Redemption 2](https://ofertagg.com/juego/red-dead-redemption-2/): desde 14,99 € en Steam
-- [The Witcher 3: Wild Hunt — Remastered](https://ofertagg.com/juego/the-witcher-3-wild-hunt-remastered/): desde 49,99 € en Steam
+- [The Witcher 3: Wild Hunt — Remastered](https://ofertagg.com/juego/the-witcher-3-wild-hunt-remastered/): desde 19,99 € en Steam
 - [HELLDIVERS™ 2](https://ofertagg.com/juego/helldiverstm-2/): desde 22,19 € en Loaded
 - [ELDEN RING](https://ofertagg.com/juego/elden-ring/): desde 35,99 € en Loaded
 - [Left 4 Dead 2](https://ofertagg.com/juego/left-4-dead-2/): desde 9,69 € en Steam
@@ -50,9 +50,9 @@ Precios comprobados el 26 de noviembre de 2026. 600 juegos.
 - [The Forest](https://ofertagg.com/juego/the-forest/): desde 16,79 € en Steam
 - [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 9,11 € en Kinguin
 - [Valheim](https://ofertagg.com/juego/valheim/): desde 17,99 € en Loaded
-- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,49 € en Kinguin
+- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,54 € en Kinguin
 - [The Binding of Isaac: Rebirth](https://ofertagg.com/juego/the-binding-of-isaac-rebirth/): desde 14,99 € en Steam
-- [Palworld](https://ofertagg.com/juego/palworld/): desde 16,06 € en Kinguin
+- [Palworld](https://ofertagg.com/juego/palworld/): desde 14,40 € en Kinguin
 - [Lethal Company](https://ofertagg.com/juego/lethal-company/): desde 9,75 € en Steam
 - [BeamNG.drive](https://ofertagg.com/juego/beamng-drive/): desde 22,50 € en Steam
 - [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 19,50 € en Steam

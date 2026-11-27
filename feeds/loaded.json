@@ -66,8 +66,8 @@
 "version": "PC",
 "edition": "Ultimate Edition",
 "region": "Global",
-"price": 6.59,
-"was": 6.59,
+"price": 4.79,
+"was": 4.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FAONVUEPC&u=https%3A%2F%2Fwww.loaded.com%2Ffallout-new-vegas-ultimate-edition-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -258,8 +258,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 2.39,
-"was": 2.39,
+"price": 1.89,
+"was": 1.89,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=0093155145894&u=https%3A%2F%2Fwww.loaded.com%2Fdishonored-pc-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -310,6 +310,18 @@
 "was": 2.29,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=5051892170529&u=https%3A%2F%2Fwww.loaded.com%2Fbatman-arkham-knight-pc-cd-key-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 209000,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 1.79,
+"was": 1.79,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=5051892137690&u=https%3A%2F%2Fwww.loaded.com%2Fbatman-arkham-origins-pc%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 211820,
@@ -450,8 +462,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 1.19,
-"was": 1.19,
+"price": 1.79,
+"was": 1.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=POSTAL2PC&u=https%3A%2F%2Fwww.loaded.com%2Fpostal-2-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1206,8 +1218,8 @@
 "version": "PC",
 "edition": "Anniversary Edition",
 "region": "Global",
-"price": 28.79,
-"was": 28.79,
+"price": 23.99,
+"was": 23.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FOT4ANVEPC&u=https%3A%2F%2Fwww.loaded.com%2Ffallout-4-anniversary-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1260,6 +1272,18 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=F4XOXSPX_EU&u=https%3A%2F%2Fwww.loaded.com%2Ffallout-4-xbox-one-xbox-series-xs-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 377840,
+"store": "loaded",
+"platform": "switch",
+"version": "Switch",
+"edition": "Standard",
+"region": "Europa",
+"price": 13.89,
+"was": 13.89,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FNLFNTYIXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Ffinal-fantasy-ix-switch-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 379430,
 "store": "loaded",
 "platform": "pc",
@@ -1290,8 +1314,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 4.09,
-"was": 4.09,
+"price": 3.39,
+"was": 3.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=5050013388898&u=https%3A%2F%2Fwww.loaded.com%2Fdoom-pc-cd-key-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -1908,18 +1932,6 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DEROGPC&u=https%3A%2F%2Fwww.loaded.com%2Fdeep-rock-galactic-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
-"appid": 548430,
-"store": "loaded",
-"platform": "xbox",
-"version": "Xbox Play Anywhere",
-"edition": "Standard",
-"region": "Europa",
-"price": 7.79,
-"was": 7.79,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DRGXOPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fdeep-rock-galactic-xbox-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
 "appid": 552500,
 "store": "loaded",
 "platform": "pc",
@@ -2052,6 +2064,30 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=MHRWDXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fmonster-hunter-world-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 582160,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox One / Series X|S",
+"edition": "Standard",
+"region": "Europa",
+"price": 10.59,
+"was": 10.59,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=ASCROXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fassassins-creed-origins-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 582160,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox One / Series X|S",
+"edition": "Standard",
+"region": "Global",
+"price": 11.99,
+"was": 11.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=ASCROXOUN&u=https%3A%2F%2Fwww.loaded.com%2Fassassins-creed-origins-xbox-one%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 582660,
 "store": "loaded",
 "platform": "xbox",
@@ -2142,8 +2178,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 8.19,
-"was": 8.19,
+"price": 9.59,
+"was": 9.59,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=BTRMPAC&u=https%3A%2F%2Fwww.loaded.com%2Fbarotrauma-steam-pc%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -2170,6 +2206,18 @@
 "was": 3.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=MRDHAPC&u=https%3A%2F%2Fwww.loaded.com%2Fmordhau-pc-steam-cd-key%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 631510,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Europa",
+"price": 7.19,
+"was": 7.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DMCHDCPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fdevil-may-cry-hd-collection-pc-steam-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 632360,
@@ -2976,6 +3024,30 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=REVI3XO_WW&u=https%3A%2F%2Fwww.loaded.com%2Fresident-evil-3-xbox-one-xbox-series-x-s%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 954740,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 11.99,
+"was": 11.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=TERMRESISTPC&u=https%3A%2F%2Fwww.loaded.com%2Fterminator-resistance-pc-ww-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 954740,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox One / Series X|S",
+"edition": "Standard",
+"region": "Europa",
+"price": 8.89,
+"was": 8.89,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=TERRESXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fterminator-resistance-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 960910,
 "store": "loaded",
 "platform": "pc",
@@ -2994,8 +3066,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 1.19,
-"was": 1.19,
+"price": 1.59,
+"was": 1.59,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=BE2SOULPC_STEAM&u=https%3A%2F%2Fwww.loaded.com%2Fbeyond-two-souls-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -3228,6 +3300,30 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FFTTICXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Ffinal-fantasy-tactics-the-ivalice-chronicles-xbox-series-x-s-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 1029690,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Deluxe Edition",
+"region": "Global",
+"price": 10.99,
+"was": 10.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SNPRELT5DEPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fsniper-elite-5-deluxe-edition-pc-ww-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1029690,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 3.59,
+"was": 3.59,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SNPRELT5PC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fsniper-elite-5-pc-ww-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 1030300,
 "store": "loaded",
 "platform": "xbox",
@@ -3360,6 +3456,18 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PSN4GPC&u=https%3A%2F%2Fwww.loaded.com%2Fpersona-4-golden-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 1113120,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 8.39,
+"was": 8.39,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=IXIONPC&u=https%3A%2F%2Fwww.loaded.com%2Fixion-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 1113560,
 "store": "loaded",
 "platform": "pc",
@@ -3450,8 +3558,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 8.29,
-"was": 8.29,
+"price": 7.79,
+"was": 7.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=FLOT76PC_WW&u=https%3A%2F%2Fwww.loaded.com%2Ffallout-76-pc-ww-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -3888,6 +3996,42 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=BTF4XO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fbattlefield-4-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 1239080,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 12.39,
+"was": 12.39,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DOORKTFNPC&u=https%3A%2F%2Fwww.loaded.com%2Fdoor-kickers-2-task-force-north-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1243830,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 8.99,
+"was": 8.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=OVCAYCEPC&u=https%3A%2F%2Fwww.loaded.com%2Fovercooked-all-you-can-eat-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1243830,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox One / Series X|S",
+"edition": "Standard",
+"region": "Europa",
+"price": 10.39,
+"was": 10.39,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=OCKAEXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fovercooked-all-you-can-eat-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 1245620,
 "store": "loaded",
 "platform": "pc",
@@ -4230,8 +4374,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 11.19,
-"was": 11.19,
+"price": 10.79,
+"was": 10.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=OUTTRIPC&u=https%3A%2F%2Fwww.loaded.com%2Fthe-outlast-trials-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -4294,6 +4438,30 @@
 "was": 14.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=STYXOPC_EU&u=https%3A%2F%2Fwww.loaded.com%2Fstray-xbox-one-xbox-series-x-s-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1336490,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 3.59,
+"was": 3.59,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=AGTSTMPC&u=https%3A%2F%2Fwww.loaded.com%2Fagainst-the-storm-pc-steamm%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 1336490,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox Play Anywhere",
+"edition": "Standard",
+"region": "Europa",
+"price": 13.19,
+"was": 13.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=AFTSXOPCXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fagainst-the-storm-xbox-one-xbox-series-xs-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 1358700,
@@ -4716,18 +4884,6 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CSCFFVIIRPC_WW&u=https%3A%2F%2Fwww.loaded.com%2Fcrisis-core-final-fantasy-vii-reunion-pc-steam-ww%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
-"appid": 1608070,
-"store": "loaded",
-"platform": "xbox",
-"version": "Xbox One / Series X|S",
-"edition": "Standard",
-"region": "Europa",
-"price": 18.09,
-"was": 18.09,
-"ends": "",
-"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CCFFVIIRXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fcrisis-core-final-fantasy-vii-reunion-xbox-eu%3F__currency%3Deur&intsrc=APIG_12138"
-},
-{
 "appid": 1620730,
 "store": "loaded",
 "platform": "pc",
@@ -4746,8 +4902,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 11.99,
-"was": 11.99,
+"price": 10.19,
+"was": 10.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=HELLISUSPC&u=https%3A%2F%2Fwww.loaded.com%2Fhell-is-us-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -4896,14 +5052,26 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=STAL2HOCXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Fs-t-a-l-k-e-r-2-heart-of-chornobyl-xbox-series-x-s-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 1657630,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 9.39,
+"was": 9.39,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=SLIMER2PC&u=https%3A%2F%2Fwww.loaded.com%2Fslime-rancher-2-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 1659420,
 "store": "loaded",
 "platform": "pc",
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 13.19,
-"was": 13.19,
+"price": 11.99,
+"was": 11.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=UCLOTCPC&u=https%3A%2F%2Fwww.loaded.com%2Funcharted-legacy-of-thieves-collection-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -5358,8 +5526,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 21.59,
-"was": 21.59,
+"price": 19.79,
+"was": 19.79,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=ADCIVFRPC&u=https%3A%2F%2Fwww.loaded.com%2Farmored-core-vi-fires-of-rubicon-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -5724,6 +5892,18 @@
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CODCOLDSEXO_WW&u=https%3A%2F%2Fwww.loaded.com%2Fcall-of-duty-black-ops-cold-war-standard-edition-xbox-one-ww%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
+"appid": 1985820,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox One",
+"edition": "Standard",
+"region": "Global",
+"price": 17.99,
+"was": 17.99,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CODVSEXO_WW&u=https%3A%2F%2Fwww.loaded.com%2Fcall-of-duty-vanguard-standard-edition-xbox-one-xbox-series-x-s-ww%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
 "appid": 2001120,
 "store": "loaded",
 "platform": "switch",
@@ -5890,6 +6070,18 @@
 "was": 10.59,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=LTJDMTXO_EU&u=https%3A%2F%2Fwww.loaded.com%2Flost-judgment-xbox-one-xbox-series-x-s-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 2060130,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 2.29,
+"was": 2.29,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RTNTMIDPC&u=https%3A%2F%2Fwww.loaded.com%2Freturn-to-monkey-island-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 2062430,
@@ -6582,8 +6774,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Europa",
-"price": 42.59,
-"was": 42.59,
+"price": 40.19,
+"was": 40.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=AC8WOTPC&u=https%3A%2F%2Fwww.loaded.com%2Face-combat-8-wings-of-theve-pc-steam-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -6714,8 +6906,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 33.59,
-"was": 33.59,
+"price": 35.99,
+"was": 35.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=BCKMWGPC&u=https%3A%2F%2Fwww.loaded.com%2Fblack-myth-wukong-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -6826,6 +7018,30 @@
 "was": 14.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=MSEPIFHRPC&u=https%3A%2F%2Fwww.loaded.com%2Fmouse-p-i-for-hire-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 2420660,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 7.39,
+"was": 7.39,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=NEVAPC&u=https%3A%2F%2Fwww.loaded.com%2Fneva-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 2455640,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 21.19,
+"was": 21.19,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RMS2RSPC&u=https%3A%2F%2Fwww.loaded.com%2Fromancing-saga-2-revenge-of-the-seven-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 2457220,
@@ -7182,8 +7398,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Europa",
-"price": 29.99,
-"was": 29.99,
+"price": 28.19,
+"was": 28.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=ELDRNRNPC&u=https%3A%2F%2Fwww.loaded.com%2Felden-ring-nightreign-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7314,8 +7530,8 @@
 "version": "PC",
 "edition": "Premium Edition",
 "region": "Global",
-"price": 38.99,
-"was": 38.99,
+"price": 37.19,
+"was": 37.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=IDJAGCPEPC&u=https%3A%2F%2Fwww.loaded.com%2Findiana-jones-and-the-great-circle-premium-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7326,8 +7542,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 32.99,
-"was": 32.99,
+"price": 31.19,
+"was": 31.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=IDJAGCPC&u=https%3A%2F%2Fwww.loaded.com%2Findiana-jones-and-the-great-circle-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7374,8 +7590,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 21.59,
-"was": 21.59,
+"price": 19.19,
+"was": 19.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=PNTCT2PC&u=https%3A%2F%2Fwww.loaded.com%2Fplanet-coaster-2-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7698,8 +7914,8 @@
 "version": "PC",
 "edition": "Deluxe Edition",
 "region": "Global",
-"price": 48.39,
-"was": 48.39,
+"price": 41.99,
+"was": 41.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=JURWE3DEPC&u=https%3A%2F%2Fwww.loaded.com%2Fjurassic-world-evolution-3-deluxe-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7758,8 +7974,8 @@
 "version": "PC",
 "edition": "Premium Edition",
 "region": "Global",
-"price": 27.59,
-"was": 27.59,
+"price": 26.39,
+"was": 26.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DMTDAPEPC&u=https%3A%2F%2Fwww.loaded.com%2Fdoom-the-dark-ages-premium-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -7770,8 +7986,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 20.39,
-"was": 20.39,
+"price": 19.19,
+"was": 19.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=DMTDAPC&u=https%3A%2F%2Fwww.loaded.com%2Fdoom-the-dark-ages-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8094,8 +8310,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 31.79,
-"was": 31.79,
+"price": 31.19,
+"was": 31.19,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CTRLRSNTPC&u=https%3A%2F%2Fwww.loaded.com%2Fcontrol-resonant-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8188,6 +8404,18 @@
 "store": "loaded",
 "platform": "xbox",
 "version": "Xbox Series X|S",
+"edition": "Deluxe Edition",
+"region": "Europa",
+"price": 46.79,
+"was": 46.79,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RSERDEXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Fresident-evil-requiem-deluxe-edition-xbox-series-xs-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 3764200,
+"store": "loaded",
+"platform": "xbox",
+"version": "Xbox Series X|S",
 "edition": "Standard",
 "region": "Europa",
 "price": 43.19,
@@ -8202,8 +8430,8 @@
 "version": "PC",
 "edition": "Deluxe Edition",
 "region": "Global",
-"price": 41.99,
-"was": 41.99,
+"price": 47.99,
+"was": 47.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=007FLDEPC&u=https%3A%2F%2Fwww.loaded.com%2F007-first-light-deluxe-edition-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8242,6 +8470,18 @@
 "was": 44.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=007FRSTLTXS_EU&u=https%3A%2F%2Fwww.loaded.com%2F007-first-light-xbox-series-x-s-pc-eu%3F__currency%3Deur&intsrc=APIG_12138"
+},
+{
+"appid": 3784030,
+"store": "loaded",
+"platform": "pc",
+"version": "PC",
+"edition": "Standard",
+"region": "Global",
+"price": 7.89,
+"was": 7.89,
+"ends": "",
+"url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=RACPRPC&u=https%3A%2F%2Fwww.loaded.com%2Fraccoin-coin-pusher-roguelike-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
 {
 "appid": 3917090,
@@ -8334,8 +8574,8 @@
 "version": "Xbox One / Series X|S",
 "edition": "Standard",
 "region": "Europa",
-"price": 33.59,
-"was": 33.59,
+"price": 35.99,
+"was": 35.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=EASFC27XOXS_EU&u=https%3A%2F%2Fwww.loaded.com%2Fea-sports-fc-27-standard-edition-xbox-one-xbox-series-xs-eu%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8346,8 +8586,8 @@
 "version": "Xbox One / Series X|S",
 "edition": "Standard",
 "region": "Global",
-"price": 33.59,
-"was": 33.59,
+"price": 35.99,
+"was": 35.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=EASFC27XO_WW&u=https%3A%2F%2Fwww.loaded.com%2Fea-sports-fc-27-standard-edition-xbox-one-xbox-series-x-s-ww%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8538,8 +8778,8 @@
 "version": "Xbox Series X|S",
 "edition": "Standard",
 "region": "Global",
-"price": 51.59,
-"was": 51.59,
+"price": 50.99,
+"was": 50.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CODMW4XS_WW&u=https%3A%2F%2Fwww.loaded.com%2Fcall-of-duty-modern-warfare-4-xbox-series-xs-ww%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8586,8 +8826,8 @@
 "version": "PC",
 "edition": "Standard",
 "region": "Global",
-"price": 11.99,
-"was": 11.99,
+"price": 14.39,
+"was": 14.39,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=CSLTSUNKWNPC&u=https%3A%2F%2Fwww.loaded.com%2Fcasualties-unknown-pc-steam%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8646,8 +8886,8 @@
 "version": "Xbox Series X|S",
 "edition": "Standard",
 "region": "Global",
-"price": 63.99,
-"was": 63.99,
+"price": 62.99,
+"was": 62.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=GNDRAVIXS&u=https%3A%2F%2Fwww.loaded.com%2Fgrand-theft-auto-vi-xbox-series-x-s%3F__currency%3Deur&intsrc=APIG_12138"
 },
@@ -8658,8 +8898,8 @@
 "version": "Xbox Series X|S",
 "edition": "Ultimate Edition",
 "region": "Global",
-"price": 79.99,
-"was": 79.99,
+"price": 77.99,
+"was": 77.99,
 "ends": "",
 "url": "https://go.loaded.com/c/7957250/1625375/18216?prodsku=GTA6UEXS_WW&u=https%3A%2F%2Fwww.loaded.com%2Fgrand-theft-auto-vi-ultimate-edition-xbox-series-x-s%3F__currency%3Deur&intsrc=APIG_12138"
 },
