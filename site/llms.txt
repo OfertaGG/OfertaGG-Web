@@ -2,7 +2,7 @@
 
 > Comparador de precios de claves de videojuegos en español (PC/Steam, Xbox, PlayStation y Switch). Compara Steam con tiendas de claves como Kinguin y solo usa como precio principal regiones que se activan en España (Global y Europa). Eslogan: «El mismo juego. Menos dinero.»
 
-Precios comprobados el 27 de noviembre de 2026. 625 juegos.
+Precios comprobados el 28 de noviembre de 2026. 650 juegos.
 
 ## Páginas
 - [Todos los juegos](https://ofertagg.com/juegos/)
@@ -48,11 +48,11 @@ Precios comprobados el 27 de noviembre de 2026. 625 juegos.
 - [Geometry Dash](https://ofertagg.com/juego/geometry-dash/): desde 4,99 € en Steam
 - [ARK: Survival Evolved](https://ofertagg.com/juego/ark-survival-evolved/): desde 14,79 € en Steam
 - [The Forest](https://ofertagg.com/juego/the-forest/): desde 16,79 € en Steam
-- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 9,89 € en Kinguin
+- [Hollow Knight](https://ofertagg.com/juego/hollow-knight/): desde 9,96 € en Kinguin
 - [Valheim](https://ofertagg.com/juego/valheim/): desde 17,99 € en Loaded
-- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,54 € en Kinguin
+- [PAYDAY 2](https://ofertagg.com/juego/payday-2/): desde 3,52 € en Kinguin
 - [The Binding of Isaac: Rebirth](https://ofertagg.com/juego/the-binding-of-isaac-rebirth/): desde 14,99 € en Steam
-- [Palworld](https://ofertagg.com/juego/palworld/): desde 14,40 € en Kinguin
+- [Palworld](https://ofertagg.com/juego/palworld/): desde 14,38 € en Kinguin
 - [Lethal Company](https://ofertagg.com/juego/lethal-company/): desde 9,75 € en Steam
 - [BeamNG.drive](https://ofertagg.com/juego/beamng-drive/): desde 22,50 € en Steam
 - [Hollow Knight: Silksong](https://ofertagg.com/juego/hollow-knight-silksong/): desde 19,50 € en Steam
